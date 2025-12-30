@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin – Gestion complète</title>
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="auth.js"></script> <!-- NOUVEAU -->
+  <style>
+    /* Styles existants... */
+    .section-admin {
+      background: white;
+      padding: 2rem;
+      margin: 2rem auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 800px;
+    }
+    
+    .onglets {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .onglet {
+      padding: 1rem 2rem;
+      background: #3498db;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .onglet.active {
+      background: #e74c3c;
+    }
+    
+    .contenu-onglet {
+      display: none;
+    }
+    
+    .contenu-onglet.active {
+      display: block;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    
+    .form-group textarea {
+      width: 100%;
+      min-height: 200px;
+      padding: 1rem;
+      border: 2px solid #e9ecef;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+      resize: vertical;
+    }
+    
+    .pdf-list {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #f8f9fa;
+      border-radius: 6px;
+    }
+    
+    .pdf-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      background: white;
+      border-radius: 4px;
+    }
+    
+    .btn-small {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+    }
+    
+    /* Style bouton déconnexion */
+    .btn-deconnexion {
+      background: #e74c3c !important;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    
+    .btn-deconnexion:hover {
+      background: #c0392b !important;
+    }
+    
+    /* Indicateur session */
+    .session-info {
+      background: #2ecc71;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8em;
+      display: inline-block;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔐 Administration Complète <span class="session-info">Session active</span></h1>
+    <p>Gestion de tous les contenus du site</p>
+  </header>
+
+  <div class="onglets">
+    <div class="onglet active" onclick="afficherOnglet('videos')">📹 Vidéos</div>
+    <div class="onglet" onclick="afficherOnglet('images')">🖼️ Images Techniques</div>
+    <div class="onglet" onclick="afficherOnglet('informations')">📢 Informations</div>
+    <div class="onglet" onclick="afficherOnglet('pdf')">📄 Documents PDF</div>
+    <div class="onglet" onclick="afficherOnglet('grades')">🥋 Contenu des Grades</div>
+    <div class="onglet" onclick="afficherOnglet('sauvegarde')" style="background: #e67e22;">💾 Sauvegarde</div>
+  </div>
+
+  <section>
+    <div id="message" style="display: none; padding: 1rem; margin: 1rem auto; max-width: 800px; border-radius: 6px;"></div>
+
+    <!-- Onglet Vidéos -->
+    <div id="onglet-videos" class="contenu-onglet active">
+      <div class="section-admin">
+        <h2>🎬 Gestion des Vidéos</h2>
+        
+        <form id="formulaireVideo">
+          <div class="form-group">
+            <label for="url">📹 Lien YouTube :</label>
+            <input type="url" id="url" required placeholder="https://youtu.be/..." style="width: 100%; max-width: 500px;">
+          </div>
+
+          <div class="form-group">
+            <label for="texte">📝 Description :</label>
+            <input type="text" id="texte" required placeholder="Ex: Morote Seoi Nage" style="width: 100%; max-width: 500px;">
+          </div>
+
+          <div class="form-group">
+            <label for="categorie">🗂️ Catégorie :</label>
+            <select id="categorie" required style="width: 100%; max-width: 500px;">
+              <option value="">-- Choisir une catégorie --</option>
+              <option value="Te Waza">Techniques de main (Te Waza)</option>
+              <option value="Koshi Waza">Techniques de hanche (Koshi Waza)</option>
+              <option value="Ma Sutemi Waza">Techniques de sacrifice (Ma Sutemi Waza)</option>
+              <option value="Yoko Sutemi Waza">Techniques de sacrifice (Yoko Sutemi Waza)</option>
+              <option value="Osaekomi Waza">Immobilisations (Osaekomi Waza)</option>
+              <option value="Shime Waza">Étranglements (Shime Waza)</option>
+              <option value="Kansetsu Waza">Clés de bras (Kansetsu Waza)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="grade">🎯 Grade :</label>
+            <select id="grade" required style="width: 100%; max-width: 500px;">
+              <option value="">-- Choisir un grade --</option>
+              <option value="blanche-jaune">Blanche / Jaune</option>
+              <option value="jaune-orange">Jaune / Orange</option>
+              <option value="orange-verte">Orange / Verte</option>
+              <option value="verte-bleue">Verte / Bleue</option>
+              <option value="bleue-marron">Bleue / Marron</option>
+              <option value="marron-noir">Marron / Noir</option>
+              <option value="noir">Ceinture Noire</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="section">📂 Section :</label>
+            <select id="section" required style="width: 100%; max-width: 500px;">
+              <option value="techniques-de-base">🥋 Techniques de Base</option>
+              <option value="variantes-avancees">⚡ Variantes Avancées</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-connexion">➕ Ajouter la vidéo</button>
+        </form>
+
+        <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+          <h3>📊 Gestion des vidéos</h3>
+          <div id="video-count" style="margin: 15px 0; font-size: 1.2em; font-weight: bold;">Chargement...</div>
+          
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button onclick="viderVideos()" class="lien-bleu" style="background: #dc3545;">🗑️ Vider TOUTES les vidéos</button>
+            <button onclick="afficherListeVideos()" class="lien-bleu">👁️ Voir la liste complète</button>
+          </div>
+          
+          <div id="liste-videos" style="margin-top: 20px; display: none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Onglet Images -->
+    <div id="onglet-images" class="contenu-onglet">
+      <div class="section-admin">
+        <h2>🖼️ Gestion des Images Techniques</h2>
+        <p style="color: #666; margin-bottom: 1rem;">Uploadez des images PNG de techniques de judo</p>
+        
+        <form id="formulaireImage">
+          <div class="form-group">
+            <label for="image-upload">🖼️ Sélectionner une image PNG :</label>
+            <input type="file" id="image-upload" accept="image/png" required>
+          </div>
+
+          <div class="form-group">
+            <label for="image-nom">📝 Nom de la technique :</label>
+            <input type="text" id="image-nom" required placeholder="Ex: Tai Otoshi" style="width: 100%; max-width: 500px;">
+          </div>
+
+          <div class="form-group">
+            <label for="image-categorie">🗂️ Catégorie :</label>
+            <select id="image-categorie" required style="width: 100%; max-width: 500px;">
+              <option value="">-- Choisir une catégorie --</option>
+              <option value="Te Waza">Techniques de main (Te Waza)</option>
+              <option value="Koshi Waza">Techniques de hanche (Koshi Waza)</option>
+              <option value="Ma Sutemi Waza">Techniques de sacrifice (Ma Sutemi Waza)</option>
+              <option value="Yoko Sutemi Waza">Techniques de sacrifice (Yoko Sutemi Waza)</option>
+              <option value="Osaekomi Waza">Immobilisations (Osaekomi Waza)</option>
+              <option value="Shime Waza">Étranglements (Shime Waza)</option>
+              <option value="Kansetsu Waza">Clés de bras (Kansetsu Waza)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="image-grade">🎯 Grade :</label>
+            <select id="image-grade" required style="width: 100%; max-width: 500px;">
+              <option value="">-- Choisir un grade --</option>
+              <option value="blanche-jaune">Blanche / Jaune</option>
+              <option value="jaune-orange">Jaune / Orange</option>
+              <option value="orange-verte">Orange / Verte</option>
+              <option value="verte-bleue">Verte / Bleue</option>
+              <option value="bleue-marron">Bleue / Marron</option>
+              <option value="marron-noir">Marron / Noir</option>
+              <option value="noir">Ceinture Noire</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="image-section">📂 Section :</label>
+            <select id="image-section" required style="width: 100%; max-width: 500px;">
+              <option value="techniques-de-base">🥋 Techniques de Base</option>
+              <option value="variantes-avancees">⚡ Variantes Avancées</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-connexion">➕ Ajouter l'image</button>
+        </form>
+
+        <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+          <h3>📊 Gestion des images</h3>
+          <div id="image-count" style="margin: 15px 0; font-size: 1.2em; font-weight: bold;">Chargement...</div>
+          
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button onclick="viderImages()" class="lien-bleu" style="background: #dc3545;">🗑️ Vider TOUTES les images</button>
+            <button onclick="afficherListeImages()" class="lien-bleu">👁️ Voir la liste complète</button>
+          </div>
+          
+          <div id="liste-images" style="margin-top: 20px; display: none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Onglet Informations -->
+    <div id="onglet-informations" class="contenu-onglet">
+      <div class="section-admin">
+        <h2>📢 Gestion des Informations</h2>
+        <p style="color: #666; margin-bottom: 1rem;">Ces textes apparaîtront sur la page Informations</p>
+        
+        <div class="form-group">
+          <label for="info-actualites">📰 Actualités du club :</label>
+          <textarea id="info-actualites" placeholder="Rédigez les actualités du club..."></textarea>
+          <button onclick="sauvegarderInfo('actualites')" class="btn-connexion btn-small">💾 Sauvegarder</button>
+        </div>
+        
+        <div class="form-group">
+          <label for="info-resultats">🏆 Résultats de compétitions :</label>
+          <textarea id="info-resultats" placeholder="Entrez les résultats des compétitions..."></textarea>
+          <button onclick="sauvegarderInfo('resultats')" class="btn-connexion btn-small">💾 Sauvegarder</button>
+        </div>
+        
+        <div class="form-group">
+          <label for="info-contact">📞 Contact & informations pratiques :</label>
+          <textarea id="info-contact" placeholder="Entrez les informations de contact..."></textarea>
+          <button onclick="sauvegarderInfo('contact')" class="btn-connexion btn-small">💾 Sauvegarder</button>
+        </div>
+        
+        <div class="form-group">
+          <label for="info-agenda">📅 Agenda Visuel :</label>
+          <textarea id="info-agenda" placeholder="Entrez le contenu de l'agenda..."></textarea>
+          <button onclick="sauvegarderInfo('agenda')" class="btn-connexion btn-small">💾 Sauvegarder Agenda</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Onglet PDF -->
+    <div id="onglet-pdf" class="contenu-onglet">
+      <div class="section-admin">
+        <h2>📄 Gestion des Documents PDF</h2>
+        
+        <div class="form-group">
+          <label>📎 Uploader un document PDF :</label>
+          <div style="border: 2px dashed #3498db; padding: 2rem; text-align: center; border-radius: 8px; margin: 1rem 0;">
+            <input type="file" id="pdf-upload" accept=".pdf" style="margin-bottom: 1rem;">
+            <div>
+              <input type="text" id="pdf-nom" placeholder="Nom du document (ex: Planning 2024)" style="width: 100%; max-width: 400px; padding: 0.5rem; margin-bottom: 1rem;">
+            </div>
+            <button onclick="uploaderPDF()" class="btn-connexion">📄 Uploader le PDF</button>
+          </div>
+        </div>
+        
+        <div class="pdf-list">
+          <h3>📋 Documents disponibles :</h3>
+          <div id="liste-pdf">Chargement...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Onglet Grades -->
+    <div id="onglet-grades" class="contenu-onglet">
+      <div class="section-admin">
+        <h2>🥋 Contenu des Grades</h2>
+        
+        <div class="form-group">
+          <label for="select-grade">Sélectionner un grade :</label>
+          <select id="select-grade" style="width: 100%; max-width: 500px;">
+            <option value="1er-dan">1er Dan</option>
+            <option value="2eme-dan">2ème Dan</option>
+            <option value="3eme-dan">3ème Dan</option>
+            <option value="4eme-dan">4ème Dan</option>
+            <option value="5eme-dan">5ème Dan</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="content-techniques">Techniques requises :</label>
+          <textarea id="content-techniques" placeholder="Liste des techniques, katas, et connaissances requises..."></textarea>
+          <button onclick="sauvegarderTechniques()" class="btn-connexion">💾 Sauvegarder</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Onglet Sauvegarde -->
+  <section id="onglet-sauvegarde" class="contenu-onglet" style="display: none;">
+    <div class="section-admin">
+      <h2>💾 Sauvegarde et Restauration</h2>
+      <p style="color: #666; margin-bottom: 2rem;">Protégez vos données en créant des sauvegardes complètes</p>
+      
+      <!-- Export -->
+      <div style="background: #d4edda; border: 2px solid #c3e6cb; padding: 2rem; margin-bottom: 2rem; border-radius: 8px;">
+        <h3 style="color: #155724; margin-top: 0;">📤 Exporter toutes les données</h3>
+        <p style="color: #155724;">Téléchargez un fichier contenant :</p>
+        <ul style="color: #155724;">
+          <li>✅ Toutes les vidéos</li>
+          <li>✅ Toutes les images techniques</li>
+          <li>✅ Toutes les informations (actualités, résultats, contact, agenda)</li>
+          <li>✅ Tous les documents PDF</li>
+          <li>✅ Tous les contenus des grades</li>
+        </ul>
+        <button onclick="exporterTout()" class="btn-connexion" style="background: #28a745; padding: 1rem 2rem; font-size: 1.1rem;">
+          📥 Télécharger la sauvegarde complète
+        </button>
+        <p style="color: #666; margin-top: 1rem; font-size: 0.9rem;">Le fichier sera nommé : dojo-backup-AAAA-MM-JJ.json</p>
+      </div>
+      
+      <!-- Import -->
+      <div style="background: #fff3cd; border: 2px solid #ffeaa7; padding: 2rem; border-radius: 8px;">
+        <h3 style="color: #856404; margin-top: 0;">📂 Restaurer une sauvegarde</h3>
+        <p style="color: #856404;">⚠️ <strong>Attention :</strong> Ceci remplacera toutes vos données actuelles par celles de la sauvegarde !</p>
+        <input type="file" id="import-file" accept=".json" style="margin: 1rem 0; padding: 0.5rem;">
+        <br>
+        <button onclick="importerTout()" class="btn-connexion" style="background: #ffc107; color: #000; padding: 1rem 2rem; font-size: 1.1rem;">
+          📤 Restaurer depuis un fichier
+        </button>
+      </div>
+      
+      <!-- Informations -->
+      <div style="background: #d1ecf1; border: 2px solid #bee5eb; padding: 1.5rem; margin-top: 2rem; border-radius: 8px;">
+        <h3 style="color: #0c5460; margin-top: 0;">ℹ️ Informations</h3>
+        <div id="info-sauvegarde" style="color: #0c5460;">Chargement...</div>
+      </div>
+    </div>
+  </section>
+
+  <nav style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px; max-width: 800px; margin-left: auto; margin-right: auto;">
+    <a class="lien-bleu" href="index.html">⬅️ Retour à l'accueil</a>
+    <a class="lien-bleu" href="informations.html">📢 Voir les informations</a>
+    <button onclick="deconnexion()" class="btn-deconnexion">🚪 Déconnexion</button>
+  </nav>
+
+  <script>
+    // ===== VÉRIFICATION DE SESSION =====
+    document.addEventListener('DOMContentLoaded', function() {
+        // Vérifier la session
+        if (!auth.checkSession()) {
+            alert('⏱️ Session expirée ou non autorisée. Veuillez vous reconnecter.');
+            window.location.href = 'index.html';
+            return;
+        }
+        
+        console.log("✅ Session valide, chargement de l'admin...");
+        initAdmin();
+    });
+
+    function initAdmin() {
+        // Initialiser les fonctions admin
+        mettreAJourCompteurVideos();
+        mettreAJourCompteurImages();
+        chargerInformations();
+        afficherPDFs();
+        document.getElementById('select-grade').addEventListener('change', chargerTechniques);
+        
+        // Afficher info session
+        const sessionData = localStorage.getItem('dojo_session');
+        if (sessionData) {
+            const session = JSON.parse(sessionData);
+            const expires = new Date(session.expires);
+            console.log("⏰ Session expire à:", expires.toLocaleTimeString());
+        }
+    }
+
+    // ===== GESTION DES MESSAGES =====
+    function afficherMessage(message, type = 'success') {
+      const msgElement = document.getElementById("message");
+      msgElement.textContent = message;
+      msgElement.style.background = type === 'success' ? '#d4edda' : '#f8d7da';
+      msgElement.style.color = type === 'success' ? '#155724' : '#721c24';
+      msgElement.style.border = type === 'success' ? '1px solid #c3e6cb' : '1px solid #f5c6cb';
+      msgElement.style.display = "block";
+      setTimeout(() => msgElement.style.display = "none", 4000);
+    }
+
+    // ===== GESTION DES ONGLETS =====
+    function afficherOnglet(onglet) {
+      document.querySelectorAll('.contenu-onglet').forEach(o => o.classList.remove('active'));
+      document.querySelectorAll('.onglet').forEach(o => o.classList.remove('active'));
+      document.getElementById('onglet-' + onglet).classList.add('active');
+      document.getElementById('onglet-' + onglet).style.display = 'block';
+      event.target.classList.add('active');
+      
+      if (onglet === 'informations') chargerInformations();
+      if (onglet === 'images') { mettreAJourCompteurImages(); }
+      if (onglet === 'pdf') afficherPDFs();
+      if (onglet === 'grades') chargerTechniques();
+      if (onglet === 'sauvegarde') afficherInfoSauvegarde();
+    }
+
+    // ===== GESTION DES IMAGES =====
+    function mettreAJourCompteurImages() {
+      const images = JSON.parse(localStorage.getItem("images") || "[]");
+      const compteur = document.getElementById("image-count");
+      if (compteur) {
+        compteur.textContent = `${images.length} image(s) enregistrée(s)`;
+      }
+    }
+
+    function viderImages() {
+      if (confirm("Êtes-vous sûr de vouloir supprimer TOUTES les images ?")) {
+        localStorage.removeItem("images");
+        mettreAJourCompteurImages();
+        document.getElementById('liste-images').style.display = 'none';
+        afficherMessage("✅ Toutes les images ont été supprimées.");
+      }
+    }
+
+    function afficherListeImages() {
+      const images = JSON.parse(localStorage.getItem("images") || "[]");
+      const liste = document.getElementById('liste-images');
+      if (images.length === 0) {
+        liste.innerHTML = '<p>Aucune image enregistrée.</p>';
+      } else {
+        liste.innerHTML = '<h4>Liste complète des images :</h4>' + 
+          images.map((image, index) => `
+            <div style="padding: 1rem; margin: 0.5rem 0; background: white; border-radius: 6px; border-left: 4px solid #9b59b6; display: flex; gap: 1rem; align-items: center;">
+              <img src="${image.data}" alt="${image.nom}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 4px;">
+              <div style="flex: 1;">
+                <strong>${image.nom}</strong><br>
+                <small>Grade: ${image.grade} | Catégorie: ${image.categorie} | Section: ${image.section}</small>
+              </div>
+              <button onclick="supprimerImage(${index})" style="padding: 8px 12px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">Supprimer</button>
+            </div>
+          `).join('');
+      }
+      liste.style.display = 'block';
+    }
+
+    function supprimerImage(index) {
+      const images = JSON.parse(localStorage.getItem("images") || "[]");
+      images.splice(index, 1);
+      localStorage.setItem("images", JSON.stringify(images));
+      mettreAJourCompteurImages();
+      afficherListeImages();
+      afficherMessage("✅ Image supprimée.");
+    }
+
+    document.getElementById("formulaireImage").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const fileInput = document.getElementById('image-upload');
+      const file = fileInput.files[0];
+      
+      if (!file) {
+        afficherMessage('❌ Veuillez sélectionner une image', 'error');
+        return;
+      }
+      
+      if (file.type !== 'image/png') {
+        afficherMessage('❌ Le fichier doit être au format PNG', 'error');
+        return;
+      }
+      
+      console.log('🖼️ Début upload image...');
+      
+      const reader = new FileReader();
+      reader.onerror = function(error) {
+        console.error('❌ Erreur lecture image:', error);
+        afficherMessage('❌ Erreur lors de la lecture de l\'image', 'error');
+      };
+      reader.onload = function(e) {
+        try {
+          const nouvelleImage = { 
+            data: e.target.result,
+            nom: document.getElementById("image-nom").value,
+            categorie: document.getElementById("image-categorie").value,
+            grade: document.getElementById("image-grade").value,
+            section: document.getElementById("image-section").value,
+            date: new Date().toLocaleDateString('fr-FR')
+          };
+          const images = JSON.parse(localStorage.getItem("images") || "[]");
+          images.push(nouvelleImage);
+          localStorage.setItem("images", JSON.stringify(images));
+          console.log('✅ Image sauvegardée ! Total:', images.length);
+          afficherMessage("✅ Image ajoutée avec succès !");
+          document.getElementById("formulaireImage").reset();
+          mettreAJourCompteurImages();
+        } catch (error) {
+          console.error('❌ Erreur sauvegarde image:', error);
+          afficherMessage('❌ Erreur lors de la sauvegarde: ' + error.message, 'error');
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // ===== GESTION DES VIDEOS =====
+    function mettreAJourCompteurVideos() {
+      const videos = JSON.parse(localStorage.getItem("videos") || "[]");
+      document.getElementById("video-count").textContent = `${videos.length} vidéo(s) enregistrée(s)`;
+    }
+
+    function viderVideos() {
+      if (confirm("Êtes-vous sûr de vouloir supprimer TOUTES les vidéos ?")) {
+        localStorage.removeItem("videos");
+        mettreAJourCompteurVideos();
+        document.getElementById('liste-videos').style.display = 'none';
+        afficherMessage("✅ Toutes les vidéos ont été supprimées.");
+      }
+    }
+
+    function afficherListeVideos() {
+      const videos = JSON.parse(localStorage.getItem("videos") || "[]");
+      const liste = document.getElementById('liste-videos');
+      if (videos.length === 0) {
+        liste.innerHTML = '<p>Aucune vidéo enregistrée.</p>';
+      } else {
+        liste.innerHTML = '<h4>Liste complète des vidéos :</h4>' + 
+          videos.map((video, index) => `
+            <div style="padding: 1rem; margin: 0.5rem 0; background: white; border-radius: 6px; border-left: 4px solid #3498db;">
+              <strong>${video.texte}</strong><br>
+              <small>Grade: ${video.grade} | Catégorie: ${video.categorie}</small><br>
+              <small>URL: ${video.url}</small>
+              <button onclick="supprimerVideo(${index})" style="margin-left: 1rem; padding: 4px 8px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">Supprimer</button>
+            </div>
+          `).join('');
+      }
+      liste.style.display = 'block';
+    }
+
+    function supprimerVideo(index) {
+      const videos = JSON.parse(localStorage.getItem("videos") || "[]");
+      videos.splice(index, 1);
+      localStorage.setItem("videos", JSON.stringify(videos));
+      mettreAJourCompteurVideos();
+      afficherListeVideos();
+      afficherMessage("✅ Vidéo supprimée.");
+    }
+
+    document.getElementById("formulaireVideo").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nouvelleVideo = { 
+        url: document.getElementById("url").value,
+        texte: document.getElementById("texte").value,
+        categorie: document.getElementById("categorie").value,
+        grade: document.getElementById("grade").value,
+        section: document.getElementById("section").value,
+        date: new Date().toLocaleDateString('fr-FR')
+      };
+      const videos = JSON.parse(localStorage.getItem("videos") || "[]");
+      videos.push(nouvelleVideo);
+      localStorage.setItem("videos", JSON.stringify(videos));
+      afficherMessage("✅ Vidéo ajoutée avec succès !");
+      this.reset();
+      mettreAJourCompteurVideos();
+    });
+
+    // ===== GESTION DES INFORMATIONS =====
+    function chargerInformations() {
+      document.getElementById('info-actualites').value = localStorage.getItem('info-actualites') || '';
+      document.getElementById('info-resultats').value = localStorage.getItem('info-resultats') || '';
+      document.getElementById('info-contact').value = localStorage.getItem('info-contact') || '';
+      document.getElementById('info-agenda').value = localStorage.getItem('info-agenda') || '';
+    }
+
+    function sauvegarderInfo(type) {
+      const contenu = document.getElementById('info-' + type).value;
+      if (!contenu.trim()) {
+        afficherMessage('❌ Le texte ne peut pas être vide', 'error');
+        return;
+      }
+      localStorage.setItem('info-' + type, contenu);
+      afficherMessage(`✅ ${type} sauvegardé !`);
+    }
+
+    // ===== GESTION DES PDF =====
+    function uploaderPDF() {
+      const fileInput = document.getElementById('pdf-upload');
+      const nomInput = document.getElementById('pdf-nom');
+      const file = fileInput.files[0];
+      
+      console.log('📄 Début upload PDF...');
+      
+      if (!file) {
+        afficherMessage('❌ Veuillez sélectionner un fichier PDF', 'error');
+        return;
+      }
+      if (file.type !== 'application/pdf') {
+        afficherMessage('❌ Le fichier doit être un PDF', 'error');
+        return;
+      }
+      if (!nomInput.value.trim()) {
+        afficherMessage('❌ Veuillez donner un nom au document', 'error');
+        return;
+      }
+      
+      console.log('📄 Fichier valide:', file.name, file.size, 'bytes');
+      
+      const reader = new FileReader();
+      reader.onerror = function(error) {
+        console.error('❌ Erreur lecture fichier:', error);
+        afficherMessage('❌ Erreur lors de la lecture du fichier', 'error');
+      };
+      reader.onload = function(e) {
+        try {
+          console.log('📄 Lecture terminée, sauvegarde...');
+          const pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
+          console.log('📄 PDFs existants:', pdfs.length);
+          
+          const nouveauPDF = {
+            nom: nomInput.value.trim(),
+            data: e.target.result,
+            date: new Date().toLocaleDateString('fr-FR'),
+            taille: (file.size / 1024 / 1024).toFixed(2) + ' Mo'
+          };
+          
+          pdfs.push(nouveauPDF);
+          localStorage.setItem('pdfs', JSON.stringify(pdfs));
+          
+          console.log('✅ PDF sauvegardé ! Total:', pdfs.length);
+          console.log('✅ Données localStorage:', localStorage.getItem('pdfs').substring(0, 100) + '...');
+          
+          afficherMessage('✅ PDF uploadé avec succès !');
+          afficherPDFs();
+          fileInput.value = '';
+          nomInput.value = '';
+        } catch (error) {
+          console.error('❌ Erreur sauvegarde:', error);
+          afficherMessage('❌ Erreur lors de la sauvegarde: ' + error.message, 'error');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function afficherPDFs() {
+      console.log('🔄 Affichage des PDFs...');
+      const pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
+      console.log('📄 Nombre de PDFs trouvés:', pdfs.length);
+      const liste = document.getElementById('liste-pdf');
+      
+      if (pdfs.length === 0) {
+        liste.innerHTML = '<p style="padding: 2rem; text-align: center; color: #666;">Aucun PDF disponible.</p>';
+        console.log('⚠️ Aucun PDF à afficher');
+      } else {
+        console.log('✅ Affichage de', pdfs.length, 'PDF(s)');
+        liste.innerHTML = pdfs.map((pdf, index) => {
+          console.log(`  - PDF ${index + 1}: ${pdf.nom}`);
+          return `
+          <div class="pdf-item">
+            <div>
+              <strong>${pdf.nom}</strong><br>
+              <small>Ajouté le ${pdf.date} • ${pdf.taille}</small>
+            </div>
+            <div>
+              <a href="${pdf.data}" download="${pdf.nom}.pdf" class="lien-bleu" style="margin-right: 1rem;">📥 Télécharger</a>
+              <button onclick="supprimerPDF(${index})" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">🗑️</button>
+            </div>
+          </div>
+        `}).join('');
+      }
+    }
+
+    function supprimerPDF(index) {
+      if (confirm("Supprimer ce PDF ?")) {
+        const pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
+        pdfs.splice(index, 1);
+        localStorage.setItem('pdfs', JSON.stringify(pdfs));
+        afficherPDFs();
+        afficherMessage('✅ PDF supprimé.');
+      }
+    }
+
+    // ===== GESTION DES GRADES =====
+    function chargerTechniques() {
+      const grade = document.getElementById('select-grade').value;
+      document.getElementById('content-techniques').value = localStorage.getItem('techniques-' + grade) || '';
+    }
+
+    function sauvegarderTechniques() {
+      const grade = document.getElementById('select-grade').value;
+      const contenu = document.getElementById('content-techniques').value;
+      if (!contenu.trim()) {
+        afficherMessage('❌ Le contenu ne peut pas être vide', 'error');
+        return;
+      }
+      localStorage.setItem('techniques-' + grade, contenu);
+      afficherMessage(`✅ Techniques ${grade} sauvegardées !`);
+    }
+
+    // ===== SYSTÈME EXPORT/IMPORT =====
+
+    // Afficher les informations sur les données
+    function afficherInfoSauvegarde() {
+      const info = document.getElementById('info-sauvegarde');
+      
+      // Compter les éléments
+      const videos = JSON.parse(localStorage.getItem('videos') || '[]');
+      const images = JSON.parse(localStorage.getItem('images') || '[]');
+      const pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
+      
+      let nbInfos = 0;
+      ['actualites', 'resultats', 'contact', 'agenda'].forEach(type => {
+        if (localStorage.getItem('info-' + type)) nbInfos++;
+      });
+      
+      let nbGrades = 0;
+      ['1er-dan', '2eme-dan', '3eme-dan', '4eme-dan', '5eme-dan'].forEach(grade => {
+        if (localStorage.getItem('techniques-' + grade)) nbGrades++;
+      });
+      
+      // Calculer la taille totale
+      let tailleTotal = 0;
+      for (let key in localStorage) {
+        if (localStorage.hasOwnProperty(key)) {
+          tailleTotal += localStorage[key].length + key.length;
+        }
+      }
+      const tailleMo = (tailleTotal / 1024 / 1024).toFixed(2);
+      
+      info.innerHTML = `
+        <p><strong>📊 Statistiques actuelles :</strong></p>
+        <ul>
+          <li>📹 Vidéos : ${videos.length}</li>
+          <li>🖼️ Images techniques : ${images.length}</li>
+          <li>📄 Documents PDF : ${pdfs.length}</li>
+          <li>📢 Sections informations : ${nbInfos} / 4</li>
+          <li>🥋 Contenus grades : ${nbGrades} / 5</li>
+        </ul>
+        <p><strong>💾 Taille totale des données :</strong> ${tailleMo} Mo</p>
+        <p style="margin-top: 1rem; padding: 1rem; background: #fff; border-radius: 6px;">
+          <strong>💡 Conseil :</strong> Faites une sauvegarde avant toute modification importante !
+        </p>
+      `;
+    }
+
+    // Exporter toutes les données
+    function exporterTout() {
+      console.log('📤 Début de l\'export...');
+      
+      try {
+        const sauvegarde = {
+          version: '1.0',
+          date: new Date().toISOString(),
+          site: 'dojo-numerique',
+          donnees: {}
+        };
+        
+        // Exporter TOUTES les clés du localStorage
+        for (let key in localStorage) {
+          if (localStorage.hasOwnProperty(key)) {
+            // Ignorer la session
+            if (key !== 'dojo_session') {
+              sauvegarde.donnees[key] = localStorage[key];
+            }
+          }
+        }
+        
+        // Créer le fichier
+        const json = JSON.stringify(sauvegarde, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        // Nom du fichier avec date
+        const date = new Date();
+        const nomFichier = `dojo-backup-${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}.json`;
+        
+        // Télécharger
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = nomFichier;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        console.log('✅ Export réussi !');
+        afficherMessage('✅ Sauvegarde téléchargée avec succès ! Fichier : ' + nomFichier);
+        
+      } catch (error) {
+        console.error('❌ Erreur export:', error);
+        afficherMessage('❌ Erreur lors de l\'export : ' + error.message, 'error');
+      }
+    }
+
+    // Importer une sauvegarde
+    function importerTout() {
+      const fileInput = document.getElementById('import-file');
+      const file = fileInput.files[0];
+      
+      if (!file) {
+        afficherMessage('❌ Veuillez sélectionner un fichier de sauvegarde', 'error');
+        return;
+      }
+      
+      if (!file.name.endsWith('.json')) {
+        afficherMessage('❌ Le fichier doit être au format .json', 'error');
+        return;
+      }
+      
+      if (!confirm('⚠️ ATTENTION !\n\nCette opération va REMPLACER toutes vos données actuelles par celles de la sauvegarde.\n\nVoulez-vous continuer ?')) {
+        return;
+      }
+      
+      console.log('📥 Début de l\'import...');
+      
+      const reader = new FileReader();
+      
+      reader.onerror = function() {
+        console.error('❌ Erreur lecture fichier');
+        afficherMessage('❌ Erreur lors de la lecture du fichier', 'error');
+      };
+      
+      reader.onload = function(e) {
+        try {
+          const sauvegarde = JSON.parse(e.target.result);
+          
+          // Vérifier la structure
+          if (!sauvegarde.donnees) {
+            throw new Error('Format de sauvegarde invalide');
+          }
+          
+          console.log('📦 Sauvegarde du', sauvegarde.date);
+          console.log('📊 Nombre de clés:', Object.keys(sauvegarde.donnees).length);
+          
+          // Supprimer toutes les anciennes données (sauf session)
+          const keysToRemove = [];
+          for (let key in localStorage) {
+            if (localStorage.hasOwnProperty(key) && key !== 'dojo_session') {
+              keysToRemove.push(key);
+            }
+          }
+          keysToRemove.forEach(key => localStorage.removeItem(key));
+          
+          // Importer les nouvelles données
+          let compteur = 0;
+          for (let key in sauvegarde.donnees) {
+            localStorage.setItem(key, sauvegarde.donnees[key]);
+            compteur++;
+          }
+          
+          console.log('✅ Import terminé :', compteur, 'clés restaurées');
+          
+          afficherMessage('✅ Sauvegarde restaurée avec succès ! ' + compteur + ' éléments importés.');
+          
+          // Rafraîchir l'affichage
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+          
+        } catch (error) {
+          console.error('❌ Erreur import:', error);
+          afficherMessage('❌ Erreur lors de l\'import : ' + error.message, 'error');
+        }
+      };
+      
+      reader.readAsText(file);
+    }
+  </script>
+</body>
+</html>

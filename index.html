@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dojo Numérique du Club Judo Lambersart JAK - Apprends, révise et progresse à ton rythme. Vidéos techniques, quiz pédagogiques et informations pour tous les grades de ceinture.">
+  <meta name="keywords" content="judo, Lambersart, club judo, JAK, ceinture judo, techniques judo, dojo, apprentissage judo, vidéos judo, quiz judo">
+  <meta name="author" content="Club Judo Lambersart JAK">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dojo Numérique - Club Judo Lambersart JAK">
+  <meta property="og:description" content="Apprends, révise et progresse à ton rythme avec notre plateforme pédagogique dédiée au judo.">
+  <meta property="og:url" content="https://votre-site-judo.com">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dojo Numérique - Club Judo Lambersart JAK">
+  <meta name="twitter:description" content="Apprends, révise et progresse à ton rythme avec notre plateforme pédagogique dédiée au judo.">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <title>Dojo Numérique - Club Judo Lambersart JAK | Apprendre le Judo en Ligne</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="auth.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🥋 Bienvenue au Dojo Numérique du Club Judo Lambersart</h1>
+    <p>Apprends, révise et progresse à ton rythme</p>
+  </header>
+
+  <!-- Section Accès Rapide -->
+  <section class="acces-rapide">
+    <h2>🚀 Accès Rapide</h2>
+    <div class="grid-accueil">
+      
+      <!-- Informations (CHANGÉ EN ROUGE) -->
+      <a class="card-accueil info-card" href="informations.html" style="border-left: 6px solid #e74c3c;">
+        <div class="card-icon" style="color: #e74c3c;">📢</div>
+        <div class="card-content">
+          <h3>Informations</h3>
+          <p>Stages, résultats, actualités</p>
+        </div>
+      </a>
+
+      <!-- Quiz -->
+      <a class="card-accueil quiz-card" href="quiz.html">
+        <div class="card-icon">🎯</div>
+        <div class="card-content">
+          <h3>Quiz Pédagogique</h3>
+          <p>Teste tes connaissances</p>
+        </div>
+      </a>
+
+      <!-- Vidéos par Grade -->
+      <a class="card-accueil video-card" href="videos-par-grade.html">
+        <div class="card-icon">📽️</div>
+        <div class="card-content">
+          <h3>Vidéos par Grade</h3>
+          <p>Techniques par ceinture</p>
+        </div>
+      </a>
+
+      <!-- Accès Professeurs -->
+      <div class="card-accueil prof-card" onclick="ouvrirModalProf()">
+        <div class="card-icon">👨‍🏫</div>
+        <div class="card-content">
+          <h3>Accès Professeurs</h3>
+          <p>Espace réservé</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section Agenda -->
+  <section id="section-agenda" style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
+    <h2>📅 Agenda du Dojo</h2>
+    <div id="contenu-agenda" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+      <p><em>L'agenda sera affiché ici une fois configuré par les professeurs.</em></p>
+    </div>
+  </section>
+
+  <!-- Modal pour la connexion professeurs -->
+  <div id="modalProf" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fermerModalProf()">&times;</span>
+      <h2>🔐 Accès Professeurs</h2>
+      <p style="color: #666; margin-bottom: 20px; text-align: center;">
+        Espace réservé aux enseignants du club
+      </p>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="password">Mot de passe :</label>
+          <input type="password" id="password" name="password" required 
+                 placeholder="Entrez le mot de passe" autocomplete="current-password">
+        </div>
+        
+        <div id="errorMessage" class="error-message">
+          ❌ Mot de passe incorrect
+        </div>
+        
+        <button type="submit" class="btn-connexion">
+          🔐 Se connecter
+        </button>
+      </form>
+      
+      <p style="text-align: center; margin-top: 20px; font-size: 0.9em; color: #777;">
+        Session valide 24h • Déconnexion automatique
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Version locale – Respect de la vie privée – Mise à jour selon les cours du dojo</p>
+    <p style="font-size: 0.8em; color: #666;">🔒 Authentification sécurisée v1.0</p>
+  </footer>
+
+  <script>
+    // ===== CHARGEMENT DE L'AGENDA =====
+    function chargerAgenda() {
+      const agendaContent = localStorage.getItem('info-agenda');
+      const contenuAgenda = document.getElementById('contenu-agenda');
+      
+      if (agendaContent && agendaContent.trim() !== '') {
+        contenuAgenda.innerHTML = agendaContent;
+      } else {
+        contenuAgenda.innerHTML = '<p><em>L\'agenda sera affiché ici une fois configuré par les professeurs.</em></p>';
+      }
+    }
+
+    // ===== SYSTÈME D'AUTHENTIFICATION =====
+    function ouvrirModalProf() {
+        document.getElementById('modalProf').style.display = 'block';
+        document.getElementById('password').focus();
+        document.getElementById('errorMessage').style.display = 'none';
+    }
+
+    function fermerModalProf() {
+        document.getElementById('modalProf').style.display = 'none';
+        document.getElementById('password').value = '';
+        document.getElementById('errorMessage').style.display = 'none';
+    }
+
+    // Gestion du formulaire de connexion
+    document.addEventListener('DOMContentLoaded', function() {
+      chargerAgenda();
+      console.log("🏠 Page d'accueil chargée");
+      
+      // Attendre que auth.js soit chargé
+      const loginForm = document.getElementById('loginForm');
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Vérifier que auth est disponible
+            if (typeof auth === 'undefined') {
+              alert('❌ Erreur : Système d\'authentification non chargé. Rafraîchissez la page.');
+              return;
+            }
+            
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (auth.verifyPassword(password)) {
+                auth.createSession();
+                window.location.href = 'admin.html';
+            } else {
+                errorMessage.style.display = 'block';
+                document.getElementById('password').value = '';
+                document.getElementById('password').focus();
+                document.getElementById('password').style.borderColor = '#dc3545';
+                setTimeout(() => {
+                    document.getElementById('password').style.borderColor = '#ddd';
+                }, 1000);
+            }
+        });
+      }
+    });
+    
+    // Fermer modal en cliquant dehors
+    window.onclick = function(event) {
+        const modal = document.getElementById('modalProf');
+        if (event.target === modal) {
+            fermerModalProf();
+        }
+    };
+
+    // Fermer modal avec Échap
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            fermerModalProf();
+        }
+    });
+  </script>
+</body>
+</html>
