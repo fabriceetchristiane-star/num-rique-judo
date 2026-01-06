@@ -215,38 +215,54 @@
   </div>
 
   <script>
-    // Charger tous les contenus
-    function chargerContenus() {
-      // Agenda
-      const agenda = localStorage.getItem('info-agenda');
-      if (agenda && agenda.trim() !== '') {
-        document.getElementById('contenu-agenda').innerHTML = agenda;
-      }
-      
-      // Résultats
-      const resultats = localStorage.getItem('info-resultats');
-      if (resultats && resultats.trim() !== '') {
-        document.getElementById('contenu-resultats').innerHTML = resultats;
-      }
-      
-      // Actualités
-      const actualites = localStorage.getItem('info-actualites');
-      if (actualites && actualites.trim() !== '') {
-        document.getElementById('contenu-actualites').innerHTML = actualites;
-      }
-      
-      // Contact
-      const contact = localStorage.getItem('info-contact');
-      if (contact && contact.trim() !== '') {
-        document.getElementById('contenu-contact').innerHTML = contact;
-      }
-      
-      // PDF
-      afficherPDFsPublic();
-      
-      // Date de mise à jour
-      document.getElementById('date-maj').textContent = new Date().toLocaleDateString('fr-FR');
-    }
+    // Fonction pour formater le texte automatiquement
+function formaterTexte(texte) {
+  if (!texte || texte.trim() === '') return '';
+  
+  // Si le texte contient déjà des balises HTML, le retourner tel quel
+  if (texte.includes('<p>') || texte.includes('<h3>') || texte.includes('<ul>')) {
+    return texte;
+  }
+  
+  // Sinon, convertir les sauts de ligne en paragraphes
+  return texte
+    .split('\n\n')
+    .filter(p => p.trim())
+    .map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`)
+    .join('');
+}
+
+function chargerContenus() {
+  // Agenda
+  const agenda = localStorage.getItem('info-agenda');
+  if (agenda && agenda.trim() !== '') {
+    document.getElementById('contenu-agenda').innerHTML = formaterTexte(agenda);
+  }
+  
+  // Résultats
+  const resultats = localStorage.getItem('info-resultats');
+  if (resultats && resultats.trim() !== '') {
+    document.getElementById('contenu-resultats').innerHTML = formaterTexte(resultats);
+  }
+  
+  // Actualités
+  const actualites = localStorage.getItem('info-actualites');
+  if (actualites && actualites.trim() !== '') {
+    document.getElementById('contenu-actualites').innerHTML = formaterTexte(actualites);
+  }
+  
+  // Contact
+  const contact = localStorage.getItem('info-contact');
+  if (contact && contact.trim() !== '') {
+    document.getElementById('contenu-contact').innerHTML = formaterTexte(contact);
+  }
+  
+  // PDF
+  afficherPDFsPublic();
+  
+  // Date de mise à jour
+  document.getElementById('date-maj').textContent = new Date().toLocaleDateString('fr-FR');
+}
 
     // Afficher les PDF pour le public
     function afficherPDFsPublic() {
