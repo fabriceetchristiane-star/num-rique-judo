@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outil d'optimisation - Dojo JAK</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #B22222;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .tool-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 5px solid #B22222;
+        }
+        
+        .tool-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            padding: 12px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .checklist li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .link-button {
+            display: inline-block;
+            background: #B22222;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .link-button:hover {
+            background: #8B0000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(178, 34, 34, 0.3);
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .status.done {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .code-snippet {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #B22222, #dc3545);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ Outil d'Optimisation Site Judo JAK</h1>
+        
+        <!-- Barre de progression -->
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar">0%</div>
+        </div>
+        
+        <!-- Section 1: Sécurité -->
+        <div class="tool-section">
+            <h2>🔒 Sécurité <span class="status pending">À FAIRE</span></h2>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Changer le mot de passe dans auth.js (actuellement "prof2024")</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Activer HTTPS sur l'hébergement</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Supprimer le dossier auth-secure/node_modules avant upload</label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Section 2: Images -->
+        <div class="tool-section">
+            <h2>🖼️ Optimisation Images</h2>
+            <div class="info-box">
+                💡 <strong>Astuce :</strong> Compressez vos images pour réduire de 60-80% leur poids sans perte visible de qualité.
+            </div>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Créer un favicon.ico (16x16 ou 32x32 pixels)</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Créer icon-192.png pour PWA</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Créer icon-512.png pour PWA</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Compresser toutes les images existantes</label>
+                </li>
+            </ul>
+            <a href="https://tinypng.com" target="_blank" class="link-button">🔗 TinyPNG - Compression d'images</a>
+            <a href="https://www.favicon-generator.org/" target="_blank" class="link-button">🔗 Générateur Favicon</a>
+        </div>
+
+        <!-- Section 3: SEO -->
+        <div class="tool-section">
+            <h2>📈 Référencement SEO</h2>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Mettre à jour les URLs dans sitemap.xml</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Mettre à jour les meta tags Open Graph dans index.html</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Ajouter balises meta sur toutes les autres pages HTML</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Créer un compte Google Search Console</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Soumettre le sitemap à Google</label>
+                </li>
+            </ul>
+            <a href="https://search.google.com/search-console" target="_blank" class="link-button">🔗 Google Search Console</a>
+            <a href="https://analytics.google.com" target="_blank" class="link-button">🔗 Google Analytics</a>
+        </div>
+
+        <!-- Section 4: Tests -->
+        <div class="tool-section">
+            <h2>🧪 Tests de Performance</h2>
+            <div class="warning-box">
+                ⚠️ <strong>Important :</strong> Effectuez ces tests APRÈS le déploiement en ligne.
+            </div>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Tester avec PageSpeed Insights (score > 80)</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Tester avec GTmetrix</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Tester sur mobile (responsive)</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Vérifier tous les liens vidéos</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Tester la connexion professeur</label>
+                </li>
+            </ul>
+            <a href="https://pagespeed.web.dev" target="_blank" class="link-button">🔗 PageSpeed Insights</a>
+            <a href="https://gtmetrix.com" target="_blank" class="link-button">🔗 GTmetrix</a>
+        </div>
+
+        <!-- Section 5: Déploiement -->
+        <div class="tool-section">
+            <h2>🚀 Déploiement</h2>
+            <div class="info-box">
+                📝 <strong>Rappel :</strong> Consultez le fichier GUIDE_DEPLOIEMENT.md pour les instructions détaillées.
+            </div>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Choisir un hébergeur (GitHub Pages / Netlify / O2Switch)</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Acheter un nom de domaine (optionnel)</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Uploader les fichiers sur l'hébergement</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Configurer le certificat SSL (HTTPS)</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Vérifier que toutes les pages sont accessibles</label>
+                </li>
+            </ul>
+            <a href="https://pages.github.com" target="_blank" class="link-button">🔗 GitHub Pages</a>
+            <a href="https://www.netlify.com" target="_blank" class="link-button">🔗 Netlify</a>
+            <a href="https://www.o2switch.fr" target="_blank" class="link-button">🔗 O2Switch</a>
+        </div>
+
+        <!-- Section 6: Améliorations futures -->
+        <div class="tool-section">
+            <h2>✨ Améliorations Futures</h2>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Créer une fiche Google My Business</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Ajouter un formulaire de contact</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Créer une page "À propos"</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Ajouter un système de newsletter</label>
+                </li>
+                <li>
+                    <input type="checkbox" onchange="updateProgress()">
+                    <label>Créer un blog actualités</label>
+                </li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f0f0f0; border-radius: 10px;">
+            <p style="font-size: 1.1em; color: #666;">
+                💪 <strong>Courage !</strong> Chaque tâche cochée vous rapproche d'un site parfait !
+            </p>
+            <p style="margin-top: 10px; color: #999;">
+                📅 Créé le 12 décembre 2024 • Version 1.0
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Calculer et afficher la progression
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            const percentage = Math.round((checked.length / checkboxes.length) * 100);
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+            
+            // Sauvegarder l'état dans localStorage
+            const states = Array.from(checkboxes).map(cb => cb.checked);
+            localStorage.setItem('checklistProgress', JSON.stringify(states));
+        }
+
+        // Restaurer l'état sauvegardé
+        window.addEventListener('DOMContentLoaded', function() {
+            const saved = localStorage.getItem('checklistProgress');
+            if (saved) {
+                const states = JSON.parse(saved);
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                states.forEach((state, index) => {
+                    if (checkboxes[index]) {
+                        checkboxes[index].checked = state;
+                    }
+                });
+                updateProgress();
+            }
+        });
+
+        // Animation au survol
+        document.querySelectorAll('.link-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+*.DAT
+*.blf
+*.regtrans-ms
+*.ini
+*.log
+**/NTUSER*
+**/.Microsoft/
+**/.vscode/
