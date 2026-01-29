@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /auth-secure/
+
+# Sitemap
+Sitemap: https://votre-site-judo.com/sitemap.xml
+
+# Crawl-delay (optionnel, ralentit les robots)
+Crawl-delay: 10
