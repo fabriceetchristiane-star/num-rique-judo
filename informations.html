@@ -211,6 +211,19 @@
       
       contenuPDF.innerHTML = '<p>Téléchargez les documents du club :</p>' + 
         pdfs.map(pdf => {
+          // Si c'est un lien Drive
+          if (pdf.isLink) {
+            return `
+            <div style="margin: 1rem 0; padding: 1rem; background: #e8f5e9; border-radius: 6px; border-left: 4px solid #27ae60;">
+              <strong>🔗 ${pdf.nom}</strong>
+              <a href="${pdf.driveLink}" target="_blank" class="lien-bleu" style="margin-left: 1rem;">
+                🌐 Ouvrir dans Drive
+              </a>
+              <br><small>Ajouté le ${pdf.date} • Lien Drive</small>
+            </div>
+          `;}
+          
+          // Si c'est un fichier uploadé
           const downloadName = pdf.filename || (pdf.nom + '.pdf');
           return `
           <div style="margin: 1rem 0; padding: 1rem; background: #f8f9fa; border-radius: 6px;">

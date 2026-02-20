@@ -320,13 +320,36 @@
         <h2>📄 Gestion des Documents PDF</h2>
         
         <div class="form-group">
-          <label>📎 Uploader un document ou une image (PDF, SVG, JPG, PNG) :</label>
-          <div style="border: 2px dashed #3498db; padding: 2rem; text-align: center; border-radius: 8px; margin: 1rem 0;">
-            <input type="file" id="pdf-upload" accept=".pdf,.svg,.jpg,.jpeg,.png,.gif" style="margin-bottom: 1rem;">
+          <label>📎 Ajouter un document (Upload ou Lien Drive) :</label>
+          
+          <!-- Choix du type -->
+          <div style="margin: 1rem 0;">
+            <label style="margin-right: 2rem;">
+              <input type="radio" name="type-ajout" value="upload" checked onchange="toggleAjoutType()"> 📤 Upload fichier
+            </label>
+            <label>
+              <input type="radio" name="type-ajout" value="lien" onchange="toggleAjoutType()"> 🔗 Lien Google Drive
+            </label>
+          </div>
+          
+          <!-- Section Upload -->
+          <div id="section-upload" style="border: 2px dashed #3498db; padding: 2rem; text-align: center; border-radius: 8px; margin: 1rem 0;">
+            <input type="file" id="pdf-upload" accept=".pdf,.svg,.jpg,.jpeg,.png,.gif,.webp" style="margin-bottom: 1rem;">
             <div>
               <input type="text" id="pdf-nom" placeholder="Nom du document (ex: Planning 2024)" style="width: 100%; max-width: 400px; padding: 0.5rem; margin-bottom: 1rem;">
             </div>
-            <button onclick="uploaderPDF()" class="btn-connexion">📄 Uploader le PDF</button>
+            <button onclick="uploaderPDF()" class="btn-connexion">📄 Uploader le fichier</button>
+          </div>
+          
+          <!-- Section Lien Drive -->
+          <div id="section-lien" style="border: 2px dashed #27ae60; padding: 2rem; border-radius: 8px; margin: 1rem 0; display: none;">
+            <div style="margin-bottom: 1rem;">
+              <input type="text" id="lien-nom" placeholder="Nom du document (ex: Règlement 2025)" style="width: 100%; padding: 0.75rem; margin-bottom: 0.5rem;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <input type="text" id="lien-url" placeholder="Lien Google Drive (ex: https://drive.google.com/...)" style="width: 100%; padding: 0.75rem;">
+            </div>
+            <button onclick="ajouterLienDrive()" class="btn-connexion" style="background: #27ae60;">🔗 Ajouter le lien</button>
           </div>
         </div>
         
@@ -660,11 +683,12 @@
         'image/jpeg',
         'image/jpg',
         'image/png',
-        'image/gif'
+        'image/gif',
+        'image/webp'
       ];
       
       if (!allowedTypes.includes(file.type)) {
-        afficherMessage('❌ Format non supporté. Utilisez : PDF, SVG, JPG, PNG ou GIF', 'error');
+        afficherMessage('❌ Format non supporté. Utilisez : PDF, SVG, JPG, PNG, GIF ou WebP', 'error');
         return;
       }
       
@@ -715,16 +739,33 @@
     function afficherPDFs() {
       console.log('🔄 Affichage des PDFs...');
       const pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
-      console.log('📄 Nombre de PDFs trouvés:', pdfs.length);
+      console.log('📄 Nombre de documents trouvés:', pdfs.length);
       const liste = document.getElementById('liste-pdf');
       
       if (pdfs.length === 0) {
-        liste.innerHTML = '<p style="padding: 2rem; text-align: center; color: #666;">Aucun PDF disponible.</p>';
-        console.log('⚠️ Aucun PDF à afficher');
+        liste.innerHTML = '<p style="padding: 2rem; text-align: center; color: #666;">Aucun document disponible.</p>';
+        console.log('⚠️ Aucun document à afficher');
       } else {
-        console.log('✅ Affichage de', pdfs.length, 'PDF(s)');
+        console.log('✅ Affichage de', pdfs.length, 'document(s)');
         liste.innerHTML = pdfs.map((pdf, index) => {
-          console.log(`  - PDF ${index + 1}: ${pdf.nom}`);
+          console.log(`  - Document ${index + 1}: ${pdf.nom}`);
+          
+          // Si c'est un lien Drive
+          if (pdf.isLink) {
+            return `
+            <div class="pdf-item" style="border-left: 4px solid #27ae60;">
+              <div>
+                <strong>🔗 ${pdf.nom}</strong><br>
+                <small>Ajouté le ${pdf.date} • Lien Drive</small>
+              </div>
+              <div>
+                <a href="${pdf.driveLink}" target="_blank" class="lien-bleu" style="margin-right: 1rem;">🌐 Ouvrir Drive</a>
+                <button onclick="supprimerPDF(${index})" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">🗑️</button>
+              </div>
+            </div>
+          `;}
+          
+          // Si c'est un fichier uploadé
           const downloadName = pdf.filename || (pdf.nom + '.pdf');
           return `
           <div class="pdf-item">
@@ -742,12 +783,69 @@
     }
 
     function supprimerPDF(index) {
-      if (confirm("Supprimer ce PDF ?")) {
+      if (confirm("Supprimer ce document ?")) {
         const pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
         pdfs.splice(index, 1);
         localStorage.setItem('pdfs', JSON.stringify(pdfs));
         afficherPDFs();
-        afficherMessage('✅ PDF supprimé.');
+        afficherMessage('✅ Document supprimé.');
+      }
+    }
+
+    // ===== GESTION LIEN DRIVE =====
+    function toggleAjoutType() {
+      const type = document.querySelector('input[name="type-ajout"]:checked').value;
+      const sectionUpload = document.getElementById('section-upload');
+      const sectionLien = document.getElementById('section-lien');
+      
+      if (type === 'upload') {
+        sectionUpload.style.display = 'block';
+        sectionLien.style.display = 'none';
+      } else {
+        sectionUpload.style.display = 'none';
+        sectionLien.style.display = 'block';
+      }
+    }
+
+    function ajouterLienDrive() {
+      const nomInput = document.getElementById('lien-nom');
+      const urlInput = document.getElementById('lien-url');
+      
+      if (!nomInput.value.trim()) {
+        afficherMessage('❌ Veuillez donner un nom au document', 'error');
+        return;
+      }
+      
+      if (!urlInput.value.trim()) {
+        afficherMessage('❌ Veuillez coller le lien Google Drive', 'error');
+        return;
+      }
+      
+      // Vérifier que c'est un lien Drive valide
+      if (!urlInput.value.includes('drive.google.com')) {
+        afficherMessage('❌ Le lien doit être un lien Google Drive', 'error');
+        return;
+      }
+      
+      try {
+        const pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
+        
+        pdfs.push({
+          nom: nomInput.value.trim(),
+          driveLink: urlInput.value.trim(),
+          date: new Date().toLocaleDateString('fr-FR'),
+          taille: 'Lien Drive',
+          isLink: true
+        });
+        
+        localStorage.setItem('pdfs', JSON.stringify(pdfs));
+        
+        afficherMessage('✅ Lien ajouté avec succès !');
+        afficherPDFs();
+        nomInput.value = '';
+        urlInput.value = '';
+      } catch (error) {
+        afficherMessage('❌ Erreur: ' + error.message, 'error');
       }
     }
 
