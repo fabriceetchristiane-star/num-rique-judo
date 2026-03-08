@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Techniques Bleue → Marron / Noire</title>
+  <title>Techniques Bleue vers Marron / Noire</title>
   <link rel="stylesheet" href="styles/style.css">
   <script src="auth.js"></script>
   <style>
     body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
     header { background: linear-gradient(135deg, #4a2c0a, #8B4513); color: white; padding: 1.5rem; text-align: center; }
     header h1 { margin: 0; font-size: 1.4rem; }
-    header p { margin: 0.3rem 0 0; font-size: 0.9rem; opacity: 0.85; }
-
+    header p { margin: 0.3rem 0 0; font-size: 0.85rem; opacity: 0.85; }
     .onglets { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem; justify-content: center; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
     .onglet { padding: 0.5rem 1rem; border-radius: 20px; border: none; cursor: pointer; font-size: 0.85rem; font-weight: bold; transition: all 0.2s; }
     .onglet.nage { background: #e8f4fd; color: #1a5276; }
@@ -22,254 +21,87 @@
     .onglet.shime.active { background: #7d6608; color: white; }
     .onglet.kansetsu { background: #fdf2f8; color: #7d1f68; }
     .onglet.kansetsu.active { background: #7d1f68; color: white; }
-
     .section { display: none; padding: 1rem; max-width: 900px; margin: 0 auto; }
     .section.active { display: block; }
-
     .section-titre { font-size: 1.1rem; font-weight: bold; color: white; padding: 0.7rem 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center; }
     .nage-titre { background: #1a5276; }
     .katame-titre { background: #1a5e3a; }
     .shime-titre { background: #7d6608; }
     .kansetsu-titre { background: #7d1f68; }
-
-    .technique-card { background: white; border-radius: 10px; padding: 1rem; margin-bottom: 0.8rem; box-shadow: 0 2px 6px rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .technique-card { background: white; border-radius: 10px; padding: 1rem; margin-bottom: 0.7rem; box-shadow: 0 2px 6px rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
     .technique-nom { font-weight: bold; font-size: 1rem; color: #2c3e50; }
     .technique-desc { font-size: 0.8rem; color: #666; margin-top: 0.2rem; }
-    .btn-video { background: #e74c3c; color: white; border: none; padding: 0.5rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 0.3rem; }
+    .btn-video { background: #e74c3c; color: white; border: none; padding: 0.5rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; text-decoration: none; white-space: nowrap; }
     .btn-video:hover { background: #c0392b; }
-    .btn-kodokan { background: #2980b9; color: white; border: none; padding: 0.5rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; text-decoration: none; white-space: nowrap; display: flex; align-items: center; gap: 0.3rem; margin-top: 0.4rem; }
-    .btns { display: flex; flex-direction: column; align-items: flex-end; }
-
-    .sous-section { font-size: 0.85rem; font-weight: bold; color: #888; text-transform: uppercase; letter-spacing: 1px; margin: 1rem 0 0.5rem; padding-left: 0.5rem; border-left: 3px solid #ccc; }
     footer { text-align: center; padding: 1.5rem; color: #888; font-size: 0.8rem; margin-top: 2rem; }
+    .chargement { text-align: center; padding: 2rem; color: #888; }
   </style>
 </head>
 <body>
 <header>
-  <h1>🥋 Techniques Bleue → Marron / Noire</h1>
-  <p>Cliquez sur une technique pour voir la vidéo</p>
+  <h1>Techniques Bleue vers Marron / Noire</h1>
+  <p>Cliquez sur une technique pour voir la video</p>
 </header>
-
-<!-- Navigation par onglets -->
 <div class="onglets">
-  <button class="onglet nage active" onclick="afficher('nage')">🔵 Nage-Waza</button>
-  <button class="onglet katame" onclick="afficher('katame')">🟢 Katame-Waza</button>
-  <button class="onglet shime" onclick="afficher('shime')">🟡 Shime-Waza</button>
-  <button class="onglet kansetsu" onclick="afficher('kansetsu')">🟣 Kansetsu-Waza</button>
+  <button class="onglet nage active" onclick="afficher('nage', this)">Nage-Waza</button>
+  <button class="onglet katame" onclick="afficher('katame', this)">Katame-Waza</button>
+  <button class="onglet shime" onclick="afficher('shime', this)">Shime-Waza</button>
+  <button class="onglet kansetsu" onclick="afficher('kansetsu', this)">Kansetsu-Waza</button>
 </div>
-
-<!-- NAGE-WAZA -->
-<div id="sec-nage" class="section active">
-  <div class="section-titre nage-titre">🔵 NAGE-WAZA — Techniques de projection</div>
-
-  <div class="sous-section">Makikomi — Enroulements</div>
-
-  <div class="technique-card">
-    <div><div class="technique-nom">Hane maki komi</div><div class="technique-desc">Projection en saut avec enroulement</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/6CRBGLGz9j8" target="_blank">▶ Vidéo</a><a class="btn-kodokan" href="https://kdkjudo.org/nage-waza/" target="_blank">📖 Kodokan</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Soto maki komi</div><div class="technique-desc">Enroulement extérieur</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/bWG9O1BVKtQ" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">O soto maki komi</div><div class="technique-desc">Grand fauchage extérieur avec enroulement</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/DGDv2oMwmas" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Uchi mata maki komi</div><div class="technique-desc">Fauchage intérieur de cuisse avec enroulement</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/jZXENTLpJCI" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Harai maki komi</div><div class="technique-desc">Balayage avec enroulement</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/VBaHzKaCXss" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ko uchi maki komi</div><div class="technique-desc">Petit fauchage intérieur avec enroulement</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/_1eygIXLD_w" target="_blank">▶ Vidéo</a></div>
-  </div>
-
-  <div class="sous-section">Gaeshi — Contre-attaques</div>
-
-  <div class="technique-card">
-    <div><div class="technique-nom">Ko uchi gaeshi</div><div class="technique-desc">Contre au petit fauchage intérieur</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/_MWAdYi_LC4" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">O soto gaeshi</div><div class="technique-desc">Contre au grand fauchage extérieur</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/8ZjM3X_EANo" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">O uchi gaeshi</div><div class="technique-desc">Contre au grand fauchage intérieur</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/dCyZTXyjIXE" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Uchi mata sukashi</div><div class="technique-desc">Esquive de uchi mata</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/V-RS3uhtVWM" target="_blank">▶ Vidéo</a></div>
-  </div>
-
-  <div class="sous-section">Autres projections</div>
-
-  <div class="technique-card">
-    <div><div class="technique-nom">Hane goshi</div><div class="technique-desc">Projection en ciseau de hanche</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/M9_7De6A1kk" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Kuchiki taoshi</div><div class="technique-desc">Abattage d'arbre mort</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/ZNL47q1aJNY" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ura nage</div><div class="technique-desc">Projection vers l'arrière</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/Fgi9b8DJ5sQ" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Yoko tomoe nage</div><div class="technique-desc">Projection en cercle latérale</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/880WbHvHv6A" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Yoko guruma</div><div class="technique-desc">Roue latérale</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/MehP6I5cY2c" target="_blank">▶ Vidéo</a></div>
-  </div>
-</div>
-
-<!-- KATAME-WAZA -->
-<div id="sec-katame" class="section">
-  <div class="section-titre katame-titre">🟢 KATAME-WAZA — Techniques de maîtrise au sol</div>
-
-  <div class="technique-card">
-    <div><div class="technique-nom">Kesa gatame</div><div class="technique-desc">Immobilisation en écharpe</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/NDaQuJOFBYk" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Kuzure kesa gatame</div><div class="technique-desc">Variante de l'immobilisation en écharpe</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/Q2fb9jaoUFQ" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ushiro kesa gatame</div><div class="technique-desc">Immobilisation en écharpe arrière</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/SBapox2M2dE" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Kata gatame</div><div class="technique-desc">Immobilisation par l'épaule</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/zQR3IOXxO_Q" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Kami shiho gatame</div><div class="technique-desc">Immobilisation des 4 points par dessus</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/HFuMjOv0WN8" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Kuzure kami shiho gatame</div><div class="technique-desc">Variante immobilisation par dessus</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/YUrogQWdwiY" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Yoko shiho gatame</div><div class="technique-desc">Contrôle des 4 points par côté</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/TT7XJVSEQxA" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Tate shiho gatame</div><div class="technique-desc">Contrôle des 4 points à cheval</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/55-rFmBx53g" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Uki gatame</div><div class="technique-desc">Immobilisation flottante</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/e_lAjik1SUM" target="_blank">▶ Vidéo</a></div>
-  </div>
-</div>
-
-<!-- SHIME-WAZA -->
-<div id="sec-shime" class="section">
-  <div class="section-titre shime-titre">🟡 SHIME-WAZA — Étranglements</div>
-
-  <div class="technique-card">
-    <div><div class="technique-nom">Nami juji jime</div><div class="technique-desc">Étranglement en croix normale</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/k2cHry9HByQ" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Gyaku juji jime</div><div class="technique-desc">Étranglement en croix inverse</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/t3tQriIPdlI" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Kata juji jime</div><div class="technique-desc">Étranglement en demi-croix</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/k2cHry9HByQ" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Hadaka jime</div><div class="technique-desc">Étranglement nu (sans vêtement)</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/9f0n8jez7iA" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Okuri eri jime</div><div class="technique-desc">Étranglement par les revers glissés</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/EiqyoVcIAi8" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Kata ha jime</div><div class="technique-desc">Étranglement d'une épaule</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/yaTGgRjnwB8" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Kata te jime</div><div class="technique-desc">Étranglement d'une main</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/cHeIs-fSqwE" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ryo te jime</div><div class="technique-desc">Étranglement des deux mains</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/-RHC4V7TQiY" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Sode guruma jime</div><div class="technique-desc">Étranglement par la manche en roue</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/E3nvQzClcAU" target="_blank">▶ Vidéo</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Tsukkomi jime</div><div class="technique-desc">Étranglement par poussée</div></div>
-    <div class="btns"><a class="btn-video" href="https://youtu.be/dKKpnD3eLcY" target="_blank">▶ Vidéo</a></div>
-  </div>
-</div>
-
-<!-- KANSETSU-WAZA -->
-<div id="sec-kansetsu" class="section">
-  <div class="section-titre kansetsu-titre">🟣 KANSETSU-WAZA — Clés de bras</div>
-
-  <div class="technique-card">
-    <div><div class="technique-nom">Ude hishigi juji gatame</div><div class="technique-desc">Clé de bras en croix</div></div>
-    <div class="btns"><a class="btn-video" href="https://kdkjudo.org/katame-waza/" target="_blank">📖 Kodokan</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ude hishigi hiza gatame</div><div class="technique-desc">Clé de bras au genou</div></div>
-    <div class="btns"><a class="btn-video" href="https://kdkjudo.org/katame-waza/" target="_blank">📖 Kodokan</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ude hishigi ashi gatame</div><div class="technique-desc">Clé de bras à la jambe</div></div>
-    <div class="btns"><a class="btn-video" href="https://kdkjudo.org/katame-waza/" target="_blank">📖 Kodokan</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ude hishigi waki gatame</div><div class="technique-desc">Clé de bras à l'aisselle</div></div>
-    <div class="btns"><a class="btn-video" href="https://kdkjudo.org/katame-waza/" target="_blank">📖 Kodokan</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ude hishigi sankaku gatame</div><div class="technique-desc">Clé de bras en triangle</div></div>
-    <div class="btns"><a class="btn-video" href="https://kdkjudo.org/katame-waza/" target="_blank">📖 Kodokan</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ude hishigi ude gatame</div><div class="technique-desc">Clé de bras par le bras</div></div>
-    <div class="btns"><a class="btn-video" href="https://kdkjudo.org/katame-waza/" target="_blank">📖 Kodokan</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ude hishigi hara gatame</div><div class="technique-desc">Clé de bras au ventre</div></div>
-    <div class="btns"><a class="btn-video" href="https://kdkjudo.org/katame-waza/" target="_blank">📖 Kodokan</a></div>
-  </div>
-  <div class="technique-card">
-    <div><div class="technique-nom">Ude garami</div><div class="technique-desc">Torsion du bras enroulé</div></div>
-    <div class="btns"><a class="btn-video" href="https://kdkjudo.org/katame-waza/" target="_blank">📖 Kodokan</a></div>
-  </div>
-</div>
-
+<div id="sec-nage" class="section active"><div class="chargement">Chargement...</div></div>
+<div id="sec-katame" class="section"><div class="chargement">Chargement...</div></div>
+<div id="sec-shime" class="section"><div class="chargement">Chargement...</div></div>
+<div id="sec-kansetsu" class="section"><div class="chargement">Chargement...</div></div>
 <footer>
-  <p>🥋 Dojo Numérique — Club Judo Lambersart JAK</p>
-  <p><a href="index.html" style="color:#3498db;">← Retour à l'accueil</a></p>
+  <p>Dojo Numerique - Club Judo Lambersart JAK</p>
+  <p><a href="index.html" style="color:#3498db;">Retour a l'accueil</a></p>
 </footer>
 
 <script>
-function afficher(id) {
+const TITRES = {
+  'nage': { label: 'NAGE-WAZA - Techniques de projection', classe: 'nage-titre' },
+  'katame': { label: 'KATAME-WAZA - Techniques de maitrise au sol', classe: 'katame-titre' },
+  'shime': { label: 'SHIME-WAZA - Etranglements', classe: 'shime-titre' },
+  'kansetsu': { label: 'KANSETSU-WAZA - Cles de bras', classe: 'kansetsu-titre' }
+};
+
+function afficher(id, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.onglet').forEach(o => o.classList.remove('active'));
   document.getElementById('sec-' + id).classList.add('active');
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
+
+function construireSection(id, techniques) {
+  const t = TITRES[id];
+  let html = '<div class="section-titre ' + t.classe + '">' + t.label + '</div>';
+  techniques.forEach(tech => {
+    html += '<div class="technique-card">';
+    html += '<div><div class="technique-nom">' + tech.nom + '</div>';
+    html += '<div class="technique-desc">' + tech.desc + '</div></div>';
+    if (tech.video) {
+      html += '<a class="btn-video" href="' + tech.video + '" target="_blank">Video</a>';
+    }
+    html += '</div>';
+  });
+  document.getElementById('sec-' + id).innerHTML = html;
+}
+
+// Chargement du fichier JSON
+fetch('techniques-liens.json')
+  .then(r => r.json())
+  .then(data => {
+    construireSection('nage', data['nage-waza']);
+    construireSection('katame', data['katame-waza']);
+    construireSection('shime', data['shime-waza']);
+    construireSection('kansetsu', data['kansetsu-waza']);
+  })
+  .catch(err => {
+    console.error('Erreur chargement JSON:', err);
+    document.querySelectorAll('.chargement').forEach(d => {
+      d.innerHTML = 'Erreur de chargement. Verifiez le fichier techniques-liens.json';
+    });
+  });
 </script>
 </body>
 </html>

@@ -1,0 +1,52 @@
+{
+  "nage-waza": [
+    { "nom": "Hane maki komi", "desc": "Projection en saut avec enroulement", "video": "https://youtu.be/6CRBGLGz9j8" },
+    { "nom": "Soto maki komi", "desc": "Enroulement extérieur", "video": "https://youtu.be/bWG9O1BVKtQ" },
+    { "nom": "O soto maki komi", "desc": "Grand fauchage extérieur avec enroulement", "video": "https://youtu.be/DGDv2oMwmas" },
+    { "nom": "Uchi mata maki komi", "desc": "Fauchage intérieur de cuisse avec enroulement", "video": "https://youtu.be/jZXENTLpJCI" },
+    { "nom": "Harai maki komi", "desc": "Balayage avec enroulement", "video": "https://youtu.be/VBaHzKaCXss" },
+    { "nom": "Ko uchi maki komi", "desc": "Petit fauchage intérieur avec enroulement", "video": "https://youtu.be/_1eygIXLD_w" },
+    { "nom": "Ko uchi gaeshi", "desc": "Contre au petit fauchage intérieur", "video": "https://youtu.be/_MWAdYi_LC4" },
+    { "nom": "O soto gaeshi", "desc": "Contre au grand fauchage extérieur", "video": "https://youtu.be/8ZjM3X_EANo" },
+    { "nom": "O uchi gaeshi", "desc": "Contre au grand fauchage intérieur", "video": "https://youtu.be/dCyZTXyjIXE" },
+    { "nom": "Uchi mata sukashi", "desc": "Esquive de uchi mata", "video": "https://youtu.be/V-RS3uhtVWM" },
+    { "nom": "Hane goshi", "desc": "Projection en ciseau de hanche", "video": "https://youtu.be/M9_7De6A1kk" },
+    { "nom": "Kuchiki taoshi", "desc": "Abattage d'arbre mort", "video": "https://youtu.be/ZNL47q1aJNY" },
+    { "nom": "Ura nage", "desc": "Projection vers l'arrière", "video": "https://youtu.be/Fgi9b8DJ5sQ" },
+    { "nom": "Yoko tomoe nage", "desc": "Projection en cercle latérale", "video": "https://youtu.be/880WbHvHv6A" },
+    { "nom": "Yoko guruma", "desc": "Roue latérale", "video": "https://youtu.be/MehP6I5cY2c" }
+  ],
+  "katame-waza": [
+    { "nom": "Kesa gatame", "desc": "Immobilisation en écharpe", "video": "https://youtu.be/NDaQuJOFBYk" },
+    { "nom": "Kuzure kesa gatame", "desc": "Variante immobilisation en écharpe", "video": "https://youtu.be/Q2fb9jaoUFQ" },
+    { "nom": "Ushiro kesa gatame", "desc": "Immobilisation en écharpe arrière", "video": "https://youtu.be/SBapox2M2dE" },
+    { "nom": "Kata gatame", "desc": "Immobilisation par l'épaule", "video": "https://youtu.be/zQR3IOXxO_Q" },
+    { "nom": "Kami shiho gatame", "desc": "Immobilisation des 4 points par dessus", "video": "https://youtu.be/HFuMjOv0WN8" },
+    { "nom": "Kuzure kami shiho gatame", "desc": "Variante immobilisation par dessus", "video": "https://youtu.be/YUrogQWdwiY" },
+    { "nom": "Yoko shiho gatame", "desc": "Contrôle des 4 points par côté", "video": "https://youtu.be/TT7XJVSEQxA" },
+    { "nom": "Tate shiho gatame", "desc": "Contrôle des 4 points à cheval", "video": "https://youtu.be/55-rFmBx53g" },
+    { "nom": "Uki gatame", "desc": "Immobilisation flottante", "video": "https://youtu.be/e_lAjik1SUM" }
+  ],
+  "shime-waza": [
+    { "nom": "Nami juji jime", "desc": "Étranglement en croix normale", "video": "https://youtu.be/k2cHry9HByQ" },
+    { "nom": "Gyaku juji jime", "desc": "Étranglement en croix inverse", "video": "https://youtu.be/t3tQriIPdlI" },
+    { "nom": "Kata juji jime", "desc": "Étranglement en demi-croix", "video": "https://youtu.be/k2cHry9HByQ" },
+    { "nom": "Hadaka jime", "desc": "Étranglement nu", "video": "https://youtu.be/9f0n8jez7iA" },
+    { "nom": "Okuri eri jime", "desc": "Étranglement par les revers glissés", "video": "https://youtu.be/EiqyoVcIAi8" },
+    { "nom": "Kata ha jime", "desc": "Étranglement d'une épaule", "video": "https://youtu.be/yaTGgRjnwB8" },
+    { "nom": "Kata te jime", "desc": "Étranglement d'une main", "video": "https://youtu.be/cHeIs-fSqwE" },
+    { "nom": "Ryo te jime", "desc": "Étranglement des deux mains", "video": "https://youtu.be/-RHC4V7TQiY" },
+    { "nom": "Sode guruma jime", "desc": "Étranglement par la manche en roue", "video": "https://youtu.be/E3nvQzClcAU" },
+    { "nom": "Tsukkomi jime", "desc": "Étranglement par poussée", "video": "https://youtu.be/dKKpnD3eLcY" }
+  ],
+  "kansetsu-waza": [
+    { "nom": "Ude hishigi juji gatame", "desc": "Clé de bras en croix", "video": "https://kdkjudo.org/katame-waza/" },
+    { "nom": "Ude hishigi hiza gatame", "desc": "Clé de bras au genou", "video": "https://kdkjudo.org/katame-waza/" },
+    { "nom": "Ude hishigi ashi gatame", "desc": "Clé de bras à la jambe", "video": "https://kdkjudo.org/katame-waza/" },
+    { "nom": "Ude hishigi waki gatame", "desc": "Clé de bras à l'aisselle", "video": "https://kdkjudo.org/katame-waza/" },
+    { "nom": "Ude hishigi sankaku gatame", "desc": "Clé de bras en triangle", "video": "https://kdkjudo.org/katame-waza/" },
+    { "nom": "Ude hishigi ude gatame", "desc": "Clé de bras par le bras", "video": "https://kdkjudo.org/katame-waza/" },
+    { "nom": "Ude hishigi hara gatame", "desc": "Clé de bras au ventre", "video": "https://kdkjudo.org/katame-waza/" },
+    { "nom": "Ude garami", "desc": "Torsion du bras enroulé", "video": "https://kdkjudo.org/katame-waza/" }
+  ]
+}
