@@ -267,6 +267,17 @@
             </select>
           </div>
 
+          <div class="form-group">
+            <label for="image-lien">🔗 Lien associé (optionnel) :</label>
+            <input type="url" id="image-lien" placeholder="Ex: https://youtube.com/watch?v=..." style="width: 100%; max-width: 500px;">
+            <small style="color: #888;">YouTube, Google Drive, site fédération... (laisser vide si aucun lien)</small>
+          </div>
+
+          <div class="form-group">
+            <label for="image-lien-texte">📝 Texte du lien (optionnel) :</label>
+            <input type="text" id="image-lien-texte" placeholder="Ex: Voir la vidéo, Fiche technique PDF..." style="width: 100%; max-width: 500px;">
+          </div>
+
           <button type="submit" class="btn-connexion">➕ Ajouter l'image</button>
         </form>
 
@@ -522,7 +533,8 @@
               <img src="${image.data}" alt="${image.nom}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 4px;">
               <div style="flex: 1;">
                 <strong>${image.nom}</strong><br>
-                <small>Grade: ${image.grade} | Catégorie: ${image.categorie} | Section: ${image.section}</small>
+                <small>Grade: ${image.grade} | Catégorie: ${image.categorie} | Section: ${image.section}</small><br>
+                ${image.lien ? `<a href="${image.lien}" target="_blank" style="color: #3498db; font-size: 0.85em;">🔗 ${image.lienTexte || 'Voir le lien'}</a>` : '<small style="color:#aaa;">Aucun lien</small>'}
               </div>
               <button onclick="supprimerImage(${index})" style="padding: 8px 12px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">Supprimer</button>
             </div>
@@ -570,6 +582,8 @@
             categorie: document.getElementById("image-categorie").value,
             grade: document.getElementById("image-grade").value,
             section: document.getElementById("image-section").value,
+            lien: document.getElementById("image-lien").value.trim(),
+            lienTexte: document.getElementById("image-lien-texte").value.trim() || "🔗 Voir le lien",
             date: new Date().toLocaleDateString('fr-FR')
           };
           const images = JSON.parse(localStorage.getItem("images") || "[]");
