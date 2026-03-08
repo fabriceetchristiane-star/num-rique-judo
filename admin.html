@@ -281,6 +281,37 @@
           <button type="submit" class="btn-connexion">➕ Ajouter l'image</button>
         </form>
 
+        <!-- Formulaire LIEN SEUL -->
+        <div style="margin-top: 30px; padding: 20px; background: #e8f4fd; border-radius: 10px; border-left: 4px solid #3498db;">
+          <h3>🔗 Ajouter un lien seul (sans image)</h3>
+          <p style="color: #666; margin-bottom: 1rem;">Pratique pour gagner de la place — YouTube, Google Drive, fédération...</p>
+          <form id="formulaireLien">
+            <div class="form-group">
+              <label for="lien-url">🔗 URL du lien :</label>
+              <input type="url" id="lien-url" required placeholder="Ex: https://youtube.com/watch?v=..." style="width: 100%; max-width: 500px;">
+            </div>
+            <div class="form-group">
+              <label for="lien-description">📝 Description :</label>
+              <input type="text" id="lien-description" required placeholder="Ex: Vidéo O goshi - ceinture orange" style="width: 100%; max-width: 500px;">
+            </div>
+            <div class="form-group">
+              <label for="lien-grade">🎯 Grade :</label>
+              <select id="lien-grade" required style="width: 100%; max-width: 500px;">
+                <option value="">-- Choisir un grade --</option>
+                <option value="blanche-jaune">Blanche / Jaune</option>
+                <option value="jaune-orange">Jaune / Orange</option>
+                <option value="orange-verte">Orange / Verte</option>
+                <option value="verte-bleue">Verte / Bleue</option>
+                <option value="bleue-marron">Bleue / Marron</option>
+                <option value="marron-noir">Marron / Noir</option>
+                <option value="noir">Ceinture Noire</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-connexion" style="background: #3498db;">➕ Ajouter le lien</button>
+          </form>
+          <div id="liste-liens" style="margin-top: 15px;"></div>
+        </div>
+
         <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
           <h3>📊 Gestion des images</h3>
           <div id="image-count" style="margin: 15px 0; font-size: 1.2em; font-weight: bold;">Chargement...</div>
@@ -600,6 +631,52 @@
       };
       reader.readAsDataURL(file);
     });
+
+    // ===== GESTION DES LIENS SEULS =====
+    function afficherListeLiens() {
+      const liens = JSON.parse(localStorage.getItem("liens-images") || "[]");
+      const div = document.getElementById("liste-liens");
+      if (liens.length === 0) {
+        div.innerHTML = '<p style="color:#888;">Aucun lien enregistré.</p>';
+        return;
+      }
+      div.innerHTML = '<h4>Liens enregistrés :</h4>' + liens.map((l, i) => `
+        <div style="padding:10px; margin:5px 0; background:white; border-radius:6px; border-left:3px solid #3498db; display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <a href="${l.url}" target="_blank" style="color:#3498db; font-weight:bold;">🔗 ${l.description}</a><br>
+            <small style="color:#888;">Grade: ${l.grade} — ${l.date}</small>
+          </div>
+          <button onclick="supprimerLien(${i})" style="padding:6px 10px; background:#dc3545; color:white; border:none; border-radius:4px; cursor:pointer;">🗑️</button>
+        </div>
+      `).join('');
+    }
+
+    function supprimerLien(index) {
+      const liens = JSON.parse(localStorage.getItem("liens-images") || "[]");
+      liens.splice(index, 1);
+      localStorage.setItem("liens-images", JSON.stringify(liens));
+      afficherListeLiens();
+      afficherMessage("✅ Lien supprimé.");
+    }
+
+    document.getElementById("formulaireLien").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const lien = {
+        url: document.getElementById("lien-url").value.trim(),
+        description: document.getElementById("lien-description").value.trim(),
+        grade: document.getElementById("lien-grade").value,
+        date: new Date().toLocaleDateString('fr-FR')
+      };
+      const liens = JSON.parse(localStorage.getItem("liens-images") || "[]");
+      liens.push(lien);
+      localStorage.setItem("liens-images", JSON.stringify(liens));
+      afficherMessage("✅ Lien ajouté avec succès !");
+      document.getElementById("formulaireLien").reset();
+      afficherListeLiens();
+    });
+
+    // Charger les liens au démarrage
+    afficherListeLiens();
 
     // ===== GESTION DES VIDEOS =====
     function mettreAJourCompteurVideos() {
