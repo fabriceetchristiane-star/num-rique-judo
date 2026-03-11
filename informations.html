@@ -166,30 +166,44 @@
   </div>
 
   <script>
+    // Formater le texte brut en HTML lisible
+    function formaterTexte(texte) {
+      if (!texte || texte.trim() === '') return '';
+      // Si le texte contient déjà des balises HTML on le laisse tel quel
+      if (texte.includes('<') && texte.includes('>')) return texte;
+      // Sinon on convertit les sauts de ligne en paragraphes
+      return texte
+        .split(/\n\n+/)
+        .map(para => para.trim())
+        .filter(para => para.length > 0)
+        .map(para => '<p>' + para.replace(/\n/g, '<br>') + '</p>')
+        .join('');
+    }
+
     // Charger tous les contenus
     function chargerContenus() {
       // Agenda
       const agenda = localStorage.getItem('info-agenda');
       if (agenda && agenda.trim() !== '') {
-        document.getElementById('contenu-agenda').innerHTML = agenda;
+        document.getElementById('contenu-agenda').innerHTML = formaterTexte(agenda);
       }
       
       // Résultats
       const resultats = localStorage.getItem('info-resultats');
       if (resultats && resultats.trim() !== '') {
-        document.getElementById('contenu-resultats').innerHTML = resultats;
+        document.getElementById('contenu-resultats').innerHTML = formaterTexte(resultats);
       }
       
       // Actualités
       const actualites = localStorage.getItem('info-actualites');
       if (actualites && actualites.trim() !== '') {
-        document.getElementById('contenu-actualites').innerHTML = actualites;
+        document.getElementById('contenu-actualites').innerHTML = formaterTexte(actualites);
       }
       
       // Contact
       const contact = localStorage.getItem('info-contact');
       if (contact && contact.trim() !== '') {
-        document.getElementById('contenu-contact').innerHTML = contact;
+        document.getElementById('contenu-contact').innerHTML = formaterTexte(contact);
       }
       
       // PDF
