@@ -2,52 +2,123 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Vidéos – Marron / Noir</title>
-  
-  <!-- Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techniques – Marron / Noir – 1er Dan</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
   <link rel="stylesheet" href="styles/style.css">
+  <style>
+    .onglets { display:flex; flex-wrap:wrap; gap:.5rem; padding:1rem; justify-content:center; background:white; box-shadow:0 2px 6px rgba(0,0,0,.1); position:sticky; top:0; z-index:100; }
+    .onglet { padding:.5rem 1.1rem; border-radius:20px; border:none; cursor:pointer; font-size:.85rem; font-weight:bold; transition:all .2s; }
+    .onglet.marron { background:#f5dece; color:#8B4513; }
+    .onglet.marron.active { background:#8B4513; color:white; }
+    .onglet.dan { background:#e8e8f0; color:#1a1a2e; }
+    .onglet.dan.active { background:#1a1a2e; color:white; }
+    .section { display:none; padding:1rem; max-width:900px; margin:0 auto; }
+    .section.active { display:block; }
+    .sec-titre { font-size:1.05rem; font-weight:bold; color:white; padding:.7rem 1rem; border-radius:8px; margin-bottom:.5rem; text-align:center; }
+    .t-marron { background:#8B4513; }
+    .t-dan { background:#1a1a2e; }
+    .sous-titre { font-size:.8rem; font-weight:bold; color:#666; text-transform:uppercase; letter-spacing:1px; margin:1rem 0 .4rem; padding-left:.5rem; border-left:3px solid #ccc; }
+    .tech-card { background:white; border-radius:10px; padding:.9rem; margin-bottom:.6rem; box-shadow:0 2px 5px rgba(0,0,0,.07); display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .tech-nom { font-weight:bold; font-size:.95rem; color:#2c3e50; }
+    .tech-desc { font-size:.78rem; color:#666; margin-top:.2rem; }
+    .btn-video { background:#e74c3c; color:white; border:none; padding:.45rem .85rem; border-radius:20px; font-size:.78rem; font-weight:bold; text-decoration:none; white-space:nowrap; }
+    .btn-video:hover { background:#c0392b; }
+    .info-box { background:#fef9e7; border:1px solid #f0c040; border-radius:8px; padding:.9rem 1rem; margin-bottom:1rem; font-size:.83rem; color:#7d6608; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>📽️ Techniques à réviser – Grade Marron / Noir</h1>
-    <p>Vidéos ajoutées par les professeurs – à revoir pour progresser</p>
-  </header>
+<header>
+  <h1>Techniques – Marron / Noir – 1er Dan</h1>
+  <p>Vidéos par catégorie — Programme officiel FFJDA</p>
+</header>
 
-  <section>
-    <div class="section-title">🥋 Techniques de Base</div>
-    <div class="video-block">
-      <p style="text-align: center; color: #666; padding: 20px;">
-        Aucune vidéo n'a été ajoutée pour le moment.<br>
-        Les professeurs ajouteront bientôt du contenu.
-      </p>
-    </div>
-    
-    <div class="section-title" style="margin-top: 2rem;">🖼️ Images des Techniques</div>
-    <div class="image-block">
-      <p style="text-align: center; color: #666; padding: 20px;">
-        Aucune image n'a été ajoutée pour le moment.
-      </p>
-    </div>
-  </section>
+<div class="onglets">
+  <button class="onglet marron active" onclick="afficher('marron',this)">Bleue → Marron/Noire</button>
+  <button class="onglet dan" onclick="afficher('dan',this)">1er Dan — UV2 FFJDA</button>
+</div>
 
-  <nav style="text-align: center; margin-top: 30px;">
-    <a class="lien-bleu" href="videos-par-grade.html">⬅️ Choisir un autre grade</a>
-    <a class="lien-bleu" href="index.html">🏠 Retour à l'accueil</a>
-  </nav>
+<!-- ===== SECTION MARRON / NOIRE ===== -->
+<div id="sec-marron" class="section active">
+  <div class="sec-titre t-marron">BLEUE vers MARRON / NOIRE — Techniques de projection</div>
+  <div id="marron-nage"></div>
+  <div class="sec-titre t-marron" style="margin-top:1rem;">KATAME-WAZA — Maîtrise au sol</div>
+  <div id="marron-katame"></div>
+  <div class="sec-titre t-marron" style="margin-top:1rem;">SHIME-WAZA — Étranglements</div>
+  <div id="marron-shime"></div>
+  <div class="sec-titre t-marron" style="margin-top:1rem;">KANSETSU-WAZA — Clés de bras</div>
+  <div id="marron-kansetsu"></div>
+</div>
 
-  <footer>
-    <p>Version locale – Dojo Numérique Lambersart – Ajout possible par les professeurs</p>
-  </footer>
+<!-- ===== SECTION 1er DAN ===== -->
+<div id="sec-dan" class="section">
+  <div class="info-box">Programme officiel CSDGE — UV2 : 12 techniques au total — 6 nage-waza + 4 ne-waza imposées par le jury + 2 défenses. Durée ~5 min.</div>
+  <div class="sec-titre t-dan">NAGE-WAZA — Techniques de projection</div>
+  <div id="dan-koshi"></div>
+  <div id="dan-te"></div>
+  <div id="dan-ashi"></div>
+  <div id="dan-sutemi"></div>
+  <div class="sec-titre t-dan" style="margin-top:1rem;">NE-WAZA — Techniques au sol</div>
+  <div id="dan-osae"></div>
+  <div id="dan-shime"></div>
+  <div id="dan-kansetsu"></div>
+</div>
 
-  <script src="load-content.js"></script>
-  <script>
-    chargerContenuParGrade('marron-noir');
-  </script>
+<nav style="text-align:center; margin-top:30px; padding:1rem;">
+  <a class="lien-bleu" href="videos-par-grade.html">Choisir un autre grade</a>
+  <a class="lien-bleu" href="index.html">Retour a l'accueil</a>
+</nav>
+<footer>
+  <p>Dojo Numerique Lambersart — Programme FFJDA 2024-2025</p>
+</footer>
+
+<script>
+function afficher(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.onglet').forEach(o => o.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function card(t) {
+  return '<div class="tech-card"><div><div class="tech-nom">' + t.nom + '</div>'
+    + '<div class="tech-desc">' + t.desc + '</div></div>'
+    + (t.video ? '<a class="btn-video" href="' + t.video + '" target="_blank">Video</a>' : '')
+    + '</div>';
+}
+
+function remplir(id, label, liste) {
+  if (!liste || !liste.length) return;
+  document.getElementById(id).innerHTML = (label ? '<div class="sous-titre">' + label + '</div>' : '')
+    + liste.map(card).join('');
+}
+
+// Charger Marron/Noire
+fetch('techniques-liens.json')
+  .then(r => r.json())
+  .then(d => {
+    remplir('marron-nage',     '', d['nage-waza']);
+    remplir('marron-katame',   '', d['katame-waza']);
+    remplir('marron-shime',    '', d['shime-waza']);
+    remplir('marron-kansetsu', '', d['kansetsu-waza']);
+  });
+
+// Charger 1er Dan
+fetch('techniques-1dan-liens.json')
+  .then(r => r.json())
+  .then(d => {
+    remplir('dan-koshi',    'Koshi-Waza (Hanches)',         d['nage-waza']['koshi-waza']);
+    remplir('dan-te',       'Te-Waza (Mains)',              d['nage-waza']['te-waza']);
+    remplir('dan-ashi',     'Ashi-Waza (Jambes)',           d['nage-waza']['ashi-waza']);
+    remplir('dan-sutemi',   'Sutemi-Waza (Sacrifice)',      d['nage-waza']['sutemi-waza']);
+    remplir('dan-osae',     'Osaekomi-Waza (Immobilisations)', d['ne-waza']['osaekomi-waza']);
+    remplir('dan-shime',    'Shime-Waza (Etranglements)',   d['ne-waza']['shime-waza']);
+    remplir('dan-kansetsu', 'Kansetsu-Waza (Cles de bras)', d['ne-waza']['kansetsu-waza']);
+  });
+</script>
 </body>
 </html>
