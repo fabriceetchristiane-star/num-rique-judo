@@ -39,10 +39,11 @@ function chargerContenuParGrade(gradeId) {
         const imageItem = document.createElement("div");
         imageItem.style.cssText = "background: white; padding: 1rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;";
         imageItem.innerHTML = `
-          <img src="${img.data}" alt="${img.nom}" style="width: 100%; height: 200px; object-fit: contain; border-radius: 8px; margin-bottom: 0.5rem; background: #f8f9fa;">
+          ${img.data ? `<img src="${img.data}" alt="${img.nom}" style="width: 100%; height: 200px; object-fit: contain; border-radius: 8px; margin-bottom: 0.5rem; background: #f8f9fa;">` : ''}
           <h3 style="color: #2c3e50; margin: 0.5rem 0; font-size: 1.1rem;">${img.nom}</h3>
           <p style="color: #7f8c8d; margin: 0.3rem 0; font-size: 0.9rem;"><strong>Catégorie :</strong> ${img.categorie}</p>
           ${img.section ? `<p style="color: #7f8c8d; margin: 0.3rem 0; font-size: 0.9rem;"><strong>Section :</strong> ${img.section === 'techniques-de-base' ? '🥋 Techniques de Base' : '⚡ Variantes Avancées'}</p>` : ''}
+          ${img.lien ? `<a href="${img.lien}" target="_blank" style="display:inline-block; margin-top:0.5rem; background:#3498db; color:white; padding:0.4rem 0.9rem; border-radius:20px; text-decoration:none; font-size:0.85rem;">🔗 ${img.lienTexte || 'Voir le lien'}</a>` : ''}
         `;
         gridContainer.appendChild(imageItem);
       });
