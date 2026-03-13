@@ -1,21 +1,27 @@
 {
-  "nage-waza": [
-    { "nom": "Hane maki komi", "desc": "Projection en saut avec enroulement", "video": "https://youtu.be/6CRBGLGz9j8" },
-    { "nom": "Soto maki komi", "desc": "Enroulement extérieur", "video": "https://youtu.be/bWG9O1BVKtQ" },
-    { "nom": "O soto maki komi", "desc": "Grand fauchage extérieur avec enroulement", "video": "https://youtu.be/DGDv2oMwmas" },
-    { "nom": "Uchi mata maki komi", "desc": "Fauchage intérieur de cuisse avec enroulement", "video": "https://youtu.be/jZXENTLpJCI" },
-    { "nom": "Harai maki komi", "desc": "Balayage avec enroulement", "video": "https://youtu.be/VBaHzKaCXss" },
-    { "nom": "Ko uchi maki komi", "desc": "Petit fauchage intérieur avec enroulement", "video": "https://youtu.be/_1eygIXLD_w" },
-    { "nom": "Ko uchi gaeshi", "desc": "Contre au petit fauchage intérieur", "video": "https://youtu.be/_MWAdYi_LC4" },
-    { "nom": "O soto gaeshi", "desc": "Contre au grand fauchage extérieur", "video": "https://youtu.be/8ZjM3X_EANo" },
-    { "nom": "O uchi gaeshi", "desc": "Contre au grand fauchage intérieur", "video": "https://youtu.be/dCyZTXyjIXE" },
-    { "nom": "Uchi mata sukashi", "desc": "Esquive de uchi mata", "video": "https://youtu.be/V-RS3uhtVWM" },
-    { "nom": "Hane goshi", "desc": "Projection en ciseau de hanche", "video": "https://youtu.be/M9_7De6A1kk" },
-    { "nom": "Kuchiki taoshi", "desc": "Abattage d'arbre mort", "video": "https://youtu.be/ZNL47q1aJNY" },
-    { "nom": "Ura nage", "desc": "Projection vers l'arrière", "video": "https://youtu.be/Fgi9b8DJ5sQ" },
-    { "nom": "Yoko tomoe nage", "desc": "Projection en cercle latérale", "video": "https://youtu.be/880WbHvHv6A" },
-    { "nom": "Yoko guruma", "desc": "Roue latérale", "video": "https://youtu.be/MehP6I5cY2c" }
-  ],
+  "nage-waza": {
+    "makikomi-waza": [
+      { "nom": "Hane maki komi", "desc": "Projection en saut avec enroulement", "video": "https://youtu.be/6CRBGLGz9j8" },
+      { "nom": "Soto maki komi", "desc": "Enroulement extérieur", "video": "https://youtu.be/bWG9O1BVKtQ" },
+      { "nom": "O soto maki komi", "desc": "Grand fauchage extérieur avec enroulement", "video": "https://youtu.be/DGDv2oMwmas" },
+      { "nom": "Uchi mata maki komi", "desc": "Fauchage intérieur de cuisse avec enroulement", "video": "https://youtu.be/jZXENTLpJCI" },
+      { "nom": "Harai maki komi", "desc": "Balayage avec enroulement", "video": "https://youtu.be/VBaHzKaCXss" },
+      { "nom": "Ko uchi maki komi", "desc": "Petit fauchage intérieur avec enroulement", "video": "https://youtu.be/_1eygIXLD_w" }
+    ],
+    "gaeshi-sukashi": [
+      { "nom": "Ko uchi gaeshi", "desc": "Contre au petit fauchage intérieur", "video": "https://youtu.be/_MWAdYi_LC4" },
+      { "nom": "O soto gaeshi", "desc": "Contre au grand fauchage extérieur", "video": "https://youtu.be/8ZjM3X_EANo" },
+      { "nom": "O uchi gaeshi", "desc": "Contre au grand fauchage intérieur", "video": "https://youtu.be/dCyZTXyjIXE" },
+      { "nom": "Uchi mata sukashi", "desc": "Esquive de uchi mata", "video": "https://youtu.be/V-RS3uhtVWM" }
+    ],
+    "autres-projections": [
+      { "nom": "Hane goshi", "desc": "Projection en ciseau de hanche", "video": "https://youtu.be/M9_7De6A1kk" },
+      { "nom": "Kuchiki taoshi", "desc": "Abattage d'arbre mort", "video": "https://youtu.be/ZNL47q1aJNY" },
+      { "nom": "Ura nage", "desc": "Projection vers l'arrière", "video": "https://youtu.be/Fgi9b8DJ5sQ" },
+      { "nom": "Yoko tomoe nage", "desc": "Projection en cercle latérale", "video": "https://youtu.be/880WbHvHv6A" },
+      { "nom": "Yoko guruma", "desc": "Roue latérale", "video": "https://youtu.be/MehP6I5cY2c" }
+    ]
+  },
   "katame-waza": [
     { "nom": "Kesa gatame", "desc": "Immobilisation en écharpe", "video": "https://youtu.be/NDaQuJOFBYk" },
     { "nom": "Kuzure kesa gatame", "desc": "Variante immobilisation en écharpe", "video": "https://youtu.be/Q2fb9jaoUFQ" },

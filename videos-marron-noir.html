@@ -44,9 +44,11 @@
 
 <!-- ===== SECTION MARRON / NOIRE ===== -->
 <div id="sec-marron" class="section active">
-  <div class="sec-titre t-marron">BLEUE vers MARRON / NOIRE — Techniques de projection</div>
-  <div id="marron-nage"></div>
-  <div class="sec-titre t-marron" style="margin-top:1rem;">KATAME-WAZA — Maîtrise au sol</div>
+  <div class="sec-titre t-marron">NAGE-WAZA — Techniques de projection</div>
+  <div id="marron-makikomi"></div>
+  <div id="marron-gaeshi"></div>
+  <div id="marron-autres"></div>
+  <div class="sec-titre t-marron" style="margin-top:1rem;">KATAME-WAZA — Immobilisations</div>
   <div id="marron-katame"></div>
   <div class="sec-titre t-marron" style="margin-top:1rem;">SHIME-WAZA — Étranglements</div>
   <div id="marron-shime"></div>
@@ -101,7 +103,9 @@ function remplir(id, label, liste) {
 fetch('techniques-liens.json')
   .then(r => r.json())
   .then(d => {
-    remplir('marron-nage',     '', d['nage-waza']);
+    remplir('marron-makikomi', 'Maki-komi — Techniques d\'enroulement',      d['nage-waza']['makikomi-waza']);
+    remplir('marron-gaeshi',   'Gaeshi / Sukashi — Contres et esquives',      d['nage-waza']['gaeshi-sukashi']);
+    remplir('marron-autres',   'Autres projections',                           d['nage-waza']['autres-projections']);
     remplir('marron-katame',   '', d['katame-waza']);
     remplir('marron-shime',    '', d['shime-waza']);
     remplir('marron-kansetsu', '', d['kansetsu-waza']);

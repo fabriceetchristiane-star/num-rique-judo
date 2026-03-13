@@ -89,14 +89,6 @@
     </div>
   </section>
 
-  <!-- Section Agenda -->
-  <section id="section-agenda" style="max-width: 1200px; margin: 2rem auto; padding: 0 1rem;">
-    <h2>📅 Agenda du Dojo</h2>
-    <div id="contenu-agenda" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-      <p><em>L'agenda sera affiché ici une fois configuré par les professeurs.</em></p>
-    </div>
-  </section>
-
   <!-- Modal pour la connexion professeurs -->
   <div id="modalProf" class="modal">
     <div class="modal-content">
@@ -134,18 +126,6 @@
   </footer>
 
   <script>
-    // ===== CHARGEMENT DE L'AGENDA =====
-    function chargerAgenda() {
-      const agendaContent = localStorage.getItem('info-agenda');
-      const contenuAgenda = document.getElementById('contenu-agenda');
-      
-      if (agendaContent && agendaContent.trim() !== '') {
-        contenuAgenda.innerHTML = agendaContent;
-      } else {
-        contenuAgenda.innerHTML = '<p><em>L\'agenda sera affiché ici une fois configuré par les professeurs.</em></p>';
-      }
-    }
-
     // ===== SYSTÈME D'AUTHENTIFICATION =====
     function ouvrirModalProf() {
         document.getElementById('modalProf').style.display = 'block';
@@ -161,7 +141,6 @@
 
     // Gestion du formulaire de connexion
     document.addEventListener('DOMContentLoaded', function() {
-      chargerAgenda();
       console.log("🏠 Page d'accueil chargée");
       
       // Attendre que auth.js soit chargé
