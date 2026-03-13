@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Techniques – Marron / Noir – 1er Dan</title>
+  <title>Techniques – Marron / Noir</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -33,8 +33,8 @@
 </head>
 <body>
 <header>
-  <h1>Techniques – Marron / Noir – 1er Dan</h1>
-  <p>Vidéos par catégorie — Programme officiel FFJDA</p>
+  <h1>Techniques – Marron / Noir</h1>
+  <p>Techniques et vidéos par catégorie — Programme officiel FFJDA</p>
 </header>
 
 <div class="onglets">
@@ -111,13 +111,13 @@ fetch('techniques-liens.json')
 fetch('techniques-1dan-liens.json')
   .then(r => r.json())
   .then(d => {
-    remplir('dan-koshi',    'Koshi-Waza (Hanches)',         d['nage-waza']['koshi-waza']);
-    remplir('dan-te',       'Te-Waza (Mains)',              d['nage-waza']['te-waza']);
-    remplir('dan-ashi',     'Ashi-Waza (Jambes)',           d['nage-waza']['ashi-waza']);
-    remplir('dan-sutemi',   'Sutemi-Waza (Sacrifice)',      d['nage-waza']['sutemi-waza']);
-    remplir('dan-osae',     'Osaekomi-Waza (Immobilisations)', d['ne-waza']['osaekomi-waza']);
-    remplir('dan-shime',    'Shime-Waza (Etranglements)',   d['ne-waza']['shime-waza']);
-    remplir('dan-kansetsu', 'Kansetsu-Waza (Cles de bras)', d['ne-waza']['kansetsu-waza']);
+    remplir('dan-koshi',    'Koshi-Waza — Techniques de hanche',      d['nage-waza']['koshi-waza']);
+    remplir('dan-te',       'Te-Waza — Techniques de main/bras',       d['nage-waza']['te-waza']);
+    remplir('dan-ashi',     'Ashi-Waza — Techniques de pied/jambe',    d['nage-waza']['ashi-waza']);
+    remplir('dan-sutemi',   'Sutemi-Waza — Techniques de sacrifice',   d['nage-waza']['sutemi-waza']);
+    remplir('dan-osae',     'Osaekomi-Waza — Immobilisations',         d['ne-waza']['osaekomi-waza']);
+    remplir('dan-shime',    'Shime-Waza — Etranglements',              d['ne-waza']['shime-waza']);
+    remplir('dan-kansetsu', 'Kansetsu-Waza — Cles de bras',            d['ne-waza']['kansetsu-waza']);
   });
 </script>
 </body>
