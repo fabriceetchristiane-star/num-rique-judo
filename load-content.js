@@ -1,6 +1,88 @@
-// Script pour charger les vidéos et images par grade
+// ===== VIDEOS ET IMAGES PAR GRADE =====
+// Lit d'abord contenus-grades.json (visible par tous)
+// puis complète avec localStorage (local uniquement)
 function chargerContenuParGrade(gradeId) {
-  // Charger les vidéos
+  fetch('contenus-grades.json')
+    .then(r => r.json())
+    .then(data => {
+      const grade = data[gradeId] || { videos: [], images: [] };
+      afficherVideos(gradeId, grade.videos);
+      afficherImages(gradeId, grade.images);
+    })
+    .catch(() => {
+      afficherVideos(gradeId, []);
+      afficherImages(gradeId, []);
+    });
+}
+
+function afficherVideos(gradeId, videosJson) {
+  const videoBlock = document.querySelector('.video-block');
+  if (!videoBlock) return;
+
+  // Videos depuis JSON (pour tous)
+  let items = [...videosJson];
+
+  // Ajouter videos depuis localStorage (local)
+  const local = JSON.parse(localStorage.getItem("videos") || "[]");
+  local.filter(v => v.grade === gradeId).forEach(v => items.push(v));
+
+  if (items.length > 0) {
+    videoBlock.innerHTML = '';
+    items.forEach(v => {
+      const el = document.createElement("div");
+      el.className = "video-item";
+      el.innerHTML = `
+        <a class="lien-bleu" href="${v.url}" target="_blank">📺 ${v.texte || v.titre || ''}</a>
+        <p><strong>Catégorie :</strong> ${v.categorie || ''}</p>
+      `;
+      videoBlock.appendChild(el);
+    });
+  }
+}
+
+function afficherImages(gradeId, imagesJson) {
+  const imageBlock = document.querySelector('.image-block');
+  if (!imageBlock) return;
+
+  // Images depuis JSON (lien Drive, pour tous)
+  let items = [...imagesJson];
+
+  // Ajouter images depuis localStorage (local)
+  const localImgs = JSON.parse(localStorage.getItem("images") || "[]");
+  localImgs.filter(img => img.grade === gradeId).forEach(img => items.push(img));
+  const localLiens = JSON.parse(localStorage.getItem("liens-images") || "[]");
+  localLiens.filter(l => l.grade === gradeId).forEach(l => items.push({ ...l, estLien: true }));
+
+  if (items.length > 0) {
+    imageBlock.innerHTML = '<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem;"></div>';
+    const grid = imageBlock.querySelector('div');
+
+    items.forEach(img => {
+      const el = document.createElement("div");
+      el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center;";
+
+      if (img.estLien) {
+        el.innerHTML = `
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">📄</div>
+          <h3 style="color:#2c3e50; margin:0.5rem 0; font-size:1.05rem;">${img.description || img.nom || ''}</h3>
+          <a href="${img.url}" target="_blank" style="display:inline-block; margin-top:0.5rem; background:#27ae60; color:white; padding:0.4rem 0.9rem; border-radius:20px; text-decoration:none; font-size:0.85rem;">🔗 Ouvrir</a>
+        `;
+      } else {
+        el.innerHTML = `
+          ${img.data ? `<img src="${img.data}" alt="${img.nom||''}" style="width:100%; height:200px; object-fit:contain; border-radius:8px; margin-bottom:0.5rem; background:#f8f9fa;">` : ''}
+          ${img.lienDrive ? `<img src="${img.lienDrive}" alt="${img.nom||''}" style="width:100%; height:200px; object-fit:contain; border-radius:8px; margin-bottom:0.5rem; background:#f8f9fa;">` : ''}
+          <h3 style="color:#2c3e50; margin:0.5rem 0; font-size:1.1rem;">${img.nom || ''}</h3>
+          <p style="color:#7f8c8d; margin:0.3rem 0; font-size:0.9rem;">${img.categorie || ''}</p>
+          ${img.lien ? `<a href="${img.lien}" target="_blank" style="display:inline-block; margin-top:0.5rem; background:#3498db; color:white; padding:0.4rem 0.9rem; border-radius:20px; text-decoration:none; font-size:0.85rem;">🔗 ${img.lienTexte || 'Voir le lien'}</a>` : ''}
+        `;
+      }
+      grid.appendChild(el);
+    });
+  }
+}
+
+// ANCIENNE FONCTION conservée pour compatibilité
+function _chargerContenuParGrade_local(gradeId) {
   const sauvegardeVideos = localStorage.getItem("videos");
   if (sauvegardeVideos) {
     const videos = JSON.parse(sauvegardeVideos);
