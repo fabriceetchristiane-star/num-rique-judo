@@ -1,26 +1,106 @@
 {
   "blanche-jaune": {
-    "videos": [],
+    "videos": [
+      { "titre": "O soto gari", "url": "https://www.youtube.com/watch?v=c-A_nP7mKAc", "categorie": "Ashi-waza" },
+      { "titre": "Ko uchi gari", "url": "https://youtu.be/3Jb3tZvr9Ng", "categorie": "Ashi-waza" },
+      { "titre": "O uchi gari", "url": "https://youtu.be/0itJFhV9pDQ", "categorie": "Ashi-waza" },
+      { "titre": "De ashi barai", "url": "https://youtu.be/4BUUvqxi_Kk", "categorie": "Ashi-waza" },
+      { "titre": "Hiza guruma", "url": "https://youtu.be/JPJx9-oAVns", "categorie": "Ashi-waza" },
+      { "titre": "O goshi", "url": "https://youtu.be/yhu1mfy2vJ4", "categorie": "Koshi-waza" },
+      { "titre": "Ippon seoi nage", "url": "https://youtu.be/FQnOlCxo4oI", "categorie": "Te-waza" },
+      { "titre": "Morote seoi nage", "url": "https://youtu.be/zIq0xI0ogxk", "categorie": "Te-waza" },
+      { "titre": "Tai otoshi", "url": "https://youtu.be/4x6S3Q-Ktv8", "categorie": "Te-waza" },
+      { "titre": "Hon kesa gatame", "url": "https://youtu.be/NDaQuJOFBYk", "categorie": "Osaekomi-waza" },
+      { "titre": "Yoko shiho gatame", "url": "https://youtu.be/TT7XJVSEQxA", "categorie": "Osaekomi-waza" },
+      { "titre": "Kami shiho gatame", "url": "https://youtu.be/HFuMjOv0WN8", "categorie": "Osaekomi-waza" }
+    ],
     "images": []
   },
   "jaune-orange": {
-    "videos": [],
+    "videos": [
+      { "titre": "Ko soto gari", "url": "https://youtu.be/jeQ541ScLB4", "categorie": "Ashi-waza" },
+      { "titre": "Okuri ashi barai", "url": "https://youtu.be/nw1ZdRjrdRI", "categorie": "Ashi-waza" },
+      { "titre": "Sasae tsuri komi ashi", "url": "https://youtu.be/699i--pvYmE", "categorie": "Ashi-waza" },
+      { "titre": "Uki goshi", "url": "https://youtu.be/bPKwtB4lyOQ", "categorie": "Koshi-waza" },
+      { "titre": "Tsuri komi goshi", "url": "https://youtu.be/McfzA0yRVt4", "categorie": "Koshi-waza" },
+      { "titre": "Kata guruma", "url": "https://youtu.be/cnHRhSy8yi4", "categorie": "Te-waza" },
+      { "titre": "Uki otoshi", "url": "https://youtu.be/6H5tmncOY4Q", "categorie": "Te-waza" },
+      { "titre": "Tate shiho gatame", "url": "https://youtu.be/55-rFmBx53g", "categorie": "Osaekomi-waza" },
+      { "titre": "Ushiro kesa gatame", "url": "https://youtu.be/SBapox2M2dE", "categorie": "Osaekomi-waza" },
+      { "titre": "Gyaku juji jime", "url": "https://youtu.be/t3tQriIPdlI", "categorie": "Shime-waza" },
+      { "titre": "Hadaka jime", "url": "https://youtu.be/9f0n8jez7iA", "categorie": "Shime-waza" }
+    ],
     "images": []
   },
   "orange-verte": {
-    "videos": [],
+    "videos": [
+      { "titre": "Uchi mata", "url": "https://youtu.be/iUpSu5J-bgw", "categorie": "Koshi-waza / Ashi-waza" },
+      { "titre": "Harai goshi", "url": "https://youtu.be/qTo8HlAAkOo", "categorie": "Koshi-waza" },
+      { "titre": "Koshi guruma", "url": "https://youtu.be/SU7Id6uVJ44", "categorie": "Koshi-waza" },
+      { "titre": "Kubi nage", "url": "https://youtu.be/K7b1r6p3lIM", "categorie": "Koshi-waza" },
+      { "titre": "Tomoe nage", "url": "https://youtu.be/880WbHvHv6A", "categorie": "Sutemi-waza" },
+      { "titre": "Sumi gaeshi", "url": "https://youtu.be/5VhduA5xkbA", "categorie": "Sutemi-waza" },
+      { "titre": "Kuzure kesa gatame", "url": "https://youtu.be/Q2fb9jaoUFQ", "categorie": "Osaekomi-waza" },
+      { "titre": "Kata gatame", "url": "https://youtu.be/zQR3IOXxO_Q", "categorie": "Osaekomi-waza" },
+      { "titre": "Nami juji jime", "url": "https://youtu.be/k2cHry9HByQ", "categorie": "Shime-waza" },
+      { "titre": "Kata juji jime", "url": "https://youtu.be/k2cHry9HByQ", "categorie": "Shime-waza" },
+      { "titre": "Okuri eri jime", "url": "https://youtu.be/EiqyoVcIAi8", "categorie": "Shime-waza" },
+      { "titre": "Ude hishigi juji gatame", "url": "https://kdkjudo.org/katame-waza/", "categorie": "Kansetsu-waza" }
+    ],
     "images": []
   },
   "verte-bleue": {
-    "videos": [],
+    "videos": [
+      { "titre": "Kuzure kami shiho gatame", "url": "https://youtu.be/YUrogQWdwiY", "categorie": "Osaekomi-waza" },
+      { "titre": "Uki gatame", "url": "https://youtu.be/e_lAjik1SUM", "categorie": "Osaekomi-waza" },
+      { "titre": "Kata ha jime", "url": "https://youtu.be/yaTGgRjnwB8", "categorie": "Shime-waza" },
+      { "titre": "Kata te jime", "url": "https://youtu.be/cHeIs-fSqwE", "categorie": "Shime-waza" },
+      { "titre": "Sode guruma jime", "url": "https://youtu.be/E3nvQzClcAU", "categorie": "Shime-waza" },
+      { "titre": "Ryo te jime", "url": "https://youtu.be/-RHC4V7TQiY", "categorie": "Shime-waza" },
+      { "titre": "Tsukkomi jime", "url": "https://youtu.be/dKKpnD3eLcY", "categorie": "Shime-waza" },
+      { "titre": "Ude hishigi ude gatame", "url": "https://kdkjudo.org/katame-waza/", "categorie": "Kansetsu-waza" },
+      { "titre": "Ude garami", "url": "https://kdkjudo.org/katame-waza/", "categorie": "Kansetsu-waza" }
+    ],
     "images": []
   },
   "bleue-marron": {
-    "videos": [],
+    "videos": [
+      { "titre": "Hane maki komi", "url": "https://youtu.be/6CRBGLGz9j8", "categorie": "Makikomi-waza" },
+      { "titre": "Soto maki komi", "url": "https://youtu.be/bWG9O1BVKtQ", "categorie": "Makikomi-waza" },
+      { "titre": "O soto maki komi", "url": "https://youtu.be/DGDv2oMwmas", "categorie": "Makikomi-waza" },
+      { "titre": "Uchi mata maki komi", "url": "https://youtu.be/jZXENTLpJCI", "categorie": "Makikomi-waza" },
+      { "titre": "Harai maki komi", "url": "https://youtu.be/VBaHzKaCXss", "categorie": "Makikomi-waza" },
+      { "titre": "Ko uchi maki komi", "url": "https://youtu.be/_1eygIXLD_w", "categorie": "Makikomi-waza" },
+      { "titre": "Ko uchi gaeshi", "url": "https://youtu.be/_MWAdYi_LC4", "categorie": "Gaeshi / Sukashi" },
+      { "titre": "O soto gaeshi", "url": "https://youtu.be/8ZjM3X_EANo", "categorie": "Gaeshi / Sukashi" },
+      { "titre": "O uchi gaeshi", "url": "https://youtu.be/dCyZTXyjIXE", "categorie": "Gaeshi / Sukashi" },
+      { "titre": "Uchi mata sukashi", "url": "https://youtu.be/V-RS3uhtVWM", "categorie": "Gaeshi / Sukashi" },
+      { "titre": "Hane goshi", "url": "https://youtu.be/M9_7De6A1kk", "categorie": "Koshi-waza" },
+      { "titre": "Kuchiki taoshi", "url": "https://youtu.be/ZNL47q1aJNY", "categorie": "Te-waza" },
+      { "titre": "Ura nage", "url": "https://youtu.be/Fgi9b8DJ5sQ", "categorie": "Sutemi-waza" },
+      { "titre": "Yoko tomoe nage", "url": "https://youtu.be/880WbHvHv6A", "categorie": "Sutemi-waza" },
+      { "titre": "Yoko guruma", "url": "https://youtu.be/MehP6I5cY2c", "categorie": "Sutemi-waza" }
+    ],
     "images": []
   },
   "marron-noir": {
-    "videos": [],
+    "videos": [
+      { "titre": "Kesa gatame", "url": "https://youtu.be/NDaQuJOFBYk", "categorie": "Katame-waza" },
+      { "titre": "Kuzure kesa gatame", "url": "https://youtu.be/Q2fb9jaoUFQ", "categorie": "Katame-waza" },
+      { "titre": "Ushiro kesa gatame", "url": "https://youtu.be/SBapox2M2dE", "categorie": "Katame-waza" },
+      { "titre": "Kata gatame", "url": "https://youtu.be/zQR3IOXxO_Q", "categorie": "Katame-waza" },
+      { "titre": "Kami shiho gatame", "url": "https://youtu.be/HFuMjOv0WN8", "categorie": "Katame-waza" },
+      { "titre": "Kuzure kami shiho gatame", "url": "https://youtu.be/YUrogQWdwiY", "categorie": "Katame-waza" },
+      { "titre": "Yoko shiho gatame", "url": "https://youtu.be/TT7XJVSEQxA", "categorie": "Katame-waza" },
+      { "titre": "Tate shiho gatame", "url": "https://youtu.be/55-rFmBx53g", "categorie": "Katame-waza" },
+      { "titre": "Nami juji jime", "url": "https://youtu.be/k2cHry9HByQ", "categorie": "Shime-waza" },
+      { "titre": "Gyaku juji jime", "url": "https://youtu.be/t3tQriIPdlI", "categorie": "Shime-waza" },
+      { "titre": "Hadaka jime", "url": "https://youtu.be/9f0n8jez7iA", "categorie": "Shime-waza" },
+      { "titre": "Okuri eri jime", "url": "https://youtu.be/EiqyoVcIAi8", "categorie": "Shime-waza" },
+      { "titre": "Kata ha jime", "url": "https://youtu.be/yaTGgRjnwB8", "categorie": "Shime-waza" },
+      { "titre": "Ude hishigi juji gatame", "url": "https://kdkjudo.org/katame-waza/", "categorie": "Kansetsu-waza" },
+      { "titre": "Ude garami", "url": "https://kdkjudo.org/katame-waza/", "categorie": "Kansetsu-waza" }
+    ],
     "images": []
   },
   "noir": {
