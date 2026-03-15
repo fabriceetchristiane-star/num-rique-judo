@@ -180,36 +180,30 @@
         .join('');
     }
 
-    // Charger tous les contenus
+    // Charger tous les contenus depuis informations.json (visible par tous)
     function chargerContenus() {
-      // Agenda
-      const agenda = localStorage.getItem('info-agenda');
-      if (agenda && agenda.trim() !== '') {
-        document.getElementById('contenu-agenda').innerHTML = formaterTexte(agenda);
-      }
-      
-      // Résultats
-      const resultats = localStorage.getItem('info-resultats');
-      if (resultats && resultats.trim() !== '') {
-        document.getElementById('contenu-resultats').innerHTML = formaterTexte(resultats);
-      }
-      
-      // Actualités
-      const actualites = localStorage.getItem('info-actualites');
-      if (actualites && actualites.trim() !== '') {
-        document.getElementById('contenu-actualites').innerHTML = formaterTexte(actualites);
-      }
-      
-      // Contact
-      const contact = localStorage.getItem('info-contact');
-      if (contact && contact.trim() !== '') {
-        document.getElementById('contenu-contact').innerHTML = formaterTexte(contact);
-      }
-      
-      // PDF
+      fetch('informations.json')
+        .then(r => r.json())
+        .then(data => {
+          if (data.agenda)    document.getElementById('contenu-agenda').innerHTML    = formaterTexte(data.agenda);
+          if (data.resultats) document.getElementById('contenu-resultats').innerHTML = formaterTexte(data.resultats);
+          if (data.actualites)document.getElementById('contenu-actualites').innerHTML= formaterTexte(data.actualites);
+          if (data.contact)   document.getElementById('contenu-contact').innerHTML   = formaterTexte(data.contact);
+        })
+        .catch(() => {
+          // Fallback localStorage si JSON indisponible
+          const agenda = localStorage.getItem('info-agenda');
+          if (agenda) document.getElementById('contenu-agenda').innerHTML = formaterTexte(agenda);
+          const resultats = localStorage.getItem('info-resultats');
+          if (resultats) document.getElementById('contenu-resultats').innerHTML = formaterTexte(resultats);
+          const actualites = localStorage.getItem('info-actualites');
+          if (actualites) document.getElementById('contenu-actualites').innerHTML = formaterTexte(actualites);
+          const contact = localStorage.getItem('info-contact');
+          if (contact) document.getElementById('contenu-contact').innerHTML = formaterTexte(contact);
+        });
+
+      // PDF et date
       afficherPDFsPublic();
-      
-      // Date de mise à jour
       document.getElementById('date-maj').textContent = new Date().toLocaleDateString('fr-FR');
     }
 
