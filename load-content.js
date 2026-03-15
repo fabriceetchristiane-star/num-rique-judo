@@ -65,3 +65,41 @@ function chargerContenuParGrade(gradeId) {
     });
   }
 }
+
+// ===== DOCUMENTS DRIVE PAR GRADE (visibles par tous) =====
+function chargerDocumentsDrive(gradeId) {
+  const block = document.querySelector('.documents-block');
+  if (!block) return;
+
+  fetch('documents-grades.json')
+    .then(r => r.json())
+    .then(data => {
+      const docs = data[gradeId];
+      if (!docs) return;
+
+      block.innerHTML = '';
+
+      if (docs.tablette) {
+        const el = document.createElement("div");
+        el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
+        el.innerHTML = `
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">📋</div>
+          <h3 style="color:#2c3e50; margin:0.5rem 0;">Tablette Technique</h3>
+          <a href="${docs.tablette}" target="_blank" style="display:inline-block; margin-top:0.5rem; background:#8B4513; color:white; padding:0.5rem 1.2rem; border-radius:20px; text-decoration:none; font-weight:bold; font-size:0.9rem;">📄 Ouvrir la tablette</a>
+        `;
+        block.appendChild(el);
+      }
+
+      if (docs.resume) {
+        const el = document.createElement("div");
+        el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
+        el.innerHTML = `
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">📝</div>
+          <h3 style="color:#2c3e50; margin:0.5rem 0;">Résumé des Techniques</h3>
+          <a href="${docs.resume}" target="_blank" style="display:inline-block; margin-top:0.5rem; background:#1a5276; color:white; padding:0.5rem 1.2rem; border-radius:20px; text-decoration:none; font-weight:bold; font-size:0.9rem;">📄 Ouvrir le résumé</a>
+        `;
+        block.appendChild(el);
+      }
+    })
+    .catch(err => console.error('Erreur documents Drive:', err));
+}

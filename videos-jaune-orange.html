@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -36,7 +36,14 @@
     </div>
   </section>
 
-  <nav style="text-align: center; margin-top: 30px;">
+  
+  <section style="max-width:900px; margin:2rem auto; padding:0 1rem;">
+    <div class="section-title">📂 Documents du Grade</div>
+    <div class="documents-block">
+      <p style="text-align:center; color:#666; padding:20px;">Chargement des documents...</p>
+    </div>
+  </section>
+<nav style="text-align: center; margin-top: 30px;">
     <a class="lien-bleu" href="videos-par-grade.html">⬅️ Choisir un autre grade</a>
     <a class="lien-bleu" href="index.html">🏠 Retour à l'accueil</a>
   </nav>
@@ -48,6 +55,8 @@
   <script src="load-content.js"></script>
   <script>
     chargerContenuParGrade('jaune-orange');
+    chargerDocumentsDrive('jaune-orange');
   </script>
 </body>
 </html>
+
