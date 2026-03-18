@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ensemble des Techniques — Blanc à Marron</title>
+  <title>Ensemble des Techniques — JAK Lambersart</title>
   <link rel="stylesheet" href="styles/style.css">
   <script src="auth.js"></script>
   <style>
@@ -11,16 +11,15 @@
     header { background: linear-gradient(135deg, #1a1a2e, #2c3e50); color: white; padding: 1.5rem; text-align: center; }
     header h1 { margin: 0; font-size: 1.4rem; }
     header p { margin: 0.3rem 0 0; font-size: 0.85rem; opacity: 0.85; }
-    .onglets-grades { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.8rem; justify-content: center; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-    .onglet-grade { padding: 0.45rem 0.9rem; border-radius: 20px; border: none; cursor: pointer; font-size: 0.78rem; font-weight: bold; transition: all 0.2s; }
-    .onglet-grade.active { color: white; }
-    .section-grade { display: none; padding: 1rem; max-width: 900px; margin: 0 auto; }
-    .section-grade.active { display: block; }
-    .grade-titre { font-size: 1.05rem; font-weight: bold; color: white; padding: 0.7rem 1rem; border-radius: 8px; margin-bottom: 0.8rem; text-align: center; }
-    .categorie-titre { font-size: 0.8rem; font-weight: bold; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 1rem 0 0.4rem; padding-left: 0.5rem; border-left: 3px solid #ccc; }
+    .onglets { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.8rem; justify-content: center; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    .onglet { padding: 0.45rem 0.9rem; border-radius: 20px; border: none; cursor: pointer; font-size: 0.78rem; font-weight: bold; transition: all 0.2s; background: #eee; color: #333; }
+    .onglet.active { color: white; background: #2c3e50; }
+    .section { display: none; padding: 1rem; max-width: 900px; margin: 0 auto; }
+    .section.active { display: block; }
+    .famille-titre { font-size: 1.05rem; font-weight: bold; color: white; padding: 0.7rem 1rem; border-radius: 8px; margin-bottom: 0.8rem; text-align: center; }
+    .grade-badge { display: inline-block; font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 10px; margin-left: 0.5rem; font-weight: bold; vertical-align: middle; }
     .tech-card { background: white; border-radius: 10px; padding: 0.9rem; margin-bottom: 0.6rem; box-shadow: 0 2px 5px rgba(0,0,0,0.07); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
     .tech-nom { font-weight: bold; font-size: 0.95rem; color: #2c3e50; }
-    .tech-cat { font-size: 0.75rem; color: #888; margin-top: 0.15rem; }
     .btn-video { background: #e74c3c; color: white; border: none; padding: 0.45rem 0.85rem; border-radius: 20px; font-size: 0.78rem; font-weight: bold; text-decoration: none; white-space: nowrap; }
     .btn-video:hover { background: #c0392b; }
     footer { text-align: center; padding: 1.5rem; color: #888; font-size: 0.8rem; margin-top: 2rem; }
@@ -29,88 +28,108 @@
 <body>
 <header>
   <h1>Ensemble des Techniques</h1>
-  <p>Du Blanc au Marron — vidéos par grade et par categorie</p>
+  <p>Toutes les techniques par famille — du Blanc au Marron</p>
 </header>
 
-<div class="onglets-grades">
-  <button class="onglet-grade active" style="background:#f0e68c;color:#333;" onclick="afficherGrade('blanche-jaune',this)">⬜🟨 Blanc/Jaune</button>
-  <button class="onglet-grade" style="background:#ffd700;color:#333;" onclick="afficherGrade('jaune-orange',this)">🟨🟧 Jaune/Orange</button>
-  <button class="onglet-grade" style="background:#ff8c00;color:white;" onclick="afficherGrade('orange-verte',this)">🟧🟩 Orange/Verte</button>
-  <button class="onglet-grade" style="background:#2e8b57;color:white;" onclick="afficherGrade('verte-bleue',this)">🟩🔵 Verte/Bleue</button>
-  <button class="onglet-grade" style="background:#1a5276;color:white;" onclick="afficherGrade('bleue-marron',this)">🔵🟤 Bleue/Marron</button>
-  <button class="onglet-grade" style="background:#8B4513;color:white;" onclick="afficherGrade('marron-noir',this)">🟤⚫ Marron/Noir</button>
+<div class="onglets">
+  <button class="onglet active" onclick="afficher('ashi',this)">🦵 Ashi-Waza</button>
+  <button class="onglet" onclick="afficher('koshi',this)">🌀 Koshi-Waza</button>
+  <button class="onglet" onclick="afficher('te',this)">✋ Te-Waza</button>
+  <button class="onglet" onclick="afficher('sutemi',this)">🤸 Sutemi-Waza</button>
+  <button class="onglet" onclick="afficher('osae',this)">🔒 Osaekomi-Waza</button>
+  <button class="onglet" onclick="afficher('shime',this)">🫁 Shime-Waza</button>
+  <button class="onglet" onclick="afficher('kansetsu',this)">💪 Kansetsu-Waza</button>
 </div>
 
-<div id="grade-blanche-jaune" class="section-grade active"></div>
-<div id="grade-jaune-orange" class="section-grade"></div>
-<div id="grade-orange-verte" class="section-grade"></div>
-<div id="grade-verte-bleue" class="section-grade"></div>
-<div id="grade-bleue-marron" class="section-grade"></div>
-<div id="grade-marron-noir" class="section-grade"></div>
+<div id="sec-ashi" class="section active"></div>
+<div id="sec-koshi" class="section"></div>
+<div id="sec-te" class="section"></div>
+<div id="sec-sutemi" class="section"></div>
+<div id="sec-osae" class="section"></div>
+<div id="sec-shime" class="section"></div>
+<div id="sec-kansetsu" class="section"></div>
 
 <nav style="text-align:center; margin-top:30px; padding:1rem;">
   <a class="lien-bleu" href="index.html">Retour a l'accueil</a>
 </nav>
-<footer>
-  <p>Dojo Numerique — Club Judo Lambersart JAK</p>
-</footer>
+<footer><p>Dojo Numerique — Club Judo Lambersart JAK</p></footer>
 
 <script>
-const GRADES = {
-  'blanche-jaune': { label: 'Blanc / Jaune', couleur: '#b8860b' },
-  'jaune-orange':  { label: 'Jaune / Orange', couleur: '#cc6600' },
-  'orange-verte':  { label: 'Orange / Verte', couleur: '#2e8b57' },
-  'verte-bleue':   { label: 'Verte / Bleue', couleur: '#1a5276' },
-  'bleue-marron':  { label: 'Bleue / Marron', couleur: '#5d4037' },
-  'marron-noir':   { label: 'Marron / Noir', couleur: '#1a1a1a' }
+// Couleurs par grade
+const COULEURS = {
+  'blanche-jaune': { bg:'#f0e68c', color:'#333', label:'Blanc/Jaune' },
+  'jaune-orange':  { bg:'#ffa500', color:'white', label:'Jaune/Orange' },
+  'orange-verte':  { bg:'#2e8b57', color:'white', label:'Orange/Verte' },
+  'verte-bleue':   { bg:'#1a5276', color:'white', label:'Verte/Bleue' },
+  'bleue-marron':  { bg:'#5d4037', color:'white', label:'Bleue/Marron' },
+  'marron-noir':   { bg:'#1a1a1a', color:'white', label:'Marron/Noir' }
 };
 
-function afficherGrade(id, btn) {
-  document.querySelectorAll('.section-grade').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.onglet-grade').forEach(o => o.classList.remove('active'));
-  document.getElementById('grade-' + id).classList.add('active');
+// Familles de techniques
+const FAMILLES = {
+  'ashi':     { label:'ASHI-WAZA — Techniques de pied et jambe', couleur:'#1a5276', mots:['ashi','gari','barai','guruma','harai','sasae','okuri'] },
+  'koshi':    { label:'KOSHI-WAZA — Techniques de hanche', couleur:'#7d1f68', mots:['goshi','koshi','mata','nage kubi','ushiro goshi','sode'] },
+  'te':       { label:'TE-WAZA — Techniques de main et bras', couleur:'#1a6e3a', mots:['seoi','otoshi','guruma kata','taoshi','uki otoshi','kuchiki','kibisu','makikomi','seoi otoshi','te guruma'] },
+  'sutemi':   { label:'SUTEMI-WAZA — Techniques de sacrifice', couleur:'#7d5a00', mots:['gaeshi','tomoe','tani','ura nage','yoko guruma','yoko tomoe'] },
+  'osae':     { label:'OSAEKOMI-WAZA — Immobilisations', couleur:'#5d4037', mots:['gatame','kesa','shiho'] },
+  'shime':    { label:'SHIME-WAZA — Etranglements', couleur:'#c0392b', mots:['jime'] },
+  'kansetsu': { label:'KANSETSU-WAZA — Cles de bras', couleur:'#2c3e50', mots:['hishigi','garami'] }
+};
+
+function afficher(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.onglet').forEach(o => o.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
   btn.classList.add('active');
 }
 
-function construireGrade(id, videos) {
-  const g = GRADES[id];
-  const div = document.getElementById('grade-' + id);
-
-  // Regrouper par categorie
-  const cats = {};
-  videos.forEach(v => {
-    const cat = v.categorie || 'Autres';
-    if (!cats[cat]) cats[cat] = [];
-    cats[cat].push(v);
-  });
-
-  let html = '<div class="grade-titre" style="background:' + g.couleur + '">' + g.label + '</div>';
-
-  Object.keys(cats).forEach(cat => {
-    html += '<div class="categorie-titre">' + cat + '</div>';
-    cats[cat].forEach(v => {
-      html += '<div class="tech-card"><div>';
-      html += '<div class="tech-nom">' + v.titre + '</div>';
-      html += '</div>';
-      if (v.url) {
-        html += '<a class="btn-video" href="' + v.url + '" target="_blank">Video</a>';
-      }
-      html += '</div>';
-    });
-  });
-
-  div.innerHTML = html;
+function appartientFamille(tech, famille) {
+  const nom = tech.titre.toLowerCase();
+  const cat = (tech.categorie || '').toLowerCase();
+  // Vérification par catégorie d'abord
+  if (famille === 'ashi' && (cat.includes('ashi') || cat.includes('makikomi') || cat.includes('gaeshi'))) return false;
+  if (famille === 'koshi' && cat.includes('koshi')) return true;
+  if (famille === 'te' && cat.includes('te-waza')) return true;
+  if (famille === 'sutemi' && cat.includes('sutemi')) return true;
+  if (famille === 'osae' && (cat.includes('osae') || cat.includes('ne-waza') || cat.includes('katame'))) return true;
+  if (famille === 'shime' && cat.includes('shime')) return true;
+  if (famille === 'kansetsu' && cat.includes('kansetsu')) return true;
+  if (famille === 'ashi' && cat.includes('ashi')) return true;
+  return false;
 }
 
-// Charger toutes les techniques depuis contenus-grades.json
+function construire(data) {
+  Object.keys(FAMILLES).forEach(famId => {
+    const fam = FAMILLES[famId];
+    const div = document.getElementById('sec-' + famId);
+    let html = '<div class="famille-titre" style="background:' + fam.couleur + '">' + fam.label + '</div>';
+    let count = 0;
+
+    Object.keys(COULEURS).forEach(gradeId => {
+      const grade = COULEURS[gradeId];
+      const videos = (data[gradeId] && data[gradeId].videos) ? data[gradeId].videos : [];
+
+      videos.forEach(v => {
+        if (appartientFamille(v, famId)) {
+          html += '<div class="tech-card"><div>';
+          html += '<div class="tech-nom">' + v.titre;
+          html += '<span class="grade-badge" style="background:' + grade.bg + ';color:' + grade.color + '">' + grade.label + '</span>';
+          html += '</div></div>';
+          if (v.url) html += '<a class="btn-video" href="' + v.url + '" target="_blank">Video</a>';
+          html += '</div>';
+          count++;
+        }
+      });
+    });
+
+    if (count === 0) html += '<p style="text-align:center;color:#888;padding:1rem;">Aucune technique trouvee</p>';
+    div.innerHTML = html;
+  });
+}
+
 fetch('contenus-grades.json')
   .then(r => r.json())
-  .then(data => {
-    Object.keys(GRADES).forEach(id => {
-      const videos = (data[id] && data[id].videos) ? data[id].videos : [];
-      construireGrade(id, videos);
-    });
-  })
+  .then(data => construire(data))
   .catch(err => console.error('Erreur:', err));
 </script>
 </body>
