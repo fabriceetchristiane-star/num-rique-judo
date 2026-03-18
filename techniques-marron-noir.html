@@ -3,105 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Techniques Bleue vers Marron / Noire</title>
+  <title>Ensemble des Techniques — Blanc à Marron</title>
   <link rel="stylesheet" href="styles/style.css">
   <script src="auth.js"></script>
   <style>
     body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
-    header { background: linear-gradient(135deg, #4a2c0a, #8B4513); color: white; padding: 1.5rem; text-align: center; }
+    header { background: linear-gradient(135deg, #1a1a2e, #2c3e50); color: white; padding: 1.5rem; text-align: center; }
     header h1 { margin: 0; font-size: 1.4rem; }
     header p { margin: 0.3rem 0 0; font-size: 0.85rem; opacity: 0.85; }
-    .onglets { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem; justify-content: center; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-    .onglet { padding: 0.5rem 1rem; border-radius: 20px; border: none; cursor: pointer; font-size: 0.85rem; font-weight: bold; transition: all 0.2s; }
-    .onglet.nage { background: #e8f4fd; color: #1a5276; }
-    .onglet.nage.active { background: #1a5276; color: white; }
-    .onglet.katame { background: #e8f8f5; color: #1a5e3a; }
-    .onglet.katame.active { background: #1a5e3a; color: white; }
-    .onglet.shime { background: #fef9e7; color: #7d6608; }
-    .onglet.shime.active { background: #7d6608; color: white; }
-    .onglet.kansetsu { background: #fdf2f8; color: #7d1f68; }
-    .onglet.kansetsu.active { background: #7d1f68; color: white; }
-    .section { display: none; padding: 1rem; max-width: 900px; margin: 0 auto; }
-    .section.active { display: block; }
-    .section-titre { font-size: 1.1rem; font-weight: bold; color: white; padding: 0.7rem 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: center; }
-    .nage-titre { background: #1a5276; }
-    .katame-titre { background: #1a5e3a; }
-    .shime-titre { background: #7d6608; }
-    .kansetsu-titre { background: #7d1f68; }
-    .technique-card { background: white; border-radius: 10px; padding: 1rem; margin-bottom: 0.7rem; box-shadow: 0 2px 6px rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-    .technique-nom { font-weight: bold; font-size: 1rem; color: #2c3e50; }
-    .technique-desc { font-size: 0.8rem; color: #666; margin-top: 0.2rem; }
-    .btn-video { background: #e74c3c; color: white; border: none; padding: 0.5rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; cursor: pointer; text-decoration: none; white-space: nowrap; }
+    .onglets-grades { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.8rem; justify-content: center; background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    .onglet-grade { padding: 0.45rem 0.9rem; border-radius: 20px; border: none; cursor: pointer; font-size: 0.78rem; font-weight: bold; transition: all 0.2s; }
+    .onglet-grade.active { color: white; }
+    .section-grade { display: none; padding: 1rem; max-width: 900px; margin: 0 auto; }
+    .section-grade.active { display: block; }
+    .grade-titre { font-size: 1.05rem; font-weight: bold; color: white; padding: 0.7rem 1rem; border-radius: 8px; margin-bottom: 0.8rem; text-align: center; }
+    .categorie-titre { font-size: 0.8rem; font-weight: bold; color: #555; text-transform: uppercase; letter-spacing: 1px; margin: 1rem 0 0.4rem; padding-left: 0.5rem; border-left: 3px solid #ccc; }
+    .tech-card { background: white; border-radius: 10px; padding: 0.9rem; margin-bottom: 0.6rem; box-shadow: 0 2px 5px rgba(0,0,0,0.07); display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .tech-nom { font-weight: bold; font-size: 0.95rem; color: #2c3e50; }
+    .tech-cat { font-size: 0.75rem; color: #888; margin-top: 0.15rem; }
+    .btn-video { background: #e74c3c; color: white; border: none; padding: 0.45rem 0.85rem; border-radius: 20px; font-size: 0.78rem; font-weight: bold; text-decoration: none; white-space: nowrap; }
     .btn-video:hover { background: #c0392b; }
     footer { text-align: center; padding: 1.5rem; color: #888; font-size: 0.8rem; margin-top: 2rem; }
-    .chargement { text-align: center; padding: 2rem; color: #888; }
   </style>
 </head>
 <body>
 <header>
-  <h1>Techniques Bleue vers Marron / Noire</h1>
-  <p>Cliquez sur une technique pour voir la video</p>
+  <h1>Ensemble des Techniques</h1>
+  <p>Du Blanc au Marron — vidéos par grade et par categorie</p>
 </header>
-<div class="onglets">
-  <button class="onglet nage active" onclick="afficher('nage', this)">Nage-Waza</button>
-  <button class="onglet katame" onclick="afficher('katame', this)">Katame-Waza</button>
-  <button class="onglet shime" onclick="afficher('shime', this)">Shime-Waza</button>
-  <button class="onglet kansetsu" onclick="afficher('kansetsu', this)">Kansetsu-Waza</button>
+
+<div class="onglets-grades">
+  <button class="onglet-grade active" style="background:#f0e68c;color:#333;" onclick="afficherGrade('blanche-jaune',this)">⬜🟨 Blanc/Jaune</button>
+  <button class="onglet-grade" style="background:#ffd700;color:#333;" onclick="afficherGrade('jaune-orange',this)">🟨🟧 Jaune/Orange</button>
+  <button class="onglet-grade" style="background:#ff8c00;color:white;" onclick="afficherGrade('orange-verte',this)">🟧🟩 Orange/Verte</button>
+  <button class="onglet-grade" style="background:#2e8b57;color:white;" onclick="afficherGrade('verte-bleue',this)">🟩🔵 Verte/Bleue</button>
+  <button class="onglet-grade" style="background:#1a5276;color:white;" onclick="afficherGrade('bleue-marron',this)">🔵🟤 Bleue/Marron</button>
+  <button class="onglet-grade" style="background:#8B4513;color:white;" onclick="afficherGrade('marron-noir',this)">🟤⚫ Marron/Noir</button>
 </div>
-<div id="sec-nage" class="section active"><div class="chargement">Chargement...</div></div>
-<div id="sec-katame" class="section"><div class="chargement">Chargement...</div></div>
-<div id="sec-shime" class="section"><div class="chargement">Chargement...</div></div>
-<div id="sec-kansetsu" class="section"><div class="chargement">Chargement...</div></div>
+
+<div id="grade-blanche-jaune" class="section-grade active"></div>
+<div id="grade-jaune-orange" class="section-grade"></div>
+<div id="grade-orange-verte" class="section-grade"></div>
+<div id="grade-verte-bleue" class="section-grade"></div>
+<div id="grade-bleue-marron" class="section-grade"></div>
+<div id="grade-marron-noir" class="section-grade"></div>
+
+<nav style="text-align:center; margin-top:30px; padding:1rem;">
+  <a class="lien-bleu" href="index.html">Retour a l'accueil</a>
+</nav>
 <footer>
-  <p>Dojo Numerique - Club Judo Lambersart JAK</p>
-  <p><a href="index.html" style="color:#3498db;">Retour a l'accueil</a></p>
+  <p>Dojo Numerique — Club Judo Lambersart JAK</p>
 </footer>
 
 <script>
-const TITRES = {
-  'nage': { label: 'NAGE-WAZA - Techniques de projection', classe: 'nage-titre' },
-  'katame': { label: 'KATAME-WAZA - Techniques de maitrise au sol', classe: 'katame-titre' },
-  'shime': { label: 'SHIME-WAZA - Etranglements', classe: 'shime-titre' },
-  'kansetsu': { label: 'KANSETSU-WAZA - Cles de bras', classe: 'kansetsu-titre' }
+const GRADES = {
+  'blanche-jaune': { label: 'Blanc / Jaune', couleur: '#b8860b' },
+  'jaune-orange':  { label: 'Jaune / Orange', couleur: '#cc6600' },
+  'orange-verte':  { label: 'Orange / Verte', couleur: '#2e8b57' },
+  'verte-bleue':   { label: 'Verte / Bleue', couleur: '#1a5276' },
+  'bleue-marron':  { label: 'Bleue / Marron', couleur: '#5d4037' },
+  'marron-noir':   { label: 'Marron / Noir', couleur: '#1a1a1a' }
 };
 
-function afficher(id, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.onglet').forEach(o => o.classList.remove('active'));
-  document.getElementById('sec-' + id).classList.add('active');
+function afficherGrade(id, btn) {
+  document.querySelectorAll('.section-grade').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.onglet-grade').forEach(o => o.classList.remove('active'));
+  document.getElementById('grade-' + id).classList.add('active');
   btn.classList.add('active');
 }
 
-function construireSection(id, techniques) {
-  const t = TITRES[id];
-  let html = '<div class="section-titre ' + t.classe + '">' + t.label + '</div>';
-  techniques.forEach(tech => {
-    html += '<div class="technique-card">';
-    html += '<div><div class="technique-nom">' + tech.nom + '</div>';
-    html += '<div class="technique-desc">' + tech.desc + '</div></div>';
-    if (tech.video) {
-      html += '<a class="btn-video" href="' + tech.video + '" target="_blank">Video</a>';
-    }
-    html += '</div>';
-  });
-  document.getElementById('sec-' + id).innerHTML = html;
-}
+function construireGrade(id, videos) {
+  const g = GRADES[id];
+  const div = document.getElementById('grade-' + id);
 
-// Chargement du fichier JSON
-fetch('techniques-liens.json')
-  .then(r => r.json())
-  .then(data => {
-    construireSection('nage', data['nage-waza']);
-    construireSection('katame', data['katame-waza']);
-    construireSection('shime', data['shime-waza']);
-    construireSection('kansetsu', data['kansetsu-waza']);
-  })
-  .catch(err => {
-    console.error('Erreur chargement JSON:', err);
-    document.querySelectorAll('.chargement').forEach(d => {
-      d.innerHTML = 'Erreur de chargement. Verifiez le fichier techniques-liens.json';
+  // Regrouper par categorie
+  const cats = {};
+  videos.forEach(v => {
+    const cat = v.categorie || 'Autres';
+    if (!cats[cat]) cats[cat] = [];
+    cats[cat].push(v);
+  });
+
+  let html = '<div class="grade-titre" style="background:' + g.couleur + '">' + g.label + '</div>';
+
+  Object.keys(cats).forEach(cat => {
+    html += '<div class="categorie-titre">' + cat + '</div>';
+    cats[cat].forEach(v => {
+      html += '<div class="tech-card"><div>';
+      html += '<div class="tech-nom">' + v.titre + '</div>';
+      html += '</div>';
+      if (v.url) {
+        html += '<a class="btn-video" href="' + v.url + '" target="_blank">Video</a>';
+      }
+      html += '</div>';
     });
   });
+
+  div.innerHTML = html;
+}
+
+// Charger toutes les techniques depuis contenus-grades.json
+fetch('contenus-grades.json')
+  .then(r => r.json())
+  .then(data => {
+    Object.keys(GRADES).forEach(id => {
+      const videos = (data[id] && data[id].videos) ? data[id].videos : [];
+      construireGrade(id, videos);
+    });
+  })
+  .catch(err => console.error('Erreur:', err));
 </script>
 </body>
 </html>
