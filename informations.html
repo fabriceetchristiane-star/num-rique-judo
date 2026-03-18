@@ -90,6 +90,14 @@
       </div>
     </div>
 
+    <!-- Section Compétitions -->
+    <div class="section-title">🏆 Compétitions</div>
+    <div class="video-block">
+      <div id="contenu-competitions">
+        <p><em>Les dates de compétitions seront affichées ici.</em></p>
+      </div>
+    </div>
+
     <!-- Section Résultats -->
     <div class="section-title">🏆 Résultats Compétitions</div>
     <div class="video-block">
@@ -185,8 +193,9 @@
       fetch('informations.json')
         .then(r => r.json())
         .then(data => {
-          if (data.agenda)    document.getElementById('contenu-agenda').innerHTML    = formaterTexte(data.agenda);
-          if (data.resultats) document.getElementById('contenu-resultats').innerHTML = formaterTexte(data.resultats);
+          if (data.agenda)       document.getElementById('contenu-agenda').innerHTML       = formaterTexte(data.agenda);
+          if (data.competitions) document.getElementById('contenu-competitions').innerHTML = formaterTexte(data.competitions);
+          if (data.resultats)    document.getElementById('contenu-resultats').innerHTML    = formaterTexte(data.resultats);
           if (data.actualites)document.getElementById('contenu-actualites').innerHTML= formaterTexte(data.actualites);
           if (data.contact)   document.getElementById('contenu-contact').innerHTML   = formaterTexte(data.contact);
         })
