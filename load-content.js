@@ -19,12 +19,8 @@ function afficherVideos(gradeId, videosJson) {
   const videoBlock = document.querySelector('.video-block');
   if (!videoBlock) return;
 
-  // Videos depuis JSON (pour tous)
+  // Videos depuis JSON uniquement (visible par tous)
   let items = [...videosJson];
-
-  // Ajouter videos depuis localStorage (local)
-  const local = JSON.parse(localStorage.getItem("videos") || "[]");
-  local.filter(v => v.grade === gradeId).forEach(v => items.push(v));
 
   if (items.length > 0) {
     videoBlock.innerHTML = '';
@@ -44,14 +40,8 @@ function afficherImages(gradeId, imagesJson) {
   const imageBlock = document.querySelector('.image-block');
   if (!imageBlock) return;
 
-  // Images depuis JSON (lien Drive, pour tous)
+  // Images depuis JSON uniquement (visible par tous)
   let items = [...imagesJson];
-
-  // Ajouter images depuis localStorage (local)
-  const localImgs = JSON.parse(localStorage.getItem("images") || "[]");
-  localImgs.filter(img => img.grade === gradeId).forEach(img => items.push(img));
-  const localLiens = JSON.parse(localStorage.getItem("liens-images") || "[]");
-  localLiens.filter(l => l.grade === gradeId).forEach(l => items.push({ ...l, estLien: true }));
 
   if (items.length > 0) {
     imageBlock.innerHTML = '<div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem;"></div>';
