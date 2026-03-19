@@ -1,315 +1,117 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Informations â€“ Dojo NumÃ©rique</title>
-  
-  <!-- Favicon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informations — Dojo Numérique</title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
   <link rel="stylesheet" href="styles/style.css">
-  <!-- AJOUT : Script d'authentification -->
   <script src="auth.js"></script>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      background: #f8f9fa;
-      color: #333;
-      padding: 0 1rem;
-    }
-    
-    header {
-      background: linear-gradient(135deg, #2c3e50, #3498db);
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-      border-radius: 0 0 15px 15px;
-      margin-bottom: 2rem;
-    }
-    
-    .section-title {
-      font-size: 1.5rem;
-      color: #2c3e50;
-      margin: 2rem 0 1rem 0;
-      padding-bottom: 0.5rem;
-      border-bottom: 3px solid #3498db;
-    }
-    
-    .video-block {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      margin-bottom: 1.5rem;
-    }
-    
-    .lien-bleu {
-      display: inline-block;
-      background: #3498db;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      margin: 0.5rem;
-      transition: background 0.3s;
-    }
-    
-    .lien-bleu:hover {
-      background: #2980b9;
-      text-decoration: none;
-      color: white;
-    }
-    
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      padding: 2rem;
-      background: #2c3e50;
-      color: white;
-      border-radius: 15px 15px 0 0;
-    }
+    body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; background: #f8f9fa; color: #333; padding: 0; margin: 0; }
+    header { background: linear-gradient(135deg, #2c3e50, #3498db); color: white; padding: 2rem 1rem; text-align: center; border-radius: 0 0 15px 15px; margin-bottom: 2rem; }
+    header h1 { margin: 0; font-size: 1.6rem; }
+    header p { margin: 0.3rem 0 0; opacity: 0.85; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1rem; }
+    .section-titre { font-size: 1.2rem; font-weight: bold; color: #2c3e50; margin: 2rem 0 0.8rem; padding-bottom: 0.5rem; border-bottom: 3px solid #3498db; }
+    .bloc { background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-bottom: 1.5rem; white-space: pre-wrap; font-size: 0.95rem; }
+    .vide { color: #aaa; font-style: italic; }
+    .lien-bleu { display: inline-block; background: #3498db; color: white; padding: 0.6rem 1.2rem; border-radius: 6px; text-decoration: none; margin: 0.4rem; }
+    .lien-bleu:hover { background: #2980b9; color: white; }
+    footer { text-align: center; margin-top: 3rem; padding: 1.5rem; background: #2c3e50; color: white; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>ðŸ“¢ Informations du Dojo</h1>
-    <p>Agenda, stages, rÃ©sultats de compÃ©titions et actualitÃ©s</p>
-  </header>
+<header>
+  <h1>📢 Informations du Dojo</h1>
+  <p>Agenda, compétitions, résultats et actualités</p>
+</header>
+<div class="container">
 
-  <section>
-    <!-- Section Agenda -->
-    <div class="section-title">ðŸ“… Agenda Visuel</div>
-    <div class="video-block">
-      <div id="contenu-agenda">
-        <p><em>L'agenda sera affichÃ© ici une fois configurÃ© par les professeurs.</em></p>
-      </div>
-    </div>
+  <div class="section-titre">📅 Agenda Visuel</div>
+  <div class="bloc" id="contenu-agenda"><span class="vide">Aucun agenda pour le moment.</span></div>
 
-    <!-- Section CompÃ©titions -->
-    <div class="section-title">ðŸ† CompÃ©titions</div>
-    <div class="video-block">
-      <div id="contenu-competitions">
-        <p><em>Les dates de compÃ©titions seront affichÃ©es ici.</em></p>
-      </div>
-    </div>
+  <div class="section-titre">🏆 Compétitions</div>
+  <div class="bloc" id="contenu-competitions"><span class="vide">Aucune compétition programmée pour le moment.</span></div>
 
-    <!-- Section RÃ©sultats -->
-    <div class="section-title">ðŸ† RÃ©sultats CompÃ©titions</div>
-    <div class="video-block">
-      <div id="contenu-resultats">
-        <p><em>Les rÃ©sultats des compÃ©titions seront affichÃ©s ici.</em></p>
-      </div>
-    </div>
+  <div class="section-titre">🥇 Résultats</div>
+  <div class="bloc" id="contenu-resultats"><span class="vide">Aucun résultat pour le moment.</span></div>
 
-    <!-- Section ActualitÃ©s -->
-    <div class="section-title">ðŸ“° DerniÃ¨res ActualitÃ©s</div>
-    <div class="video-block">
-      <div id="contenu-actualites">
-        <p><em>Les actualitÃ©s du club seront affichÃ©es ici.</em></p>
-      </div>
-    </div>
+  <div class="section-titre">📰 Dernières Actualités</div>
+  <div class="bloc" id="contenu-actualites"><span class="vide">Aucune actualité pour le moment.</span></div>
 
-    <!-- Section Contact -->
-    <div class="section-title">ðŸ“ž Contact & Informations Pratiques</div>
-    <div class="video-block">
-      <div id="contenu-contact">
-        <p><em>Les informations de contact seront affichÃ©es ici.</em></p>
-      </div>
-    </div>
+  <div class="section-titre">📞 Contact & Informations Pratiques</div>
+  <div class="bloc" id="contenu-contact"><span class="vide">Informations de contact à venir.</span></div>
 
-    <!-- Section PDF -->
-    <div class="section-title">ðŸ“„ Documents Ã  TÃ©lÃ©charger</div>
-    <div class="video-block">
-      <div id="contenu-pdf">
-        <p><em>Les documents PDF seront listÃ©s ici.</em></p>
-      </div>
-    </div>
-  </section>
-
-  <nav style="text-align: center; margin-top: 30px;">
-    <a class="lien-bleu" href="index.html">ðŸ  Retour Ã  l'accueil</a>
-    <!-- AJOUT : Bouton pour accÃ©der Ã  l'espace professeurs -->
-    <button class="lien-bleu" onclick="ouvrirModalProf()" style="border: none; cursor: pointer;">ðŸ‘¨â€ðŸ« Espace Professeurs</button>
+  <nav style="text-align:center; margin: 2rem 0;">
+    <a class="lien-bleu" href="index.html">🏠 Retour à l'accueil</a>
+    <button class="lien-bleu" onclick="ouvrirModalProf()" style="border:none; cursor:pointer;">👨‍🏫 Espace Professeurs</button>
   </nav>
+</div>
 
-  <footer>
-    <p>Version locale â€“ Dojo NumÃ©rique Lambersart â€“ DerniÃ¨re mise Ã  jour : <span id="date-maj"></span></p>
-  </footer>
+<footer>
+  <p>Dojo Numérique Lambersart — Dernière mise à jour : <span id="date-maj"></span></p>
+</footer>
 
-  <!-- AJOUT : Modal pour la connexion professeurs -->
-  <div id="modalProf" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
-    <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 90%; max-width: 500px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-      <span class="close" onclick="fermerModalProf()" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-      <h2>ðŸ” AccÃ¨s Professeurs</h2>
-      <p style="color: #666; margin-bottom: 20px; text-align: center;">
-        Espace rÃ©servÃ© aux enseignants du club
-      </p>
-      
-      <form id="loginForm">
-        <div class="form-group" style="margin-bottom: 1rem;">
-          <label for="password" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Mot de passe :</label>
-          <input type="password" id="password" name="password" required 
-                 placeholder="Entrez le mot de passe" autocomplete="current-password"
-                 style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 5px; font-size: 1rem;">
-        </div>
-        
-        <div id="errorMessage" class="error-message" style="display: none; color: #dc3545; background: #f8d7da; padding: 10px; border-radius: 5px; margin: 10px 0; text-align: center;">
-          âŒ Mot de passe incorrect
-        </div>
-        
-        <button type="submit" class="btn-connexion" style="width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 5px; font-size: 1.1rem; cursor: pointer; font-weight: bold;">
-          ðŸ” Se connecter
-        </button>
-      </form>
-      
-      <p style="text-align: center; margin-top: 20px; font-size: 0.9em; color: #777;">
-        Session valide 24h â€¢ DÃ©connexion automatique
-      </p>
-    </div>
+<!-- Modal connexion professeurs -->
+<div id="modalProf" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
+  <div style="background:white; margin:15% auto; padding:2rem; width:90%; max-width:450px; border-radius:10px;">
+    <span onclick="fermerModalProf()" style="float:right; font-size:1.5rem; cursor:pointer;">&times;</span>
+    <h2>🔐 Accès Professeurs</h2>
+    <form id="loginForm">
+      <label>Mot de passe :</label><br>
+      <input type="password" id="password" style="width:100%; padding:10px; margin:0.5rem 0; border:2px solid #ddd; border-radius:5px; font-size:1rem;">
+      <div id="errorMessage" style="display:none; color:#dc3545; padding:8px; background:#f8d7da; border-radius:5px; margin:0.5rem 0;">❌ Mot de passe incorrect</div>
+      <button type="submit" style="width:100%; padding:12px; background:#3498db; color:white; border:none; border-radius:5px; font-size:1rem; cursor:pointer;">🔐 Se connecter</button>
+    </form>
   </div>
+</div>
 
-  <script>
-    // Formater le texte brut en HTML lisible
-    function formaterTexte(texte) {
-      if (!texte || texte.trim() === '') return '';
-      // Si le texte contient dÃ©jÃ  des balises HTML on le laisse tel quel
-      if (texte.includes('<') && texte.includes('>')) return texte;
-      // Sinon on convertit les sauts de ligne en paragraphes
-      return texte
-        .split(/\n\n+/)
-        .map(para => para.trim())
-        .filter(para => para.length > 0)
-        .map(para => '<p>' + para.replace(/\n/g, '<br>') + '</p>')
-        .join('');
+<script>
+function formaterTexte(t) {
+  if (!t || t.trim() === '') return '';
+  if (t.includes('<') && t.includes('>')) return t;
+  return t.split(/\n\n+/).map(p => p.trim()).filter(p => p.length > 0)
+    .map(p => '<p>' + p.replace(/\n/g, '<br>') + '</p>').join('');
+}
+
+function chargerContenus() {
+  fetch('informations.json')
+    .then(r => r.json())
+    .then(data => {
+      if (data.agenda)       document.getElementById('contenu-agenda').innerHTML       = formaterTexte(data.agenda);
+      if (data.competitions) document.getElementById('contenu-competitions').innerHTML = formaterTexte(data.competitions);
+      if (data.resultats)    document.getElementById('contenu-resultats').innerHTML    = formaterTexte(data.resultats);
+      if (data.actualites)   document.getElementById('contenu-actualites').innerHTML   = formaterTexte(data.actualites);
+      if (data.contact)      document.getElementById('contenu-contact').innerHTML      = formaterTexte(data.contact);
+    })
+    .catch(err => console.error('Erreur JSON:', err));
+  document.getElementById('date-maj').textContent = new Date().toLocaleDateString('fr-FR');
+}
+
+function ouvrirModalProf() { document.getElementById('modalProf').style.display = 'block'; }
+function fermerModalProf() { document.getElementById('modalProf').style.display = 'none'; document.getElementById('password').value = ''; }
+
+window.onclick = e => { if (e.target === document.getElementById('modalProf')) fermerModalProf(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') fermerModalProf(); });
+
+document.addEventListener('DOMContentLoaded', function() {
+  chargerContenus();
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const pwd = document.getElementById('password').value;
+    if (typeof auth !== 'undefined' && auth.verifyPassword(pwd)) {
+      auth.createSession(); window.location.href = 'admin.html';
+    } else {
+      document.getElementById('errorMessage').style.display = 'block';
+      document.getElementById('password').value = '';
     }
-
-    // Charger tous les contenus depuis informations.json (visible par tous)
-    function chargerContenus() {
-      fetch('informations.json')
-        .then(r => r.json())
-        .then(data => {
-          if (data.agenda)       document.getElementById('contenu-agenda').innerHTML       = formaterTexte(data.agenda);
-          if (data.competitions) document.getElementById('contenu-competitions').innerHTML = formaterTexte(data.competitions);
-          if (data.competitions)    document.getElementById('contenu-resultats').innerHTML    = formaterTexte(data.competitions);
-          if (data.actualites)document.getElementById('contenu-actualites').innerHTML= formaterTexte(data.actualites);
-          if (data.contact)   document.getElementById('contenu-contact').innerHTML   = formaterTexte(data.contact);
-        })
-        .catch(() => {
-          // Fallback localStorage si JSON indisponible
-          const agenda = localStorage.getItem('info-agenda');
-          if (agenda) document.getElementById('contenu-agenda').innerHTML = formaterTexte(agenda);
-          const resultats = localStorage.getItem('info-resultats');
-          if (resultats) document.getElementById('contenu-resultats').innerHTML = formaterTexte(resultats);
-          const actualites = localStorage.getItem('info-actualites');
-          if (actualites) document.getElementById('contenu-actualites').innerHTML = formaterTexte(actualites);
-          const contact = localStorage.getItem('info-contact');
-          if (contact) document.getElementById('contenu-contact').innerHTML = formaterTexte(contact);
-        });
-
-      // PDF et date
-      afficherPDFsPublic();
-      document.getElementById('date-maj').textContent = new Date().toLocaleDateString('fr-FR');
-    }
-
-    // Afficher les PDF pour le public
-    function afficherPDFsPublic() {
-      const pdfs = JSON.parse(localStorage.getItem('pdfs') || '[]');
-      const contenuPDF = document.getElementById('contenu-pdf');
-      
-      if (pdfs.length === 0) {
-        contenuPDF.innerHTML = '<p>Aucun document disponible pour le moment.</p>';
-        return;
-      }
-      
-      contenuPDF.innerHTML = '<p>TÃ©lÃ©chargez les documents du club :</p>' + 
-        pdfs.map(pdf => {
-          // Si c'est un lien Drive
-          if (pdf.isLink) {
-            return `
-            <div style="margin: 1rem 0; padding: 1rem; background: #e8f5e9; border-radius: 6px; border-left: 4px solid #27ae60;">
-              <strong>ðŸ”— ${pdf.nom}</strong>
-              <a href="${pdf.driveLink}" target="_blank" class="lien-bleu" style="margin-left: 1rem;">
-                ðŸŒ Ouvrir dans Drive
-              </a>
-              <br><small>AjoutÃ© le ${pdf.date} â€¢ Lien Drive</small>
-            </div>
-          `;}
-          
-          // Si c'est un fichier uploadÃ©
-          const downloadName = pdf.filename || (pdf.nom + '.pdf');
-          return `
-          <div style="margin: 1rem 0; padding: 1rem; background: #f8f9fa; border-radius: 6px;">
-            <strong>${pdf.nom}</strong>
-            <a href="${pdf.data}" download="${downloadName}" class="lien-bleu" style="margin-left: 1rem;">
-              ðŸ“¥ TÃ©lÃ©charger
-            </a>
-            <br><small>AjoutÃ© le ${pdf.date}</small>
-          </div>
-        `}).join('');
-    }
-
-    // ===== NOUVEAU SYSTÃˆME D'AUTHENTIFICATION =====
-    
-    function ouvrirModalProf() {
-        document.getElementById('modalProf').style.display = 'block';
-        document.getElementById('password').focus();
-        document.getElementById('errorMessage').style.display = 'none';
-    }
-
-    function fermerModalProf() {
-        document.getElementById('modalProf').style.display = 'none';
-        document.getElementById('password').value = '';
-        document.getElementById('errorMessage').style.display = 'none';
-    }
-
-    // Gestion du formulaire de connexion
-    document.addEventListener('DOMContentLoaded', function() {
-        chargerContenus();
-        
-        // Initialiser le formulaire de connexion
-        const loginForm = document.getElementById('loginForm');
-        if (loginForm) {
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const password = document.getElementById('password').value;
-                const errorMessage = document.getElementById('errorMessage');
-                
-                // Utiliser le nouveau systÃ¨me auth
-                if (typeof auth !== 'undefined' && auth.verifyPassword(password)) {
-                    auth.createSession();
-                    window.location.href = 'admin.html';
-                } else {
-                    errorMessage.style.display = 'block';
-                    document.getElementById('password').value = '';
-                    document.getElementById('password').focus();
-                    document.getElementById('password').style.borderColor = '#dc3545';
-                    setTimeout(() => {
-                        document.getElementById('password').style.borderColor = '#ddd';
-                    }, 1000);
-                }
-            });
-        }
-    });
-
-    // Fermer modal en cliquant dehors
-    window.onclick = function(event) {
-        const modal = document.getElementById('modalProf');
-        if (event.target === modal) {
-            fermerModalProf();
-        }
-    }
-
-    // Fermer modal avec Ã‰chap
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            fermerModalProf();
-        }
-    });
-  </script>
+  });
+});
+</script>
 </body>
 </html>
