@@ -172,6 +172,15 @@ function chargerDocumentsDrive(gradeId) {
         `;
         block.appendChild(el);
       }
+      if (docs.memo) {
+        const el = document.createElement("div");
+        el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
+        el.innerHTML = `
+          <h3 style="color:#2c3e50; margin:0.5rem 0;">Memo Techniques</h3>
+          <img src="${docs.memo}" alt="Memo techniques" style="width:100%; border-radius:8px; margin-top:0.5rem;">
+        `;
+        block.appendChild(el);
+      }
     })
     .catch(err => console.error('Erreur documents Drive:', err));
 }
