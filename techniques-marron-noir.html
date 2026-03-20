@@ -84,17 +84,14 @@ function afficher(id, btn) {
 }
 
 function appartientFamille(tech, famille) {
-  const nom = tech.titre.toLowerCase();
   const cat = (tech.categorie || '').toLowerCase();
-  // Vérification par catégorie d'abord
-  if (famille === 'ashi' && (cat.includes('ashi') || cat.includes('makikomi') || cat.includes('gaeshi'))) return false;
-  if (famille === 'koshi' && cat.includes('koshi')) return true;
-  if (famille === 'te' && cat.includes('te-waza')) return true;
-  if (famille === 'sutemi' && cat.includes('sutemi')) return true;
-  if (famille === 'osae' && (cat.includes('osae') || cat.includes('ne-waza') || cat.includes('katame'))) return true;
-  if (famille === 'shime' && cat.includes('shime')) return true;
-  if (famille === 'kansetsu' && cat.includes('kansetsu')) return true;
-  if (famille === 'ashi' && cat.includes('ashi')) return true;
+  if (famille === 'ashi')     return cat.includes('ashi');
+  if (famille === 'koshi')    return cat.includes('koshi');
+  if (famille === 'te')       return cat.includes('te-waza');
+  if (famille === 'sutemi')   return cat.includes('sutemi');
+  if (famille === 'osae')     return cat.includes('ne-waza') || cat.includes('katame') || cat.includes('osae');
+  if (famille === 'shime')    return cat.includes('shime');
+  if (famille === 'kansetsu') return cat.includes('kansetsu');
   return false;
 }
 
