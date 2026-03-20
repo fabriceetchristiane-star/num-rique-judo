@@ -77,116 +77,25 @@
         </div>
       </a>
 
-      <!-- Accès Professeurs -->
-      <div class="card-accueil prof-card" onclick="ouvrirModalProf()">
-        <div class="card-icon">👨‍🏫</div>
+      <!-- Lien Grades Judo -->
+      <a class="card-accueil" href="https://fabriceetchristiane-star.github.io/grades-Judo/" target="_blank" style="border-left: 6px solid #1a1a2e;">
+        <div class="card-icon" style="color: #1a1a2e;">🎓</div>
         <div class="card-content">
-          <h3>Accès Professeurs</h3>
-          <p>Espace réservé</p>
+          <h3>Grades Judo</h3>
+          <p>Programme officiel des grades du club</p>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
 
-  <!-- Modal pour la connexion professeurs -->
-  <div id="modalProf" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="fermerModalProf()">&times;</span>
-      <h2>🔐 Accès Professeurs</h2>
-      <p style="color: #666; margin-bottom: 20px; text-align: center;">
-        Espace réservé aux enseignants du club
-      </p>
-      
-      <form id="loginForm">
-        <div class="form-group">
-          <label for="password">Mot de passe :</label>
-          <input type="password" id="password" name="password" required 
-                 placeholder="Entrez le mot de passe" autocomplete="current-password">
-        </div>
-        
-        <div id="errorMessage" class="error-message">
-          ❌ Mot de passe incorrect
-        </div>
-        
-        <button type="submit" class="btn-connexion">
-          🔐 Se connecter
-        </button>
-      </form>
-      
-      <p style="text-align: center; margin-top: 20px; font-size: 0.9em; color: #777;">
-        Session valide 24h • Déconnexion automatique
-      </p>
-    </div>
-  </div>
-
   <footer>
-    <p>Version locale – Respect de la vie privée – Mise à jour selon les cours du dojo</p>
-    <p style="font-size: 0.8em; color: #666;">🔒 Authentification sécurisée v1.0</p>
+    <p>Dojo Numérique — Club Judo Lambersart JAK</p>
   </footer>
 
   <script>
-    // ===== SYSTÈME D'AUTHENTIFICATION =====
-    function ouvrirModalProf() {
-        document.getElementById('modalProf').style.display = 'block';
-        document.getElementById('password').focus();
-        document.getElementById('errorMessage').style.display = 'none';
-    }
-
-    function fermerModalProf() {
-        document.getElementById('modalProf').style.display = 'none';
-        document.getElementById('password').value = '';
-        document.getElementById('errorMessage').style.display = 'none';
-    }
-
-    // Gestion du formulaire de connexion
     document.addEventListener('DOMContentLoaded', function() {
-      console.log("🏠 Page d'accueil chargée");
-      
-      // Attendre que auth.js soit chargé
-      const loginForm = document.getElementById('loginForm');
-      if (loginForm) {
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Vérifier que auth est disponible
-            if (typeof auth === 'undefined') {
-              alert('❌ Erreur : Système d\'authentification non chargé. Rafraîchissez la page.');
-              return;
-            }
-            
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('errorMessage');
-            
-            if (auth.verifyPassword(password)) {
-                auth.createSession();
-                window.location.href = 'admin.html';
-            } else {
-                errorMessage.style.display = 'block';
-                document.getElementById('password').value = '';
-                document.getElementById('password').focus();
-                document.getElementById('password').style.borderColor = '#dc3545';
-                setTimeout(() => {
-                    document.getElementById('password').style.borderColor = '#ddd';
-                }, 1000);
-            }
-        });
-      }
-    });
-    
-    // Fermer modal en cliquant dehors
-    window.onclick = function(event) {
-        const modal = document.getElementById('modalProf');
-        if (event.target === modal) {
-            fermerModalProf();
-        }
-    };
-
-    // Fermer modal avec Échap
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            fermerModalProf();
-        }
+      console.log("Dojo Numérique chargé");
     });
   </script>
 </body>
