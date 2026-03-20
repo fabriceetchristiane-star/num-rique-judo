@@ -172,6 +172,28 @@ function chargerDocumentsDrive(gradeId) {
         `;
         block.appendChild(el);
       }
+      if (docs.nage_no_kata) {
+        const el = document.createElement("div");
+        el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
+        el.innerHTML = `
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">📖</div>
+          <h3 style="color:#2c3e50; margin:0.5rem 0;">Nage no Kata — Kodokan</h3>
+          <a href="${docs.nage_no_kata}" target="_blank" style="display:inline-block; margin-top:0.5rem; background:#2c3e50; color:white; padding:0.5rem 1.2rem; border-radius:20px; text-decoration:none; font-weight:bold; font-size:0.9rem;">📄 Ouvrir le document</a>
+        `;
+        block.appendChild(el);
+      }
+
+      if (docs.goshin_jitsu) {
+        const el = document.createElement("div");
+        el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
+        el.innerHTML = `
+          <div style="font-size:2.5rem; margin-bottom:0.5rem;">📖</div>
+          <h3 style="color:#2c3e50; margin:0.5rem 0;">Goshin Jitsu — Kodokan</h3>
+          <a href="${docs.goshin_jitsu}" target="_blank" style="display:inline-block; margin-top:0.5rem; background:#2c3e50; color:white; padding:0.5rem 1.2rem; border-radius:20px; text-decoration:none; font-weight:bold; font-size:0.9rem;">📄 Ouvrir le document</a>
+        `;
+        block.appendChild(el);
+      }
+
       if (docs.memo) {
         const el = document.createElement("div");
         el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
