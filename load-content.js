@@ -195,6 +195,30 @@ function chargerDocumentsDrive(gradeId) {
       }
 
 
+      if (docs.video_nage_no_kata) {
+        const el = document.createElement("div");
+        el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
+        el.innerHTML = `<div style="font-size:2rem;">🎬</div><h3 style="color:#2c3e50;">Nage no Kata — Kodokan (vidéo)</h3><a href="${docs.video_nage_no_kata}" target="_blank" style="display:inline-block;margin-top:0.5rem;background:#e74c3c;color:white;padding:0.5rem 1.2rem;border-radius:20px;text-decoration:none;font-weight:bold;">▶ Voir la vidéo</a>`;
+        block.appendChild(el);
+      }
+      if (docs.video_goshin_jitsu) {
+        const el = document.createElement("div");
+        el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
+        el.innerHTML = `<div style="font-size:2rem;">🎬</div><h3 style="color:#2c3e50;">Goshin Jitsu — Kodokan (vidéo)</h3><a href="${docs.video_goshin_jitsu}" target="_blank" style="display:inline-block;margin-top:0.5rem;background:#e74c3c;color:white;padding:0.5rem 1.2rem;border-radius:20px;text-decoration:none;font-weight:bold;">▶ Voir la vidéo</a>`;
+        block.appendChild(el);
+      }
+      if (docs.livre_nage_no_kata) {
+        const el = document.createElement("div");
+        el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
+        el.innerHTML = `<div style="font-size:2rem;">📖</div><h3 style="color:#2c3e50;">Nage no Kata — Livre Kodokan</h3><a href="${docs.livre_nage_no_kata}" target="_blank" style="display:inline-block;margin-top:0.5rem;background:#2c3e50;color:white;padding:0.5rem 1.2rem;border-radius:20px;text-decoration:none;font-weight:bold;">📄 Ouvrir le livre</a>`;
+        block.appendChild(el);
+      }
+      if (docs.livre_goshin_jitsu) {
+        const el = document.createElement("div");
+        el.style.cssText = "background:white; padding:1rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; margin-bottom:1rem;";
+        el.innerHTML = `<div style="font-size:2rem;">📖</div><h3 style="color:#2c3e50;">Goshin Jitsu — Livre Kodokan</h3><a href="${docs.livre_goshin_jitsu}" target="_blank" style="display:inline-block;margin-top:0.5rem;background:#2c3e50;color:white;padding:0.5rem 1.2rem;border-radius:20px;text-decoration:none;font-weight:bold;">📄 Ouvrir le livre</a>`;
+        block.appendChild(el);
+      }
     })
     .catch(err => console.error('Erreur documents Drive:', err));
 }

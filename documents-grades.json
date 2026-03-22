@@ -20,9 +20,11 @@
     "resume":   "https://drive.google.com/file/d/1Gn9mAskXKzyTbQn0lpr0U-azldIgxdk9/view?usp=drive_link"
   },
   "marron-noir": {
-    "tablette":     "https://drive.google.com/file/d/1Gw6xIcyDP3kY0OcoYfYiXqD0oJQTj96B/view?usp=drive_link",
-    "resume":       "https://drive.google.com/file/d/1F_mBXy38m-Uee1yrJZXHpfE8p_zETFzs/view?usp=drive_link",
-    "nage_no_kata": "https://drive.google.com/file/d/10B2T2JkeHC7uc59eewmkNyYLNYdXXMmd/view?usp=drive_link",
-    "goshin_jitsu": "https://drive.google.com/file/d/1MU1f-1i5IrbPvSJJ5ezjKZnH5xwzrGDk/view?usp=drive_link"
+    "tablette":          "https://drive.google.com/file/d/1Gw6xIcyDP3kY0OcoYfYiXqD0oJQTj96B/view?usp=drive_link",
+    "resume":            "https://drive.google.com/file/d/1F_mBXy38m-Uee1yrJZXHpfE8p_zETFzs/view?usp=drive_link",
+    "video_nage_no_kata":"https://youtu.be/Suk2__BG69Q",
+    "video_goshin_jitsu":"https://youtu.be/qcxKDm8Af7M",
+    "livre_nage_no_kata":"https://78884ca60822a34fb0e6-082b8fd5551e97bc65e327988b444396.ssl.cf3.rackcdn.com/up/2020/07/Nage-no-kata_FRA-1596187174-1596187174.pdf",
+    "livre_goshin_jitsu":"https://78884ca60822a34fb0e6-082b8fd5551e97bc65e327988b444396.ssl.cf3.rackcdn.com/up/2022/07/Goshin_jutsu_FR-1657632234-1657632234.pdf"
   }
 }
