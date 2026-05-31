@@ -15,6 +15,7 @@
       { "nom": "Uchi mata sukashi", "desc": "Esquive de uchi mata", "video": "https://youtu.be/V-RS3uhtVWM" }
     ],
     "autres-projections": [
+      { "nom": "Kubi nage", "desc": "Projection par le cou", "video": "https://youtu.be/7zCgLqa1VbI" },
       { "nom": "Hane goshi", "desc": "Projection en ciseau de hanche", "video": "https://youtu.be/M9_7De6A1kk" },
       { "nom": "Kuchiki taoshi", "desc": "Abattage d'arbre mort", "video": "https://youtu.be/ZNL47q1aJNY" },
       { "nom": "Ura nage", "desc": "Projection vers l'arrière", "video": "https://youtu.be/Fgi9b8DJ5sQ" },
