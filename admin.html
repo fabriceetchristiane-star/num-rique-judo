@@ -137,6 +137,7 @@
     <div class="onglet" onclick="afficherOnglet('informations')">📢 Informations</div>
     <div class="onglet" onclick="afficherOnglet('pdf')">📄 Documents PDF</div>
     <div class="onglet" onclick="afficherOnglet('grades')">🥋 Contenu des Grades</div>
+    <div class="onglet" onclick="afficherOnglet('competitions')" style="background: #e74c3c;">🏆 Compétitions</div>
     <div class="onglet" onclick="afficherOnglet('sauvegarde')" style="background: #e67e22;">💾 Sauvegarde</div>
   </div>
 
@@ -428,6 +429,115 @@
       </div>
     </div>
   </section>
+
+  <!-- Onglet Compétitions -->
+  <div id="onglet-competitions" class="contenu-onglet">
+    <div class="section-admin">
+      <h2>🏆 Gestion des Compétitions & Résultats</h2>
+      <p style="color:#666;margin-bottom:1.5rem;">Les données sont sauvegardées dans <strong>competitions.json</strong>. Copiez le JSON généré et remplacez le fichier sur votre PC.</p>
+
+      <!-- AJOUTER UN RÉSULTAT -->
+      <div style="background:#eaf2fb;border-left:5px solid #3498db;border-radius:8px;padding:1.5rem;margin-bottom:2rem;">
+        <h3 style="margin-top:0;">➕ Ajouter un résultat du club</h3>
+        <div class="form-group">
+          <label>👤 Nom du judoka :</label>
+          <input type="text" id="res-judoka" placeholder="Ex: Jean Dupont" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+        </div>
+        <div class="form-group">
+          <label>🏆 Compétition :</label>
+          <input type="text" id="res-competition" placeholder="Ex: Tournoi de Lomme" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+        </div>
+        <div class="form-group">
+          <label>📅 Date :</label>
+          <input type="date" id="res-date" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+        </div>
+        <div class="form-group">
+          <label>📍 Lieu :</label>
+          <input type="text" id="res-lieu" placeholder="Ex: Lomme" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+        </div>
+        <div class="form-group">
+          <label>🎯 Catégorie :</label>
+          <select id="res-categorie" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+            <option value="poussins">Poussins</option>
+            <option value="benjamins">Benjamins</option>
+            <option value="minimes">Minimes</option>
+            <option value="cadets">Cadets</option>
+            <option value="juniors">Juniors</option>
+            <option value="seniors">Seniors</option>
+            <option value="veterans">Vétérans</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>⚖️ Catégorie de poids :</label>
+          <input type="text" id="res-poids" placeholder="Ex: -50 kg" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+        </div>
+        <div class="form-group">
+          <label>🥇 Place obtenue :</label>
+          <select id="res-place" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+            <option value="1">🥇 1ère place</option>
+            <option value="2">🥈 2ème place</option>
+            <option value="3">🥉 3ème place</option>
+            <option value="autre">🎖️ Participation</option>
+          </select>
+        </div>
+        <button onclick="ajouterResultat()" class="btn-connexion" style="background:#e74c3c;">🏆 Ajouter ce résultat</button>
+      </div>
+
+      <!-- LISTE DES RÉSULTATS -->
+      <div style="background:#f8f9fa;border-radius:8px;padding:1.5rem;margin-bottom:2rem;">
+        <h3 style="margin-top:0;">📋 Résultats enregistrés</h3>
+        <div id="liste-resultats-admin">Chargement...</div>
+      </div>
+
+      <!-- AJOUTER UNE COMPÉTITION AU CALENDRIER -->
+      <div style="background:#eafaf1;border-left:5px solid #2ecc71;border-radius:8px;padding:1.5rem;margin-bottom:2rem;">
+        <h3 style="margin-top:0;">📆 Ajouter une compétition au calendrier</h3>
+        <div class="form-group">
+          <label>📌 Titre :</label>
+          <input type="text" id="cal-titre" placeholder="Ex: Tournoi de Lomme" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+        </div>
+        <div class="form-group">
+          <label>📍 Lieu :</label>
+          <input type="text" id="cal-lieu" placeholder="Ex: Lomme" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+        </div>
+        <div class="form-group">
+          <label>📅 Date :</label>
+          <input type="date" id="cal-date" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+        </div>
+        <div class="form-group">
+          <label>🎯 Catégories concernées :</label><br>
+          <label style="margin-right:1rem;"><input type="checkbox" value="poussins"> Poussins</label>
+          <label style="margin-right:1rem;"><input type="checkbox" value="benjamins"> Benjamins</label>
+          <label style="margin-right:1rem;"><input type="checkbox" value="minimes"> Minimes</label>
+          <label style="margin-right:1rem;"><input type="checkbox" value="cadets"> Cadets</label>
+          <label style="margin-right:1rem;"><input type="checkbox" value="juniors"> Juniors</label>
+          <label style="margin-right:1rem;"><input type="checkbox" value="seniors"> Seniors</label>
+          <label><input type="checkbox" value="veterans"> Vétérans</label>
+        </div>
+        <div class="form-group">
+          <label>📊 Niveau :</label>
+          <select id="cal-niveau" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+            <option value="Amical">Amical</option>
+            <option value="Départemental">Départemental</option>
+            <option value="Régional">Régional</option>
+            <option value="National">National</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>ℹ️ Information complémentaire :</label>
+          <input type="text" id="cal-info" placeholder="Ex: Format 2 minutes, poules" style="width:100%;max-width:400px;padding:0.5rem;border:1px solid #ccc;border-radius:6px;">
+        </div>
+        <button onclick="ajouterCompetitionCalendrier()" class="btn-connexion" style="background:#2ecc71;">📆 Ajouter au calendrier</button>
+      </div>
+
+      <!-- EXPORT JSON -->
+      <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:1.5rem;">
+        <h3 style="margin-top:0;color:#856404;">💾 Exporter competitions.json</h3>
+        <p style="color:#856404;font-size:0.9rem;">Téléchargez le fichier mis à jour et remplacez-le dans le dossier du site, puis faites git add / commit / push.</p>
+        <button onclick="exporterCompetitions()" class="btn-connexion" style="background:#f39c12;">📥 Télécharger competitions.json</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Onglet Sauvegarde -->
   <section id="onglet-sauvegarde" class="contenu-onglet" style="display: none;">
@@ -1127,6 +1237,117 @@
       
       reader.readAsText(file);
     }
+
+    // ===== GESTION DES COMPÉTITIONS =====
+    let dataCompetitions = { competitions: [], resultats: [] };
+
+    async function chargerCompetitionsAdmin() {
+      try {
+        const r = await fetch('competitions.json');
+        dataCompetitions = await r.json();
+        afficherResultatsAdmin();
+      } catch(e) {
+        dataCompetitions = { competitions: [], resultats: [] };
+        afficherResultatsAdmin();
+      }
+    }
+
+    function afficherResultatsAdmin() {
+      const div = document.getElementById('liste-resultats-admin');
+      if (!div) return;
+      const res = dataCompetitions.resultats || [];
+      if (res.length === 0) {
+        div.innerHTML = '<p style="color:#aaa;font-style:italic;">Aucun résultat enregistré pour le moment.</p>';
+        return;
+      }
+      const PODIUMS = { '1':'🥇', '2':'🥈', '3':'🥉', 'autre':'🎖️' };
+      div.innerHTML = res.map((r, i) => `
+        <div style="display:flex;align-items:center;gap:1rem;background:white;border-radius:8px;
+          padding:0.8rem 1rem;margin-bottom:0.5rem;box-shadow:0 1px 4px rgba(0,0,0,0.08);border-left:4px solid #f1c40f;">
+          <span style="font-size:1.8rem;">${PODIUMS[r.place]||'🎖️'}</span>
+          <div style="flex:1;">
+            <strong>${r.judoka}</strong> — ${r.competition}<br>
+            <small style="color:#888;">${r.categorie} ${r.poids ? '· ' + r.poids : ''} · ${r.date||''} · ${r.lieu||''}</small>
+          </div>
+          <button onclick="supprimerResultat(${i})" style="background:#dc3545;color:white;border:none;
+            padding:5px 10px;border-radius:4px;cursor:pointer;">🗑️</button>
+        </div>
+      `).join('');
+    }
+
+    function supprimerResultat(index) {
+      if (!confirm('Supprimer ce résultat ?')) return;
+      dataCompetitions.resultats.splice(index, 1);
+      afficherResultatsAdmin();
+      afficherMessage('✅ Résultat supprimé. N\'oubliez pas d\'exporter le JSON.');
+    }
+
+    function ajouterResultat() {
+      const judoka = document.getElementById('res-judoka').value.trim();
+      const competition = document.getElementById('res-competition').value.trim();
+      const date = document.getElementById('res-date').value;
+      const lieu = document.getElementById('res-lieu').value.trim();
+      const categorie = document.getElementById('res-categorie').value;
+      const poids = document.getElementById('res-poids').value.trim();
+      const place = document.getElementById('res-place').value;
+
+      if (!judoka || !competition) {
+        afficherMessage('❌ Nom du judoka et compétition obligatoires.', 'error');
+        return;
+      }
+
+      dataCompetitions.resultats.push({ judoka, competition, date, lieu, categorie, poids, place });
+      afficherResultatsAdmin();
+      afficherMessage('✅ Résultat ajouté ! N\'oubliez pas d\'exporter le JSON.');
+
+      // Vider les champs
+      ['res-judoka','res-competition','res-date','res-lieu','res-poids'].forEach(id => document.getElementById(id).value = '');
+    }
+
+    function ajouterCompetitionCalendrier() {
+      const titre = document.getElementById('cal-titre').value.trim();
+      const lieu = document.getElementById('cal-lieu').value.trim();
+      const date = document.getElementById('cal-date').value;
+      const niveau = document.getElementById('cal-niveau').value;
+      const info = document.getElementById('cal-info').value.trim();
+      const categories = [...document.querySelectorAll('#onglet-competitions input[type=checkbox]:checked')].map(cb => cb.value);
+
+      if (!titre || !date || categories.length === 0) {
+        afficherMessage('❌ Titre, date et au moins une catégorie sont obligatoires.', 'error');
+        return;
+      }
+
+      const d = new Date(date);
+      const mois = d.toLocaleDateString('fr-FR', { month:'long', year:'numeric' }).replace(/^\w/, c => c.toUpperCase());
+      const id = 'comp-' + Date.now();
+
+      dataCompetitions.competitions.push({ id, titre, lieu, date, mois, categories, niveau, info });
+      afficherMessage('✅ Compétition ajoutée au calendrier ! N\'oubliez pas d\'exporter le JSON.');
+
+      ['cal-titre','cal-date','cal-lieu','cal-info'].forEach(id => document.getElementById(id).value = '');
+      document.querySelectorAll('#onglet-competitions input[type=checkbox]').forEach(cb => cb.checked = false);
+    }
+
+    function exporterCompetitions() {
+      const json = JSON.stringify(dataCompetitions, null, 2);
+      const blob = new Blob([json], { type:'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'competitions.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      afficherMessage('✅ Fichier téléchargé ! Remplacez competitions.json dans le dossier du site et faites un git push.');
+    }
+
+    // Charger les compétitions quand l'onglet est ouvert
+    document.addEventListener('DOMContentLoaded', function() {
+      const origAfficher = window.afficherOnglet;
+      window.afficherOnglet = function(onglet) {
+        origAfficher(onglet);
+        if (onglet === 'competitions') chargerCompetitionsAdmin();
+      };
+    });
   </script>
 </body>
 </html>

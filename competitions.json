@@ -1,0 +1,35 @@
+{
+  "competitions": [
+    {
+      "id": "comp-001",
+      "titre": "Animations de Secteur — Métropole Nord",
+      "lieu": "Lomme / Marcq-en-Baroeul / La Madeleine",
+      "date": "2026-09-15",
+      "mois": "Septembre 2026",
+      "categories": ["poussins", "benjamins"],
+      "niveau": "Départemental",
+      "info": "Rencontres amicales en poules, format 2 min"
+    },
+    {
+      "id": "comp-002",
+      "titre": "Tournoi de Secteur Métropole Nord",
+      "lieu": "Lambersart",
+      "date": "2026-10-10",
+      "mois": "Octobre 2026",
+      "categories": ["benjamins", "minimes"],
+      "niveau": "Départemental",
+      "info": "Compétitions amicales préparatoires aux sélections"
+    },
+    {
+      "id": "comp-003",
+      "titre": "Championnats Départementaux",
+      "lieu": "Lille",
+      "date": "2026-11-20",
+      "mois": "Novembre 2026",
+      "categories": ["minimes", "cadets", "juniors"],
+      "niveau": "Départemental",
+      "info": "Sélection pour les championnats régionaux"
+    }
+  ],
+  "resultats": []
+}

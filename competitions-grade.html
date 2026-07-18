@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compétitions & Résultats — Dojo Numérique</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+    body { font-family:'Segoe UI',sans-serif; background:#f8f9fa; color:#333; margin:0; padding:0; }
+
+    header { color:white; padding:2rem 1rem; text-align:center; border-radius:0 0 15px 15px; margin-bottom:2rem; }
+    header h1 { margin:0; font-size:1.6rem; }
+    header p  { margin:0.3rem 0 0; opacity:0.85; }
+
+    .container { max-width:960px; margin:0 auto; padding:0 1rem 3rem; }
+
+    /* Onglets */
+    .onglets { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.5rem; }
+    .onglet-btn { padding:0.55rem 1.2rem; border-radius:20px; border:none; cursor:pointer;
+      font-size:0.88rem; font-weight:bold; background:#e0e0e0; color:#333; transition:all .2s; }
+    .onglet-btn.active { color:white; }
+    .onglet-section { display:none; }
+    .onglet-section.active { display:block; }
+
+    /* Mois */
+    .mois-titre { font-size:1.05rem; font-weight:bold; color:#2c3e50; margin:1.5rem 0 0.7rem;
+      padding:0.4rem 0.8rem; background:#eaf2fb; border-left:4px solid #3498db; border-radius:0 6px 6px 0; }
+
+    /* Cartes compétition */
+    .comp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; margin-bottom:1rem; }
+    .comp-card { background:white; border-radius:10px; padding:1.2rem;
+      box-shadow:0 2px 8px rgba(0,0,0,0.09); border-top:4px solid #3498db; }
+    .comp-badge { display:inline-block; font-size:0.72rem; font-weight:bold; color:white;
+      padding:0.2rem 0.6rem; border-radius:12px; margin:0.15rem; }
+    .comp-card h4 { margin:0.5rem 0 0.3rem; color:#2c3e50; font-size:0.95rem; }
+    .comp-card p  { margin:0.15rem 0; color:#666; font-size:0.85rem; }
+    .comp-niveau  { display:inline-block; font-size:0.75rem; background:#eaf2fb;
+      color:#2980b9; padding:0.2rem 0.6rem; border-radius:10px; margin-top:0.4rem; }
+
+    /* Résultats */
+    .res-card { background:white; border-radius:10px; padding:1rem 1.3rem;
+      box-shadow:0 2px 8px rgba(0,0,0,0.09); border-left:5px solid #f1c40f;
+      margin-bottom:0.8rem; display:flex; align-items:center; gap:1rem; }
+    .podium { font-size:2rem; min-width:2.5rem; text-align:center; }
+    .res-info h4 { margin:0 0 0.2rem; color:#2c3e50; font-size:0.95rem; }
+    .res-info p  { margin:0; color:#666; font-size:0.85rem; }
+    .res-vide { text-align:center; color:#aaa; font-style:italic; padding:2rem; }
+
+    /* Boutons nav */
+    .btn-retour { display:inline-flex; align-items:center; gap:0.5rem; background:#3498db;
+      color:white; padding:0.65rem 1.3rem; border-radius:25px; text-decoration:none;
+      font-weight:bold; font-size:0.88rem; margin:0.3rem; transition:all .2s; }
+    .btn-retour:hover { background:#2980b9; color:white; }
+
+    .alerte-vide { background:#fff3cd; border:1px solid #ffc107; border-radius:8px;
+      padding:1rem; font-size:0.9rem; color:#856404; margin-bottom:1rem; text-align:center; }
+
+    footer { text-align:center; padding:1.5rem; background:#2c3e50; color:white; margin-top:2rem; }
+
+    @media(max-width:600px) { .comp-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<header id="page-header">
+  <h1 id="header-titre">🏆 Compétitions & Résultats</h1>
+  <p id="header-sous-titre">Compétitions du mois et résultats du club</p>
+</header>
+
+<div class="container">
+  <div class="onglets">
+    <button class="onglet-btn active" onclick="afficherOnglet('ce-mois',this)">📅 Ce mois-ci</button>
+    <button class="onglet-btn" onclick="afficherOnglet('a-venir',this)">📆 À venir</button>
+    <button class="onglet-btn" onclick="afficherOnglet('resultats',this)">🥇 Résultats du club</button>
+  </div>
+
+  <!-- CE MOIS -->
+  <div id="onglet-ce-mois" class="onglet-section active">
+    <div id="contenu-ce-mois"></div>
+  </div>
+
+  <!-- A VENIR -->
+  <div id="onglet-a-venir" class="onglet-section">
+    <div id="contenu-a-venir"></div>
+  </div>
+
+  <!-- RESULTATS -->
+  <div id="onglet-resultats" class="onglet-section">
+    <div id="contenu-resultats"></div>
+  </div>
+
+  <nav style="text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid #eee;">
+    <a class="btn-retour" id="btn-retour-grade" href="videos-par-grade.html">⬅️ Retour à mon grade</a>
+    <a class="btn-retour" href="index.html">🏠 Accueil</a>
+  </nav>
+</div>
+
+<footer><p>Dojo Numérique — Club Judo Lambersart JAK</p></footer>
+
+<script>
+// =====================================================
+// CORRESPONDANCE GRADE → CATEGORIES D'AGE
+// =====================================================
+const GRADE_CONFIG = {
+  'blanche-jaune': {
+    label: 'Blanche / Jaune',
+    couleur: '#FFD700',
+    couleurHeader: 'linear-gradient(135deg, #b8860b, #FFD700)',
+    categories: ['poussins', 'benjamins'],
+    retour: 'videos-blanche-jaune.html'
+  },
+  'jaune-orange': {
+    label: 'Jaune / Orange',
+    couleur: '#FFA500',
+    couleurHeader: 'linear-gradient(135deg, #e67e00, #FFA500)',
+    categories: ['poussins', 'benjamins'],
+    retour: 'videos-jaune-orange.html'
+  },
+  'orange-verte': {
+    label: 'Orange / Verte',
+    couleur: '#2ecc71',
+    couleurHeader: 'linear-gradient(135deg, #1a8a4a, #2ecc71)',
+    categories: ['benjamins', 'minimes'],
+    retour: 'videos-orange-verte.html'
+  },
+  'verte-bleue': {
+    label: 'Verte / Bleue',
+    couleur: '#3498db',
+    couleurHeader: 'linear-gradient(135deg, #1a6fa8, #3498db)',
+    categories: ['benjamins', 'minimes'],
+    retour: 'videos-verte-bleue.html'
+  },
+  'bleue-marron': {
+    label: 'Bleue / Marron',
+    couleur: '#8B4513',
+    couleurHeader: 'linear-gradient(135deg, #5c2d0a, #8B4513)',
+    categories: ['minimes', 'cadets', 'juniors'],
+    retour: 'videos-bleue-marron.html'
+  },
+  'marron-noir': {
+    label: 'Marron / Noir',
+    couleur: '#1a1a2e',
+    couleurHeader: 'linear-gradient(135deg, #0a0a14, #2c3e50)',
+    categories: ['cadets', 'juniors', 'seniors'],
+    retour: 'videos-marron-noir.html'
+  },
+  'noir': {
+    label: 'Ceinture Noire',
+    couleur: '#1a1a2e',
+    couleurHeader: 'linear-gradient(135deg, #000, #1a1a2e)',
+    categories: ['seniors', 'veterans'],
+    retour: 'videos-noir.html'
+  }
+};
+
+const LABELS_CAT = {
+  poussins: 'Poussins', benjamins: 'Benjamins', minimes: 'Minimes',
+  cadets: 'Cadets', juniors: 'Juniors', seniors: 'Seniors', veterans: 'Vétérans'
+};
+
+const COULEURS_CAT = {
+  poussins: '#e74c3c', benjamins: '#f39c12', minimes: '#2ecc71',
+  cadets: '#9b59b6', juniors: '#3498db', seniors: '#1a1a2e', veterans: '#7f8c8d'
+};
+
+const PODIUMS = { '1': '🥇', '2': '🥈', '3': '🥉' };
+
+// =====================================================
+// INIT
+// =====================================================
+let grade = null;
+let config = null;
+let toutesCompetitions = [];
+let tousResultats = [];
+
+function getGradeUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('grade') || 'blanche-jaune';
+}
+
+function afficherOnglet(id, btn) {
+  document.querySelectorAll('.onglet-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.onglet-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('onglet-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+function badgesCat(cats) {
+  return cats.map(c => `<span class="comp-badge" style="background:${COULEURS_CAT[c]||'#888'}">${LABELS_CAT[c]||c}</span>`).join(' ');
+}
+
+function carteComp(c) {
+  return `
+    <div class="comp-card">
+      <div>${badgesCat(c.categories)}</div>
+      <h4>${c.titre}</h4>
+      <p>📍 ${c.lieu}</p>
+      <p>🗓️ ${c.mois}</p>
+      ${c.info ? `<p>ℹ️ ${c.info}</p>` : ''}
+      <span class="comp-niveau">${c.niveau || ''}</span>
+    </div>`;
+}
+
+function filtrerParGrade(comps) {
+  return comps.filter(c => c.categories.some(cat => config.categories.includes(cat)));
+}
+
+function construireCeMois(comps) {
+  const maintenant = new Date();
+  const moisCourant = maintenant.getMonth();
+  const anneeCourante = maintenant.getFullYear();
+
+  const filtrees = filtrerParGrade(comps).filter(c => {
+    const d = new Date(c.date);
+    return d.getMonth() === moisCourant && d.getFullYear() === anneeCourante;
+  });
+
+  if (filtrees.length === 0) {
+    return `<div class="alerte-vide">📭 Aucune compétition prévue ce mois-ci pour les catégories <strong>${config.categories.map(c => LABELS_CAT[c]).join(', ')}</strong>.<br>Consulte l'onglet "À venir" pour les prochaines dates.</div>`;
+  }
+
+  return '<div class="comp-grid">' + filtrees.map(carteComp).join('') + '</div>';
+}
+
+function construireAvenir(comps) {
+  const maintenant = new Date();
+  const debutProchainMois = new Date(maintenant.getFullYear(), maintenant.getMonth() + 1, 1);
+
+  const filtrees = filtrerParGrade(comps).filter(c => new Date(c.date) >= debutProchainMois);
+
+  if (filtrees.length === 0) {
+    return `<div class="alerte-vide">📭 Aucune compétition à venir pour le moment. Le calendrier sera mis à jour prochainement.</div>`;
+  }
+
+  // Grouper par mois
+  const parMois = {};
+  filtrees.forEach(c => {
+    if (!parMois[c.mois]) parMois[c.mois] = [];
+    parMois[c.mois].push(c);
+  });
+
+  let html = '';
+  Object.keys(parMois).forEach(mois => {
+    html += `<div class="mois-titre">📆 ${mois}</div><div class="comp-grid">`;
+    html += parMois[mois].map(carteComp).join('');
+    html += '</div>';
+  });
+  return html;
+}
+
+function construireResultats(resultats) {
+  const filtres = resultats.filter(r => config.categories.includes(r.categorie));
+
+  if (filtres.length === 0) {
+    return `<div class="res-vide">🏅 Les résultats du club seront publiés après chaque compétition.<br>Bravo à tous les compétiteurs !</div>`;
+  }
+
+  // Grouper par compétition
+  const parComp = {};
+  filtres.forEach(r => {
+    if (!parComp[r.competition]) parComp[r.competition] = [];
+    parComp[r.competition].push(r);
+  });
+
+  let html = '';
+  Object.keys(parComp).forEach(comp => {
+    html += `<div class="mois-titre">🏆 ${comp}</div>`;
+    parComp[comp].forEach(r => {
+      html += `
+        <div class="res-card">
+          <div class="podium">${PODIUMS[r.place] || '🎖️'}</div>
+          <div class="res-info">
+            <h4>${r.judoka}</h4>
+            <p>${r.categorie_age || ''} ${r.poids ? '— ' + r.poids : ''} — ${r.competition}</p>
+            <p>${r.date || ''} ${r.lieu ? '— ' + r.lieu : ''}</p>
+          </div>
+        </div>`;
+    });
+  });
+  return html;
+}
+
+// =====================================================
+// CHARGEMENT
+// =====================================================
+document.addEventListener('DOMContentLoaded', function() {
+  grade = getGradeUrl();
+  config = GRADE_CONFIG[grade] || GRADE_CONFIG['blanche-jaune'];
+
+  // Appliquer couleurs du grade
+  document.getElementById('page-header').style.background = config.couleurHeader;
+  document.getElementById('header-titre').textContent = '🏆 Compétitions & Résultats — ' + config.label;
+  document.getElementById('header-sous-titre').textContent = 'Catégories : ' + config.categories.map(c => LABELS_CAT[c]).join(', ');
+  document.getElementById('btn-retour-grade').href = config.retour;
+
+  // Couleur des onglets actifs
+  document.querySelectorAll('.onglet-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.onglet-btn.active').forEach(b => b.style.background = config.couleur);
+    });
+  });
+  document.querySelector('.onglet-btn.active').style.background = config.couleur;
+
+  fetch('competitions.json')
+    .then(r => r.json())
+    .then(data => {
+      toutesCompetitions = data.competitions || [];
+      tousResultats = data.resultats || [];
+
+      document.getElementById('contenu-ce-mois').innerHTML = construireCeMois(toutesCompetitions);
+      document.getElementById('contenu-a-venir').innerHTML = construireAvenir(toutesCompetitions);
+      document.getElementById('contenu-resultats').innerHTML = construireResultats(tousResultats);
+    })
+    .catch(e => {
+      console.error('Erreur chargement competitions.json :', e);
+      document.getElementById('contenu-ce-mois').innerHTML = '<div class="alerte-vide">⚠️ Erreur de chargement du calendrier.</div>';
+    });
+});
+</script>
+</body>
+</html>
