@@ -94,18 +94,18 @@
   <!-- COMPETITIONS -->
   <div id="onglet-competitions" class="onglet-section">
     <div class="section-titre">🏆 Compétitions 2026-2027</div>
-    <div id="contenu-competitions-visuels">
-      <!-- Généré dynamiquement depuis informations.json -->
+    <div class="bloc-texte" style="text-align:center;">
+      <p>Le calendrier des compétitions est désormais personnalisé selon ton grade : choisis ta ceinture pour voir les compétitions et résultats qui te concernent.</p>
+      <a class="btn-ffjda" href="videos-par-grade.html">🥋 Choisir mon grade pour voir mes compétitions</a>
     </div>
   </div>
 
   <!-- RESULTATS -->
   <div id="onglet-resultats" class="onglet-section">
     <div class="section-titre">🥇 Résultats des Compétitions</div>
-    <div id="contenu-resultats">
-      <div class="vide" style="text-align:center;padding:2rem;">
-        Les résultats seront publiés après chaque compétition 🏅
-      </div>
+    <div class="bloc-texte" style="text-align:center;">
+      <p>Les résultats sont classés par grade — choisis ta ceinture pour voir les résultats de ta catégorie.</p>
+      <a class="btn-ffjda" href="videos-par-grade.html">🥋 Choisir mon grade pour voir les résultats</a>
     </div>
   </div>
 
@@ -134,35 +134,12 @@
 </footer>
 
 <script>
-// Données compétitions structurées — Comité Nord de Judo, calendrier prévisionnel 2026/2027
-const COMPETITIONS = {
-  "SEPTEMBRE 2026": [
-    { categorie:"cadets", titre:"Tournoi Label Comité Nord Cadets", lieu:"Attiches", periode:"Samedi 26 septembre", info:"Tournoi amical — ouvert aussi aux Poussins/Benjamins/Minimes" },
-    { categorie:"minimes", titre:"Stage départemental d'arbitrage", lieu:"Merville", periode:"Dimanche 27 septembre", info:"Ouvert aux judokas à partir de Minimes souhaitant s'investir dans l'arbitrage" }
-  ],
-  "OCTOBRE 2026": [
-    { categorie:"cadets", titre:"Tournoi Label Comité Nord Cadets Espoirs", lieu:"Proville", periode:"Samedi 17 octobre", info:"Inscriptions sur Extranet" },
-    { categorie:"benjamins", titre:"Stage benjamins — préparation districts", lieu:"À confirmer", periode:"Semaine du 19 octobre", info:"" },
-    { categorie:"minimes", titre:"Stage Minimes + Cadets Espoirs", lieu:"Aniche", periode:"Mardi 20 octobre", info:"" },
-    { categorie:"minimes", titre:"Passage de grades UV1 / UV2 (départemental)", lieu:"À confirmer", periode:"Dimanche 25 octobre", info:"" }
-  ],
-  "NOVEMBRE 2026": [
-    { categorie:"minimes", titre:"Tournoi Label A Minimes", lieu:"Harnes", periode:"Samedi 7 novembre", info:"" },
-    { categorie:"cadets", titre:"Tournoi Label A Cadets + Open Départemental Jujitsu U18/U21/Séniors", lieu:"Harnes", periode:"Dimanche 8 novembre", info:"" },
-    { categorie:"minimes", titre:"District Minimes", lieu:"Vieux-Condé", periode:"Samedi 14 novembre", info:"" },
-    { categorie:"minimes", titre:"District Minimes", lieu:"Métropole", periode:"Dimanche 15 novembre", info:"" },
-    { categorie:"benjamins", titre:"Tournoi Pas-de-Calais Benjamins & Minimes (Masc. dim. / Fém. sam.)", lieu:"Pas-de-Calais", periode:"21-22 novembre", info:"" },
-    { categorie:"poussins", titre:"Stages mini-poussins / poussins", lieu:"À confirmer", periode:"28-29 novembre", info:"" }
-  ],
-  "DÉCEMBRE 2026": [
-    { categorie:"minimes", titre:"Tournoi National Kata du Nord", lieu:"Hem", periode:"Samedi 5 décembre", info:"" },
-    { categorie:"minimes", titre:"⭐ Tournoi Label A Minimes du Nord", lieu:"Lambersart (à confirmer)", periode:"Samedi 19 décembre", info:"Potentiellement organisé au club !" },
-    { categorie:"cadets", titre:"⭐ Championnat du Nord Cadets", lieu:"Lambersart (à confirmer)", periode:"Dimanche 20 décembre", info:"Potentiellement organisé au club !" },
-    { categorie:"minimes", titre:"Stage Minimes (sur sélection)", lieu:"Pecquencourt", periode:"Mardi 22 décembre", info:"" }
-  ]
-};
-
-const LABELS = { poussins:"Poussins", benjamins:"Benjamins", minimes:"Minimes", cadets:"Cadets", adultes:"Adultes" };
+function formaterTexte(t) {
+  if (!t || t.trim() === '') return '';
+  if (t.includes('<') && t.includes('>')) return t;
+  return t.split(/\n\n+/).map(function(p) { return p.trim(); }).filter(function(p) { return p.length > 0; })
+    .map(function(p) { return '<p>' + p.replace(/\n/g, '<br>') + '</p>'; }).join('');
+}
 
 function afficherOnglet(id, btn) {
   document.querySelectorAll('.onglet-section').forEach(s => s.classList.remove('active'));
@@ -171,45 +148,13 @@ function afficherOnglet(id, btn) {
   btn.classList.add('active');
 }
 
-function construireCompetitions() {
-  var html = '';
-  Object.keys(COMPETITIONS).forEach(function(mois) {
-    html += '<div class="mois-titre">📆 ' + mois + '</div>';
-    html += '<div class="comp-grid">';
-    COMPETITIONS[mois].forEach(function(c) {
-      var cat = c.categorie;
-      html += '<div class="comp-card ' + cat + '">';
-      html += '<span class="comp-badge badge-' + cat + '">' + LABELS[cat] + '</span>';
-      html += '<h4>' + c.titre + '</h4>';
-      if (c.lieu)    html += '<p>📍 ' + c.lieu + '</p>';
-      if (c.periode) html += '<p>🗓️ ' + c.periode + '</p>';
-      if (c.info)    html += '<p>ℹ️ ' + c.info + '</p>';
-      html += '</div>';
-    });
-    html += '</div>';
-  });
-  html += '<div class="comp-note">⚠️ Calendrier prévisionnel du Comité Nord de Judo — les lieux et dates peuvent évoluer. Le JAK Lambersart communiquera les convocations au fur et à mesure. Les judokas doivent être à jour de leur licence FFJDA et certificat médical. <a href="https://www.comitenordjudo.fr/medias/files/calendrier-previsionnel-26-27-diffusion.pdf" target="_blank">📄 Voir le calendrier complet de la saison (PDF)</a></div>';
-  document.getElementById('contenu-competitions-visuels').innerHTML = html;
-}
-
-function formaterTexte(t) {
-  if (!t || t.trim() === '') return '';
-  if (t.includes('<') && t.includes('>')) return t;
-  return t.split(/\n\n+/).map(function(p) { return p.trim(); }).filter(function(p) { return p.length > 0; })
-    .map(function(p) { return '<p>' + p.replace(/\n/g, '<br>') + '</p>'; }).join('');
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-  construireCompetitions();
   fetch('informations.json')
     .then(function(r) { return r.json(); })
     .then(function(data) {
       if (data.agenda)     document.getElementById('contenu-agenda').innerHTML     = formaterTexte(data.agenda) || '<span class="vide">Aucun agenda.</span>';
       if (data.actualites) document.getElementById('contenu-actualites').innerHTML = formaterTexte(data.actualites) || '<span class="vide">Aucune actualité.</span>';
       if (data.contact)    document.getElementById('contenu-contact').innerHTML    = formaterTexte(data.contact) || '<span class="vide">Contact à venir.</span>';
-      if (data.resultats && data.resultats.trim()) {
-        document.getElementById('contenu-resultats').innerHTML = formaterTexte(data.resultats);
-      }
     })
     .catch(function(e) { console.error('Erreur JSON:', e); });
   document.getElementById('date-maj').textContent = 'Saison 2026-2027';
