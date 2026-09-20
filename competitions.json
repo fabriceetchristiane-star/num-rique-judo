@@ -1,4 +1,105 @@
 {
-  "competitions": [],
+  "competitions": [
+    {
+      "id": "comp-2609a",
+      "titre": "Tournoi amical (Poussins/Benjamins/Minimes/Cadets)",
+      "lieu": "Attiches",
+      "date": "2026-09-26",
+      "mois": "Septembre 2026",
+      "categories": ["poussins", "benjamins", "minimes", "cadets"],
+      "niveau": "Amical / Départemental",
+      "info": ""
+    },
+    {
+      "id": "comp-1710a",
+      "titre": "Tournoi Cadets Espoirs",
+      "lieu": "Proville",
+      "date": "2026-10-17",
+      "mois": "Octobre 2026",
+      "categories": ["cadets"],
+      "niveau": "Départemental",
+      "info": ""
+    },
+    {
+      "id": "comp-2410a",
+      "titre": "24ème Tournoi Schuler — Mini-Poussins & Poussins",
+      "lieu": "Palais des Sports",
+      "date": "2026-10-24",
+      "mois": "Octobre 2026",
+      "categories": ["mini-poussins", "poussins"],
+      "niveau": "Départemental",
+      "info": ""
+    },
+    {
+      "id": "comp-2510a-schuler",
+      "titre": "24ème Tournoi Schuler — Benjamins/Minimes/Cadets",
+      "lieu": "Palais des Sports",
+      "date": "2026-10-25",
+      "mois": "Octobre 2026",
+      "categories": ["benjamins", "minimes", "cadets"],
+      "niveau": "Départemental",
+      "info": ""
+    },
+    {
+      "id": "comp-2510a-juniors",
+      "titre": "Tournoi Label Excellence Juniors",
+      "lieu": "Tergnier",
+      "date": "2026-10-25",
+      "mois": "Octobre 2026",
+      "categories": ["juniors"],
+      "niveau": "National (Label Excellence)",
+      "info": "À confirmer — source moins fiable"
+    },
+    {
+      "id": "comp-0711a",
+      "titre": "Tournoi de Harnes — Minimes Label A",
+      "lieu": "Salle Maréchal Chemin Valois, Harnes",
+      "date": "2026-11-07",
+      "mois": "Novembre 2026",
+      "categories": ["minimes"],
+      "niveau": "National (Label A)",
+      "info": ""
+    },
+    {
+      "id": "comp-0811a",
+      "titre": "Tournoi de Harnes — Cadet(te)s Label A",
+      "lieu": "Salle Maréchal Chemin Valois, Harnes",
+      "date": "2026-11-08",
+      "mois": "Novembre 2026",
+      "categories": ["cadets"],
+      "niveau": "National (Label A)",
+      "info": ""
+    },
+    {
+      "id": "comp-2111a-fem",
+      "titre": "Tournoi Féminin ES-Prim (Benjamines/Minimes Label B/Cadettes)",
+      "lieu": "Aréna Béthune-Bruay",
+      "date": "2026-11-21",
+      "mois": "Novembre 2026",
+      "categories": ["benjamins", "minimes", "cadets"],
+      "niveau": "Label B / Départemental",
+      "info": "Compétition féminine"
+    },
+    {
+      "id": "comp-2211a",
+      "titre": "Challenge Crédit Agricole (Benjamins/Minimes Label B)",
+      "lieu": "Aréna Béthune-Bruay",
+      "date": "2026-11-22",
+      "mois": "Novembre 2026",
+      "categories": ["benjamins", "minimes"],
+      "niveau": "Label B",
+      "info": "Compétition masculine"
+    },
+    {
+      "id": "comp-1912d",
+      "titre": "Tournoi Label A Minimes du Comité Nord",
+      "lieu": "Espace Pierre de Coubertin",
+      "date": "2026-12-19",
+      "mois": "Décembre 2026",
+      "categories": ["minimes"],
+      "niveau": "National (Label A)",
+      "info": ""
+    }
+  ],
   "resultats": []
 }
