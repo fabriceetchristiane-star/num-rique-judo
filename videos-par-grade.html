@@ -4,66 +4,113 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <title>Vidéos par grade</title>
-  
-  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
   <link rel="stylesheet" href="styles/style.css">
+  <style>
+    .grade-bloc { background:white; border-radius:14px; box-shadow:0 2px 10px rgba(0,0,0,0.08); overflow:hidden; }
+    .grade-bloc .age-cat { font-size:0.75em; color:#888; margin-top:2px; }
+    .grade-bloc-liens { display:flex; flex-direction:column; }
+    .grade-bloc-liens a.lien-techniques { padding:10px; text-align:center; text-decoration:none; color:#333; font-weight:bold; font-size:0.9em; border-top:1px solid #eee; }
+    .grade-bloc-liens a.lien-competitions { padding:10px; text-align:center; text-decoration:none; color:white; background:#3498db; font-weight:bold; font-size:0.85em; }
+    .grade-bloc-liens a.lien-competitions:hover { background:#2980b9; }
+  </style>
 </head>
 <body>
   <header>
-    <h1>📚 Choisir un grade pour réviser les techniques</h1>
-    <p>Chaque lien mène aux vidéos ajoutées par les professeurs pour ce grade</p>
+    <h1>📚 Choisir un grade</h1>
+    <p>Techniques à réviser, compétitions et résultats pour chaque ceinture</p>
   </header>
 
   <section>
     <div class="grid-accueil">
-      <a class="grade-link" href="videos-blanche-jaune.html">
-        <div style="text-align: center;">
-          <div style="font-size: 2em;">⬜🟨</div>
-          <h3>Blanche / Jaune</h3>
-        </div>
-      </a>
-      
-      <a class="grade-link" href="videos-jaune-orange.html">
-        <div style="text-align: center;">
-          <div style="font-size: 2em;">🟨🟧</div>
-          <h3>Jaune / Orange</h3>
-        </div>
-      </a>
-      
-      <a class="grade-link" href="videos-orange-verte.html">
-        <div style="text-align: center;">
-          <div style="font-size: 2em;">🟧🟩</div>
-          <h3>Orange / Verte</h3>
-        </div>
-      </a>
-      
-      <a class="grade-link" href="videos-verte-bleue.html">
-        <div style="text-align: center;">
-          <div style="font-size: 2em;">🟩🔵</div>
-          <h3>Verte / Bleue</h3>
-        </div>
-      </a>
-      
-      <a class="grade-link" href="videos-bleue-marron.html">
-        <div style="text-align: center;">
-          <div style="font-size: 2em;">🔵🟤</div>
-          <h3>Bleue / Marron</h3>
-        </div>
-      </a>
-      
-      <a class="grade-link" href="videos-marron-noir.html">
-        <div style="text-align: center;">
-          <div style="font-size: 2em;">🟤⚫</div>
-          <h3>Marron / Noir</h3>
-        </div>
-      </a>
 
+      <div class="grade-bloc">
+        <a class="grade-link" href="videos-blanche-jaune.html">
+          <div style="text-align: center;">
+            <div style="font-size: 2em;">⬜🟨</div>
+            <h3>Blanche / Jaune</h3>
+            <p class="age-cat">Mini-Poussins (6-7 ans) &amp; Poussins (8-9 ans)</p>
+          </div>
+        </a>
+        <div class="grade-bloc-liens">
+          <a class="lien-techniques" href="videos-blanche-jaune.html">🎥 Techniques par ceinture à réviser</a>
+          <a class="lien-competitions" href="competitions-grade.html?grade=blanche-jaune">🏆 Compétitions &amp; Résultats</a>
+        </div>
+      </div>
+
+      <div class="grade-bloc">
+        <a class="grade-link" href="videos-jaune-orange.html">
+          <div style="text-align: center;">
+            <div style="font-size: 2em;">🟨🟧</div>
+            <h3>Jaune / Orange</h3>
+            <p class="age-cat">Poussins (8-9 ans) &amp; Benjamins (10-11 ans)</p>
+          </div>
+        </a>
+        <div class="grade-bloc-liens">
+          <a class="lien-techniques" href="videos-jaune-orange.html">🎥 Techniques par ceinture à réviser</a>
+          <a class="lien-competitions" href="competitions-grade.html?grade=jaune-orange">🏆 Compétitions &amp; Résultats</a>
+        </div>
+      </div>
+
+      <div class="grade-bloc">
+        <a class="grade-link" href="videos-orange-verte.html">
+          <div style="text-align: center;">
+            <div style="font-size: 2em;">🟧🟩</div>
+            <h3>Orange / Verte</h3>
+            <p class="age-cat">Benjamins (10-11 ans) &amp; Minimes (12-13 ans)</p>
+          </div>
+        </a>
+        <div class="grade-bloc-liens">
+          <a class="lien-techniques" href="videos-orange-verte.html">🎥 Techniques par ceinture à réviser</a>
+          <a class="lien-competitions" href="competitions-grade.html?grade=orange-verte">🏆 Compétitions &amp; Résultats</a>
+        </div>
+      </div>
+
+      <div class="grade-bloc">
+        <a class="grade-link" href="videos-verte-bleue.html">
+          <div style="text-align: center;">
+            <div style="font-size: 2em;">🟩🔵</div>
+            <h3>Verte / Bleue</h3>
+            <p class="age-cat">Minimes (12-13 ans)</p>
+          </div>
+        </a>
+        <div class="grade-bloc-liens">
+          <a class="lien-techniques" href="videos-verte-bleue.html">🎥 Techniques par ceinture à réviser</a>
+          <a class="lien-competitions" href="competitions-grade.html?grade=verte-bleue">🏆 Compétitions &amp; Résultats</a>
+        </div>
+      </div>
+
+      <div class="grade-bloc">
+        <a class="grade-link" href="videos-bleue-marron.html">
+          <div style="text-align: center;">
+            <div style="font-size: 2em;">🔵🟤</div>
+            <h3>Bleue / Marron</h3>
+            <p class="age-cat">Cadets (14-16 ans)</p>
+          </div>
+        </a>
+        <div class="grade-bloc-liens">
+          <a class="lien-techniques" href="videos-bleue-marron.html">🎥 Techniques par ceinture à réviser</a>
+          <a class="lien-competitions" href="competitions-grade.html?grade=bleue-marron">🏆 Compétitions &amp; Résultats</a>
+        </div>
+      </div>
+
+      <div class="grade-bloc">
+        <a class="grade-link" href="videos-marron-noir.html">
+          <div style="text-align: center;">
+            <div style="font-size: 2em;">🟤⚫</div>
+            <h3>Marron / Noir</h3>
+            <p class="age-cat">Cadets (14-16 ans) &amp; Juniors (17-19 ans)</p>
+          </div>
+        </a>
+        <div class="grade-bloc-liens">
+          <a class="lien-techniques" href="videos-marron-noir.html">🎥 Techniques par ceinture à réviser</a>
+          <a class="lien-competitions" href="competitions-grade.html?grade=marron-noir">🏆 Compétitions &amp; Résultats</a>
+        </div>
+      </div>
 
     </div>
   </section>
