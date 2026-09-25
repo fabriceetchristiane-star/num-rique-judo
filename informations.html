@@ -30,22 +30,29 @@
     .section-titre { font-size:1.2rem; font-weight:bold; color:#2c3e50; margin:0 0 1rem; padding-bottom:0.5rem; border-bottom:3px solid #3498db; }
     .bloc-texte { background:white; padding:1.5rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.08); margin-bottom:1.5rem; font-size:0.95rem; }
     .vide { color:#aaa; font-style:italic; }
+    .alerte-vide { background:#fff3cd; border:1px solid #ffc107; border-radius:8px; padding:1rem; font-size:0.9rem; color:#856404; margin-bottom:1rem; text-align:center; }
 
     /* Cartes compétition */
     .mois-titre { font-size:1.1rem; font-weight:bold; color:#2c3e50; margin:1.5rem 0 0.7rem; padding:0.4rem 0.8rem; background:#eaf2fb; border-left:4px solid #3498db; border-radius:0 6px 6px 0; }
     .comp-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; margin-bottom:1rem; }
     .comp-card { background:white; border-radius:10px; padding:1.2rem; box-shadow:0 2px 8px rgba(0,0,0,0.09); border-top:4px solid #3498db; }
+    .comp-card.mini-poussins { border-top-color:#c0392b; }
     .comp-card.poussins { border-top-color:#e74c3c; }
     .comp-card.benjamins { border-top-color:#f39c12; }
     .comp-card.minimes  { border-top-color:#2ecc71; }
     .comp-card.cadets   { border-top-color:#9b59b6; }
-    .comp-card.adultes  { border-top-color:#1a1a2e; }
-    .comp-badge { display:inline-block; font-size:0.72rem; font-weight:bold; color:white; padding:0.2rem 0.6rem; border-radius:12px; margin-bottom:0.5rem; }
+    .comp-card.juniors  { border-top-color:#3498db; }
+    .comp-card.adultes, .comp-card.seniors  { border-top-color:#1a1a2e; }
+    .comp-card.veterans { border-top-color:#7f8c8d; }
+    .comp-badge { display:inline-block; font-size:0.72rem; font-weight:bold; color:white; padding:0.2rem 0.6rem; border-radius:12px; margin:0.1rem; }
+    .badge-mini-poussins { background:#c0392b; }
     .badge-poussins { background:#e74c3c; }
     .badge-benjamins { background:#f39c12; }
     .badge-minimes  { background:#2ecc71; }
     .badge-cadets   { background:#9b59b6; }
-    .badge-adultes  { background:#1a1a2e; }
+    .badge-juniors  { background:#3498db; }
+    .badge-adultes, .badge-seniors  { background:#1a1a2e; }
+    .badge-veterans { background:#7f8c8d; }
     .comp-card h4 { margin:0 0 0.3rem; color:#2c3e50; font-size:0.95rem; }
     .comp-card p { margin:0.15rem 0; color:#666; font-size:0.85rem; }
     .comp-note { background:#fef9e7; border:1px solid #f0c040; border-radius:8px; padding:0.8rem 1rem; font-size:0.85rem; color:#7d6608; margin-top:1rem; }
@@ -93,20 +100,14 @@
 
   <!-- COMPETITIONS -->
   <div id="onglet-competitions" class="onglet-section">
-    <div class="section-titre">🏆 Compétitions 2026-2027</div>
-    <div class="bloc-texte" style="text-align:center;">
-      <p>Le calendrier des compétitions est désormais personnalisé selon ton grade : choisis ta ceinture pour voir les compétitions et résultats qui te concernent.</p>
-      <a class="btn-ffjda" href="videos-par-grade.html">🥋 Choisir mon grade pour voir mes compétitions</a>
-    </div>
+    <div class="section-titre">🏆 Compétitions du mois</div>
+    <div id="contenu-competitions"></div>
   </div>
 
   <!-- RESULTATS -->
   <div id="onglet-resultats" class="onglet-section">
-    <div class="section-titre">🥇 Résultats des Compétitions</div>
-    <div class="bloc-texte" style="text-align:center;">
-      <p>Les résultats sont classés par grade — choisis ta ceinture pour voir les résultats de ta catégorie.</p>
-      <a class="btn-ffjda" href="videos-par-grade.html">🥋 Choisir mon grade pour voir les résultats</a>
-    </div>
+    <div class="section-titre">🥇 Résultats du club — ce mois-ci</div>
+    <div id="contenu-resultats"></div>
   </div>
 
   <!-- ACTUALITES -->
@@ -134,6 +135,12 @@
 </footer>
 
 <script>
+const LABELS_CAT = {
+  'mini-poussins': 'Mini-Poussins', poussins: 'Poussins', benjamins: 'Benjamins', minimes: 'Minimes',
+  cadets: 'Cadets', juniors: 'Juniors', seniors: 'Seniors', veterans: 'Vétérans'
+};
+const PODIUMS = { '1': '🥇', '2': '🥈', '3': '🥉' };
+
 function formaterTexte(t) {
   if (!t || t.trim() === '') return '';
   if (t.includes('<') && t.includes('>')) return t;
@@ -148,6 +155,79 @@ function afficherOnglet(id, btn) {
   btn.classList.add('active');
 }
 
+function badgesCat(cats) {
+  return cats.map(function(c) {
+    return '<span class="comp-badge badge-' + c + '">' + (LABELS_CAT[c] || c) + '</span>';
+  }).join(' ');
+}
+
+function carteComp(c) {
+  var premiereCat = c.categories[0] || '';
+  return '<div class="comp-card ' + premiereCat + '">' +
+    '<div>' + badgesCat(c.categories) + '</div>' +
+    '<h4>' + c.titre + '</h4>' +
+    '<p>📍 ' + c.lieu + '</p>' +
+    '<p>🗓️ ' + c.mois + '</p>' +
+    (c.info ? '<p>ℹ️ ' + c.info + '</p>' : '') +
+    '<span class="comp-note" style="display:inline-block;">' + (c.niveau || '') + '</span>' +
+    '</div>';
+}
+
+function afficherCompetitionsDuMois(comps) {
+  var maintenant = new Date();
+  var moisCourant = maintenant.getMonth();
+  var anneeCourante = maintenant.getFullYear();
+
+  var filtrees = comps.filter(function(c) {
+    var d = new Date(c.date);
+    return d.getMonth() === moisCourant && d.getFullYear() === anneeCourante;
+  });
+
+  var html = '';
+  if (filtrees.length === 0) {
+    html = '<div class="alerte-vide">📭 Aucune compétition prévue ce mois-ci. Consulte le calendrier complet via « Choisir mon grade » sur l\'accueil pour voir les prochaines dates.</div>';
+  } else {
+    html = '<div class="comp-grid">' + filtrees.map(carteComp).join('') + '</div>';
+  }
+  document.getElementById('contenu-competitions').innerHTML = html;
+}
+
+function afficherResultatsDuMois(resultats) {
+  var maintenant = new Date();
+  var moisCourant = maintenant.getMonth();
+  var anneeCourante = maintenant.getFullYear();
+
+  var filtres = resultats.filter(function(r) {
+    if (!r.date) return false;
+    var d = new Date(r.date);
+    return d.getMonth() === moisCourant && d.getFullYear() === anneeCourante;
+  });
+
+  var html = '';
+  if (filtres.length === 0) {
+    html = '<div class="alerte-vide">🏅 Aucun résultat publié ce mois-ci. Les résultats sont ajoutés après chaque compétition — bravo à tous les compétiteurs !</div>';
+  } else {
+    var parComp = {};
+    filtres.forEach(function(r) {
+      if (!parComp[r.competition]) parComp[r.competition] = [];
+      parComp[r.competition].push(r);
+    });
+    Object.keys(parComp).forEach(function(comp) {
+      html += '<div class="mois-titre">🏆 ' + comp + '</div>';
+      parComp[comp].forEach(function(r) {
+        html += '<div class="resultat-card">' +
+          '<div class="podium">' + (PODIUMS[r.place] || '🎖️') + '</div>' +
+          '<div class="resultat-info">' +
+          '<h4>' + r.judoka + '</h4>' +
+          '<p>' + (r.categorie_age || '') + (r.poids ? ' — ' + r.poids : '') + ' — ' + r.competition + '</p>' +
+          '<p>' + (r.date || '') + (r.lieu ? ' — ' + r.lieu : '') + '</p>' +
+          '</div></div>';
+      });
+    });
+  }
+  document.getElementById('contenu-resultats').innerHTML = html;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   fetch('informations.json')
     .then(function(r) { return r.json(); })
@@ -156,7 +236,19 @@ document.addEventListener('DOMContentLoaded', function() {
       if (data.actualites) document.getElementById('contenu-actualites').innerHTML = formaterTexte(data.actualites) || '<span class="vide">Aucune actualité.</span>';
       if (data.contact)    document.getElementById('contenu-contact').innerHTML    = formaterTexte(data.contact) || '<span class="vide">Contact à venir.</span>';
     })
-    .catch(function(e) { console.error('Erreur JSON:', e); });
+    .catch(function(e) { console.error('Erreur informations.json:', e); });
+
+  fetch('competitions.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      afficherCompetitionsDuMois(data.competitions || []);
+      afficherResultatsDuMois(data.resultats || []);
+    })
+    .catch(function(e) {
+      console.error('Erreur competitions.json:', e);
+      document.getElementById('contenu-competitions').innerHTML = '<div class="alerte-vide">⚠️ Erreur de chargement du calendrier.</div>';
+    });
+
   document.getElementById('date-maj').textContent = 'Saison 2026-2027';
 });
 </script>
