@@ -15,6 +15,19 @@ function chargerContenuParGrade(gradeId) {
     });
 }
 
+// Ordre pédagogique standard des familles de techniques judo
+const ORDRE_CATEGORIES = [
+  'Te-waza', 'Koshi-waza', 'Ashi-waza', 'Sutemi-waza',
+  'Ne-waza', 'Katame-waza', 'Osaekomi-waza',
+  'Kansetsu-waza', 'Shime-waza'
+];
+
+const ICONES_CATEGORIES = {
+  'Te-waza': '💪', 'Koshi-waza': '🌀', 'Ashi-waza': '🦵', 'Sutemi-waza': '🤸',
+  'Ne-waza': '🔒', 'Katame-waza': '🔒', 'Osaekomi-waza': '🔒',
+  'Kansetsu-waza': '🔧', 'Shime-waza': '🫁'
+};
+
 function afficherVideos(gradeId, videosJson) {
   const videoBlock = document.querySelector('.video-block');
   if (!videoBlock) return;
@@ -23,15 +36,37 @@ function afficherVideos(gradeId, videosJson) {
   let items = [...videosJson];
 
   if (items.length > 0) {
-    videoBlock.innerHTML = '';
+    // Regrouper par catégorie (famille de techniques)
+    const groupes = {};
     items.forEach(v => {
-      const el = document.createElement("div");
-      el.className = "video-item";
-      el.innerHTML = `
-        <a class="lien-bleu" href="${v.url}" target="_blank">📺 ${v.texte || v.titre || ''}</a>
-        <p><strong>Catégorie :</strong> ${v.categorie || ''}</p>
-      `;
-      videoBlock.appendChild(el);
+      const cat = v.categorie || 'Autres';
+      if (!groupes[cat]) groupes[cat] = [];
+      groupes[cat].push(v);
+    });
+
+    // Ordonner : familles connues dans l'ordre pédagogique, puis le reste
+    const categoriesTriees = Object.keys(groupes).sort((a, b) => {
+      const ia = ORDRE_CATEGORIES.indexOf(a);
+      const ib = ORDRE_CATEGORIES.indexOf(b);
+      if (ia === -1 && ib === -1) return a.localeCompare(b);
+      if (ia === -1) return 1;
+      if (ib === -1) return -1;
+      return ia - ib;
+    });
+
+    videoBlock.innerHTML = '';
+    categoriesTriees.forEach(cat => {
+      const titre = document.createElement('div');
+      titre.style.cssText = 'font-size:1.05rem; font-weight:bold; color:#2c3e50; margin:1.3rem 0 0.7rem; padding:0.4rem 0.8rem; background:#eaf2fb; border-left:4px solid #3498db; border-radius:0 6px 6px 0;';
+      titre.textContent = (ICONES_CATEGORIES[cat] || '🥋') + ' ' + cat;
+      videoBlock.appendChild(titre);
+
+      groupes[cat].forEach(v => {
+        const el = document.createElement("div");
+        el.className = "video-item";
+        el.innerHTML = `<a class="lien-bleu" href="${v.url}" target="_blank">📺 ${v.texte || v.titre || ''}</a>`;
+        videoBlock.appendChild(el);
+      });
     });
   }
 }
