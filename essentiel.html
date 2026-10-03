@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>L'essentiel — vu en cours</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+    body { background:#f7f7f7; }
+    .seance { margin-bottom:2rem; }
+    .seance-titre { font-size:1.05rem; font-weight:bold; color:#2c3e50; background:white; border-radius:10px; padding:0.7rem 1rem; box-shadow:0 2px 6px rgba(0,0,0,0.06); margin-bottom:1rem; }
+    .seance-titre span { color:#888; font-weight:normal; font-size:0.9rem; }
+    .fiches { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1rem; }
+    .fiche { background:white; border-radius:12px; padding:1.2rem 1.3rem; box-shadow:0 2px 10px rgba(0,0,0,0.08); border-top:5px solid #B22222; }
+    .fiche h3 { margin:0; color:#B22222; font-size:1.3rem; }
+    .fiche .trad { color:#555; font-style:italic; margin:0.1rem 0 0.2rem; }
+    .fiche .famille { display:inline-block; background:#f0f0f0; color:#555; font-size:0.78rem; padding:2px 10px; border-radius:12px; margin-bottom:0.8rem; }
+    .fiche ol { padding-left:1.4rem; }
+    .fiche li { margin-bottom:0.45rem; }
+    .fiche .note { font-size:0.85rem; color:#7d6608; background:#fef9e7; border-radius:6px; padding:0.4rem 0.7rem; margin-top:0.6rem; }
+    .vide { background:white; border-radius:10px; padding:1.2rem; text-align:center; color:#666; }
+    .filtres { display:flex; flex-wrap:wrap; gap:0.5rem; justify-content:center; margin-bottom:1.5rem; }
+    .filtres a { text-decoration:none; padding:0.4rem 0.9rem; border-radius:20px; background:white; color:#333; font-size:0.85rem; box-shadow:0 1px 4px rgba(0,0,0,0.1); }
+    .filtres a.actif { background:#B22222; color:white; }
+    header h1 { font-size:1.8em; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📌 L'essentiel — vu en cours</h1>
+    <p id="sous-titre">Les points importants des techniques travaillées au dojo</p>
+  </header>
+
+  <section>
+    <div class="filtres" id="filtres"></div>
+    <div id="contenu"></div>
+  </section>
+
+  <nav style="text-align:center;">
+    <a class="lien-bleu" href="videos-par-grade.html">📚 Retour aux grades</a>
+    &nbsp;
+    <a class="lien-bleu" href="index.html">🏠 Accueil</a>
+  </nav>
+
+  <footer>
+    <p>Dojo Numérique — Club Judo Lambersart JAK</p>
+  </footer>
+
+<script>
+var GRADES = {
+  'blanche-jaune': '⬜🟨 Blanche / Jaune',
+  'jaune-orange':  '🟨🟧 Jaune / Orange',
+  'orange-verte':  '🟧🟩 Orange / Verte',
+  'verte-bleue':   '🟩🔵 Verte / Bleue',
+  'bleue-marron':  '🔵🟤 Bleue / Marron',
+  'marron-noir':   '🟤⚫ Marron / Noir'
+};
+
+function echapper(t) {
+  return String(t || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function dateFr(iso) {
+  var d = new Date(iso + 'T12:00:00');
+  return d.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+}
+
+function fiche(t) {
+  return '<div class="fiche">' +
+    '<h3>' + echapper(t.nom) + '</h3>' +
+    (t.traduction ? '<p class="trad">' + echapper(t.traduction) + '</p>' : '') +
+    (t.famille ? '<span class="famille">' + echapper(t.famille) + '</span>' : '') +
+    '<ol>' + (t.points || []).map(function(p) { return '<li>' + echapper(p) + '</li>'; }).join('') + '</ol>' +
+    (t.note ? '<div class="note">ℹ️ ' + echapper(t.note) + '</div>' : '') +
+    '</div>';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var grade = new URLSearchParams(location.search).get('grade');
+  if (grade && !GRADES[grade]) grade = null;
+
+  var f = '<a href="essentiel.html"' + (!grade ? ' class="actif"' : '') + '>Tous</a>';
+  Object.keys(GRADES).forEach(function(g) {
+    f += '<a href="essentiel.html?grade=' + g + '"' + (g === grade ? ' class="actif"' : '') + '>' + GRADES[g] + '</a>';
+  });
+  document.getElementById('filtres').innerHTML = f;
+  if (grade) document.getElementById('sous-titre').textContent = 'Techniques travaillées en cours — ' + GRADES[grade].replace(/^\S+\s/, '');
+
+  fetch('essentiel.json')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var seances = (data.seances || []).filter(function(s) {
+        return !grade || (s.grades || []).indexOf(grade) !== -1;
+      }).sort(function(a, b) { return a.date < b.date ? 1 : -1; });
+
+      if (seances.length === 0) {
+        document.getElementById('contenu').innerHTML = '<div class="vide">🥋 Pas encore de technique publiée pour ce groupe. Elles arrivent après les cours !</div>';
+        return;
+      }
+      var html = '';
+      seances.forEach(function(s) {
+        html += '<div class="seance"><div class="seance-titre">📅 Cours du ' + dateFr(s.date) +
+          (s.groupe ? ' <span>— ' + echapper(s.groupe) + '</span>' : '') + '</div><div class="fiches">';
+        (s.techniques || []).forEach(function(id) {
+          if (data.techniques && data.techniques[id]) html += fiche(data.techniques[id]);
+        });
+        html += '</div></div>';
+      });
+      document.getElementById('contenu').innerHTML = html;
+    })
+    .catch(function(e) {
+      console.error('Erreur essentiel.json:', e);
+      document.getElementById('contenu').innerHTML = '<div class="vide">⚠️ Erreur de chargement.</div>';
+    });
+});
+</script>
+</body>
+</html>

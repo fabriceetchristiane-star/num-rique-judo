@@ -1,0 +1,47 @@
+{
+  "_info": "Fiches techniques vues en cours. 'techniques' = la banque (fiches reutilisables), 'seances' = ce qui a ete vu en cours et pour quels grades.",
+  "techniques": {
+    "o-uchi-gari": {
+      "nom": "O-uchi-gari",
+      "traduction": "Grand fauchage intérieur",
+      "famille": "Ashi-waza (techniques de jambe)",
+      "points": [
+        "Kumikata : garde classique, manche et revers.",
+        "Avancer le pied le plus fort (pied droit pour un droitier) entre les deux pieds du partenaire.",
+        "Déséquilibrer vers l'arrière en se collant contre lui, les bras pliés.",
+        "Avancer le pied gauche derrière son pied droit.",
+        "Faucher le mollet gauche du partenaire avec son mollet : mollet contre mollet.",
+        "Pousser le déséquilibre sur la jambe que l'on fauche."
+      ],
+      "note": "Explications données pour un droitier."
+    },
+    "yoko-shiho-gatame": {
+      "nom": "Yoko-shiho-gatame",
+      "traduction": "Contrôle par le côté sur quatre points",
+      "famille": "Osaekomi-waza (immobilisations)",
+      "points": [
+        "Poser le ventre contre le ventre du partenaire.",
+        "Coller les genoux contre le partenaire.",
+        "Garder les pieds ancrés dans le sol.",
+        "Passer en premier le bras sous la tête d'Uke.",
+        "Attraper la jambe la plus éloignée.",
+        "Attraper la ceinture."
+      ],
+      "note": ""
+    }
+  },
+  "seances": [
+    {
+      "date": "2026-10-03",
+      "groupe": "Blanche / Jaune / Orange",
+      "grades": [
+        "blanche-jaune",
+        "jaune-orange"
+      ],
+      "techniques": [
+        "o-uchi-gari",
+        "yoko-shiho-gatame"
+      ]
+    }
+  ]
+}
