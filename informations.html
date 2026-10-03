@@ -106,7 +106,7 @@
 
   <!-- RESULTATS -->
   <div id="onglet-resultats" class="onglet-section">
-    <div class="section-titre">🥇 Résultats du club — ce mois-ci</div>
+    <div class="section-titre">🥇 Résultats du club — derniers résultats</div>
     <div id="contenu-resultats"></div>
   </div>
 
@@ -140,6 +140,7 @@ const LABELS_CAT = {
   cadets: 'Cadets', juniors: 'Juniors', seniors: 'Seniors', veterans: 'Vétérans'
 };
 const PODIUMS = { '1': '🥇', '2': '🥈', '3': '🥉' };
+const PLACES = { '1': '1re place', '2': '2e place', '3': '3e place' };
 
 function formaterTexte(t) {
   if (!t || t.trim() === '') return '';
@@ -200,12 +201,13 @@ function afficherResultatsDuMois(resultats) {
   var filtres = resultats.filter(function(r) {
     if (!r.date) return false;
     var d = new Date(r.date);
-    return d.getMonth() === moisCourant && d.getFullYear() === anneeCourante;
+    var ecartJours = (maintenant - d) / 86400000;
+    return ecartJours >= 0 && ecartJours <= 45;
   });
 
   var html = '';
   if (filtres.length === 0) {
-    html = '<div class="alerte-vide">🏅 Aucun résultat publié ce mois-ci. Les résultats sont ajoutés après chaque compétition — bravo à tous les compétiteurs !</div>';
+    html = '<div class="alerte-vide">🏅 Aucun résultat récent publié. Les résultats sont ajoutés après chaque compétition — bravo à tous les compétiteurs !</div>';
   } else {
     var parComp = {};
     filtres.forEach(function(r) {
@@ -218,7 +220,7 @@ function afficherResultatsDuMois(resultats) {
         html += '<div class="resultat-card">' +
           '<div class="podium">' + (PODIUMS[r.place] || '🎖️') + '</div>' +
           '<div class="resultat-info">' +
-          '<h4>' + r.judoka + '</h4>' +
+          '<h4>' + r.judoka + (r.place ? ' — ' + (PLACES[r.place] || r.place + 'e place') : '') + '</h4>' +
           '<p>' + (r.categorie_age || '') + (r.poids ? ' — ' + r.poids : '') + ' — ' + r.competition + '</p>' +
           '<p>' + (r.date || '') + (r.lieu ? ' — ' + r.lieu : '') + '</p>' +
           '</div></div>';
