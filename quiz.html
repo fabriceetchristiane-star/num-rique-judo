@@ -3,32 +3,43 @@
 <head>
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Judo – Dojo Numérique</title>
-  
+
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
+
   <link rel="stylesheet" href="styles/style.css">
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; background-color: #f9f9f9; }
     h1 { color: #b30000; text-align: center; }
-    .question { 
-      margin-bottom: 25px; 
-      padding: 20px; 
-      background: white; 
-      border-radius: 8px; 
+    .question {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    button { 
-      margin: 8px; 
-      padding: 12px 18px; 
-      border: none; 
-      border-radius: 5px; 
-      cursor: pointer; 
+    .question .theme {
+      display: inline-block;
+      font-size: 0.75em;
+      padding: 2px 10px;
+      border-radius: 12px;
+      background: #f0f0f0;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .question .theme.cours { background: #B22222; color: white; }
+    button {
+      margin: 8px;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
       background-color: #e6f0ff;
       color: #0044cc;
       font-size: 1em;
@@ -42,19 +53,30 @@
       cursor: not-allowed;
       opacity: 0.6;
     }
-    .resultat { 
-      font-weight: bold; 
-      margin-top: 30px; 
-      font-size: 1.3em; 
-      color: #006600; 
+    .explication {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #fef9e7;
+      border-left: 4px solid #f0c040;
+      border-radius: 4px;
+      color: #5d4a06;
+      font-size: 0.95em;
+    }
+    .resultat {
+      font-weight: bold;
+      margin-top: 30px;
+      font-size: 1.3em;
+      color: #006600;
       text-align: center;
       padding: 20px;
       background: #d4edda;
       border-radius: 8px;
     }
-    .score { 
-      font-size: 1.1em; 
-      margin: 15px 0; 
+    .resultat:empty { display: none; }
+    .score {
+      font-size: 1.1em;
+      margin: 15px 0;
       color: #333;
     }
     .progress-bar {
@@ -70,15 +92,17 @@
       border-radius: 5px;
       transition: width 0.3s ease;
     }
+    .btn-recommencer { background: #B22222; color: white; margin-top: 15px; }
+    .btn-recommencer:hover { background: #8b1a1a; }
   </style>
 </head>
 <body>
   <header>
     <h1>🎯 Quiz Judo – Teste tes connaissances</h1>
-    <p>10 questions pour vérifier tes connaissances du Judo</p>
+    <p>Ceintures jaune et orange : les techniques vues en cours et le vocabulaire du judo</p>
   </header>
 
-  <div class="score" id="score">Score : 0/10</div>
+  <div class="score" id="score"></div>
   <div class="progress-bar">
     <div class="progress" id="progress" style="width: 0%"></div>
   </div>
@@ -88,63 +112,86 @@
 
   <nav style="margin-top: 30px;">
     <a class="lien-bleu" href="index.html">⬅️ Retour à l'accueil</a>
+    <a class="lien-bleu" href="essentiel.html">📌 L'essentiel — vu en cours</a>
     <a class="lien-bleu" href="videos-par-grade.html">📽️ Voir les vidéos</a>
   </nav>
 
   <script>
+    // t = thème affiché, q = question, r = bonne réponse, o = choix, e = explication
     const questions = [
-      { 
-        q: "Quel est le sens du mot 'Judo' ?", 
-        r: "Voie de la souplesse", 
-        o: ["Art du combat", "Voie de la souplesse", "Technique de projection"] 
+      {
+        t: "📌 Vu en cours", cours: true,
+        q: "O-uchi-gari : avec quoi fauches-tu la jambe de ton partenaire ?",
+        r: "Avec mon mollet, contre son mollet",
+        o: ["Avec la pointe du pied", "Avec mon mollet, contre son mollet", "Avec mon genou"],
+        e: "On fauche mollet contre mollet, en poussant le déséquilibre sur la jambe que l'on fauche."
       },
-      { 
-        q: "Quelle est une technique de hanche ?", 
-        r: "O-goshi", 
-        o: ["De-ashi-harai", "O-goshi", "Kesa-gatame"] 
+      {
+        t: "📌 Vu en cours", cours: true,
+        q: "Yoko-shiho-gatame : où places-tu ta tête ?",
+        r: "Au plus près de la tête du partenaire",
+        o: ["Sur le ventre du partenaire", "Au plus près de la tête du partenaire", "Le plus loin possible de lui"],
+        e: "Tête contre tête : on contrôle la ligne des épaules. Ventre contre ventre, genoux collés, pieds ancrés dans le sol."
       },
-      { 
-        q: "Quelle est une technique de projection avec les mains ?", 
-        r: "Seoi-nage", 
-        o: ["Uchi-mata", "Seoi-nage", "Yoko-shiho-gatame"] 
+      {
+        t: "📖 Lexique",
+        q: "Que veut dire « Uchi » (comme dans O-uchi-gari) ?",
+        r: "Intérieur",
+        o: ["Extérieur", "Derrière", "Intérieur"],
+        e: "Uchi = intérieur, Soto = extérieur. O-uchi-gari = grand fauchage intérieur."
       },
-      { 
-        q: "Quel est le rôle du salut (Rei) ?", 
-        r: "Respect et concentration", 
-        o: ["Commencer le combat", "Respect et concentration", "Demander l'autorisation"] 
+      {
+        t: "📖 Lexique",
+        q: "Que veut dire « Yoko » (comme dans Yoko-shiho-gatame) ?",
+        r: "Côté",
+        o: ["Côté", "Devant", "Couché"],
+        e: "Yoko = côté. Yoko-shiho-gatame = contrôle par le côté sur quatre points."
       },
-      { 
-        q: "Quelle est une immobilisation ?", 
-        r: "Kesa-gatame", 
-        o: ["Tai-otoshi", "Kesa-gatame", "Tomoe-nage"] 
+      {
+        t: "📖 Lexique",
+        q: "Que veut dire « Kuzushi » ?",
+        r: "Le déséquilibre",
+        o: ["La chute", "Le déséquilibre", "Le salut"],
+        e: "Kuzushi = déséquilibre. Pas de belle projection sans déséquilibrer son partenaire d'abord !"
       },
-      { 
-        q: "Quel est le nom du fondateur du Judo ?", 
-        r: "Jigoro Kano", 
-        o: ["Miyamoto Musashi", "Jigoro Kano", "Gichin Funakoshi"] 
+      {
+        t: "📖 Lexique",
+        q: "Comment s'appelle le partenaire qui subit la technique ?",
+        r: "Uke",
+        o: ["Tori", "Uke", "Sensei"],
+        e: "Uke subit la technique, Tori la réalise. Le Sensei, c'est le professeur."
       },
-      { 
-        q: "Que signifie 'Randori' ?", 
-        r: "Combat souple d'entraînement", 
-        o: ["Combat officiel", "Combat souple d'entraînement", "Examen de grade"] 
+      {
+        t: "📖 Lexique",
+        q: "Que veut dire « Kumi-kata » ?",
+        r: "La façon de saisir le judogi",
+        o: ["La façon de saisir le judogi", "Une technique au sol", "La façon de tomber"],
+        e: "Kumi-kata = la prise, la garde. La garde classique : manche et revers."
       },
-      { 
-        q: "Quelle est une technique de jambe ?", 
-        r: "De-ashi-harai", 
-        o: ["O-goshi", "De-ashi-harai", "Kesa-gatame"] 
+      {
+        t: "🥋 Familles de techniques",
+        q: "Que sont les « Osaekomi-waza » ?",
+        r: "Les immobilisations",
+        o: ["Les projections", "Les immobilisations", "Les chutes"],
+        e: "Osaekomi-waza = immobilisations au sol, comme Yoko-shiho-gatame, Kesa-gatame ou Tate-shiho-gatame."
       },
-      { 
-        q: "Que fait-on en entrant sur le tatami ?", 
-        r: "On salue", 
-        o: ["On court", "On salue", "On s'échauffe"] 
+      {
+        t: "🥋 Familles de techniques",
+        q: "O-uchi-gari, De-ashi-barai et Ko-soto-gari sont des « Ashi-waza ». Ce sont des techniques…",
+        r: "De jambe",
+        o: ["De hanche", "De bras", "De jambe"],
+        e: "Ashi = jambe, pied. Les Ashi-waza font partie des Nage-waza (projections)."
       },
-      { 
-        q: "Quelle est la couleur de la ceinture pour les débutants ?", 
-        r: "Blanche", 
-        o: ["Jaune", "Blanche", "Orange"] 
+      {
+        t: "📖 Lexique",
+        q: "Que veut dire « Judo » ?",
+        r: "Voie de la souplesse",
+        o: ["Art du combat", "Voie de la souplesse", "Main vide"],
+        e: "Ju = souplesse, Do = voie. « Main vide », c'est Karaté !"
       }
     ];
 
+    const total = questions.length;
     let score = 0;
     let questionsRepondues = 0;
     const quizDiv = document.getElementById("quiz");
@@ -152,59 +199,75 @@
     const progressBar = document.getElementById("progress");
 
     function mettreAJourProgression() {
-      const progression = (questionsRepondues / questions.length) * 100;
-      progressBar.style.width = progression + '%';
-      scoreDiv.textContent = `Score : ${score}/${questionsRepondues} - Progression : ${questionsRepondues}/${questions.length}`;
+      progressBar.style.width = (questionsRepondues / total) * 100 + '%';
+      scoreDiv.textContent = `Score : ${score}/${questionsRepondues} - Progression : ${questionsRepondues}/${total}`;
     }
 
-    questions.forEach((q, i) => {
-      const div = document.createElement("div");
-      div.className = "question";
-      div.innerHTML = `<h3>${i + 1}. ${q.q}</h3>`;
-      
-      q.o.forEach(opt => {
-        const btn = document.createElement("button");
-        btn.textContent = opt;
-        btn.onclick = () => {
-          if (opt === q.r) {
-            score++;
-            btn.style.backgroundColor = "#c8e6c9";
-            btn.style.color = "#155724";
-          } else {
-            btn.style.backgroundColor = "#ffcdd2";
-            btn.style.color = "#721c24";
-          }
-          
-          // Désactiver tous les boutons de cette question
-          Array.from(div.querySelectorAll("button")).forEach(b => b.disabled = true);
-          
-          questionsRepondues++;
-          mettreAJourProgression();
-          
-          // Message final quand toutes les questions sont répondues
-          if (questionsRepondues === questions.length) {
-            let message = "";
-            if (score >= 8) {
-              message = "🥋 Excellent ! Tu maîtrises les bases du Judo !";
-            } else if (score >= 5) {
-              message = "👍 Bien ! Continue à apprendre !";
-            } else {
-              message = "💪 Continue à réviser, tu progresses !";
-            }
-            document.getElementById("resultat").innerHTML = `
-              ${message}<br>
-              <strong>Score final : ${score}/10</strong><br>
-              <em>"Le judo commence et finit par le respect." - Jigoro Kano</em>
-            `;
-          }
-        };
-        div.appendChild(btn);
-      });
-      quizDiv.appendChild(div);
-    });
+    function afficherQuiz() {
+      score = 0;
+      questionsRepondues = 0;
+      quizDiv.innerHTML = "";
+      document.getElementById("resultat").innerHTML = "";
 
-    // Initialiser la progression
-    mettreAJourProgression();
+      questions.forEach((q, i) => {
+        const div = document.createElement("div");
+        div.className = "question";
+        div.innerHTML = `<span class="theme${q.cours ? ' cours' : ''}">${q.t}</span><h3>${i + 1}. ${q.q}</h3>`;
+
+        const explication = document.createElement("div");
+        explication.className = "explication";
+        explication.textContent = "💡 " + q.e;
+
+        q.o.forEach(opt => {
+          const btn = document.createElement("button");
+          btn.textContent = opt;
+          btn.onclick = () => {
+            if (opt === q.r) {
+              score++;
+              btn.style.backgroundColor = "#c8e6c9";
+              btn.style.color = "#155724";
+            } else {
+              btn.style.backgroundColor = "#ffcdd2";
+              btn.style.color = "#721c24";
+              // Montrer la bonne réponse
+              Array.from(div.querySelectorAll("button")).forEach(b => {
+                if (b.textContent === q.r) { b.style.backgroundColor = "#c8e6c9"; b.style.color = "#155724"; }
+              });
+            }
+
+            Array.from(div.querySelectorAll("button")).forEach(b => b.disabled = true);
+            explication.style.display = "block";
+
+            questionsRepondues++;
+            mettreAJourProgression();
+
+            if (questionsRepondues === total) {
+              let message = "";
+              if (score >= 8) {
+                message = "🥋 Excellent ! Tu maîtrises les bases du Judo !";
+              } else if (score >= 5) {
+                message = "👍 Bien ! Continue à apprendre !";
+              } else {
+                message = "💪 Continue à réviser, tu progresses !";
+              }
+              document.getElementById("resultat").innerHTML = `
+                ${message}<br>
+                <strong>Score final : ${score}/${total}</strong><br>
+                <em>« Seiryoku zenyo : la meilleure utilisation de l'énergie » — Jigoro Kano</em><br>
+                <button class="btn-recommencer" onclick="afficherQuiz(); window.scrollTo(0,0);">🔄 Recommencer</button>
+              `;
+            }
+          };
+          div.appendChild(btn);
+        });
+        div.appendChild(explication);
+        quizDiv.appendChild(div);
+      });
+
+      mettreAJourProgression();
+    }
+
+    afficherQuiz();
   </script>
 </body>
 </html>
