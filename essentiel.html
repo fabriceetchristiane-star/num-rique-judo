@@ -20,6 +20,7 @@
     .fiche h3 { margin:0; color:#B22222; font-size:1.3rem; }
     .fiche .trad { color:#555; font-style:italic; margin:0.1rem 0 0.2rem; }
     .fiche .famille { display:inline-block; background:#f0f0f0; color:#555; font-size:0.78rem; padding:2px 10px; border-radius:12px; margin-bottom:0.8rem; }
+    .fiche-img { display:block; width:100%; max-height:320px; object-fit:contain; border-radius:8px; background:#fafafa; margin:0 0 0.8rem; }
     .fiche ol { padding-left:1.4rem; }
     .fiche li { margin-bottom:0.45rem; }
     .fiche .note { font-size:0.85rem; color:#7d6608; background:#fef9e7; border-radius:6px; padding:0.4rem 0.7rem; margin-top:0.6rem; }
@@ -75,6 +76,7 @@ function fiche(t) {
     '<h3>' + echapper(t.nom) + '</h3>' +
     (t.traduction ? '<p class="trad">' + echapper(t.traduction) + '</p>' : '') +
     (t.famille ? '<span class="famille">' + echapper(t.famille) + '</span>' : '') +
+    (t.images || []).map(function(src) { return '<img class="fiche-img" src="' + echapper(src) + '" alt="' + echapper(t.nom) + '" loading="lazy">'; }).join('') +
     '<ol>' + (t.points || []).map(function(p) { return '<li>' + echapper(p) + '</li>'; }).join('') + '</ol>' +
     (t.note ? '<div class="note">ℹ️ ' + echapper(t.note) + '</div>' : '') +
     '</div>';
