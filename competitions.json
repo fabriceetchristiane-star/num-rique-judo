@@ -102,10 +102,10 @@
     }
   ],
   "resultats": [
-    { "judoka": "Inès MINJARD", "categorie_age": "Minimes", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },
-    { "judoka": "Massyl HADJOU", "categorie_age": "Benjamins", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },
-    { "judoka": "Gaya HADJOU", "categorie_age": "Benjamins", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },
-    { "judoka": "Pierre MINJARD", "categorie_age": "Benjamins", "place": "4", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },
-    { "judoka": "Léopold TOMCZAK RÉMY", "categorie_age": "Poussins", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" }
+    { "judoka": "Inès MINJARD", "categorie_age": "Minimes", "categorie": "minimes", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },
+    { "judoka": "Massyl HADJOU", "categorie_age": "Benjamins", "categorie": "benjamins", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },
+    { "judoka": "Gaya HADJOU", "categorie_age": "Benjamins", "categorie": "benjamins", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },
+    { "judoka": "Pierre MINJARD", "categorie_age": "Benjamins", "categorie": "benjamins", "place": "4", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },
+    { "judoka": "Léopold TOMCZAK RÉMY", "categorie_age": "Poussins", "categorie": "poussins", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" }
   ]
 }

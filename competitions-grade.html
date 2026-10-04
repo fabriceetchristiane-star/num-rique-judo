@@ -275,7 +275,7 @@ function construireResultats(resultats) {
         <div class="res-card">
           <div class="podium">${PODIUMS[r.place] || '🎖️'}</div>
           <div class="res-info">
-            <h4>${r.judoka}</h4>
+            <h4>${r.judoka}${r.place ? ' — ' + (r.place === '1' ? '1re' : r.place + 'e') + ' place' : ''}</h4>
             <p>${r.categorie_age || ''} ${r.poids ? '— ' + r.poids : ''} — ${r.competition}</p>
             <p>${r.date || ''} ${r.lieu ? '— ' + r.lieu : ''}</p>
           </div>
