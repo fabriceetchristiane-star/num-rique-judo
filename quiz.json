@@ -273,6 +273,16 @@
           "Échauffement"
         ],
         "e": "Randori = exercice libre, on applique ses techniques avec un partenaire qui bouge."
+      },
+      {
+        "q": "Le « Yuko », c'est…",
+        "r": "Un petit avantage, de retour depuis 2025",
+        "o": [
+          "Un petit avantage, de retour depuis 2025",
+          "Une victoire immédiate",
+          "Une pénalité"
+        ],
+        "e": "Yuko est revenu dans l'arbitrage en 2025 : c'est l'avantage le plus petit, sous le waza-ari. En immobilisation : 5 s = yuko, 10 s = waza-ari, 20 s = ippon."
       }
     ],
     "orange-verte": [
@@ -305,36 +315,6 @@
           "La main qui bloque"
         ],
         "e": "Hikite = main qui tire (la manche). Tsurite = main qui soulève (le revers)."
-      },
-      {
-        "q": "Que sont les « Sutemi-waza » ?",
-        "r": "Les techniques de sacrifice",
-        "o": [
-          "Les clés",
-          "Les techniques de sacrifice",
-          "Les immobilisations"
-        ],
-        "e": "Sutemi-waza = sacrifices : Tori se met volontairement au sol pour projeter."
-      },
-      {
-        "q": "Que sont les « Kansetsu-waza » ?",
-        "r": "Les clés",
-        "o": [
-          "Les clés",
-          "Les étranglements",
-          "Les chutes"
-        ],
-        "e": "Kansetsu-waza = clés (luxations). Shime-waza = étranglements."
-      },
-      {
-        "q": "Que sont les « Shime-waza » ?",
-        "r": "Les étranglements",
-        "o": [
-          "Les projections",
-          "Les étranglements",
-          "Les clés"
-        ],
-        "e": "Shime-waza = étranglements."
       },
       {
         "q": "Que veut dire « Kata » (partie du corps) ?",
@@ -395,6 +375,36 @@
           "Une clé de bras"
         ],
         "e": "Kesa-gatame = contrôle en travers, l'immobilisation de base."
+      },
+      {
+        "q": "Que veut dire « Momo » ?",
+        "r": "Cuisse",
+        "o": [
+          "Cuisse",
+          "Cou",
+          "Épaule"
+        ],
+        "e": "Momo = cuisse. Kubi = cou, Kata = épaule, Mata = entrejambe."
+      },
+      {
+        "q": "Uchi-mata, c'est…",
+        "r": "Un fauchage de l'entrejambe",
+        "o": [
+          "Un sacrifice",
+          "Un fauchage de l'entrejambe",
+          "Une immobilisation"
+        ],
+        "e": "Uchi-mata = fauchage de l'entrejambe, une technique de jambe et de hanche."
+      },
+      {
+        "q": "« Oikomi », c'est attaquer…",
+        "r": "En suivant",
+        "o": [
+          "En se retirant",
+          "En suivant",
+          "En plongeant"
+        ],
+        "e": "Hikidashi = en se retirant ; Oikomi = en suivant."
       }
     ],
     "verte-bleue": [
@@ -499,14 +509,14 @@
         "e": "Confusion / feinte : tu fais réagir Uke d'un côté pour attaquer de l'autre."
       },
       {
-        "q": "« Hikidashi », c'est…",
-        "r": "Attirer le partenaire vers soi",
+        "q": "« Tobikomi », c'est attaquer…",
+        "r": "En plongeant",
         "o": [
-          "Pousser le partenaire",
-          "Attirer le partenaire vers soi",
-          "Sauter en avant"
+          "En se retirant",
+          "En suivant",
+          "En plongeant"
         ],
-        "e": "Hikidashi = attirer (tirer) ; Oikomi = poursuivre en avançant ; Tobikomi = entrer en sautant."
+        "e": "Hikidashi = en se retirant ; Oikomi = en suivant ; Tobikomi = en plongeant."
       },
       {
         "q": "Quelles sont les valeurs de la ceinture verte-bleue ?",
@@ -541,14 +551,14 @@
         "e": "Jigoro Kano (1860-1938). Funakoshi est le père du karaté moderne."
       },
       {
-        "q": "Quel maître japonais a développé le judo en France à partir de 1935 ?",
+        "q": "Qui a fondé le 1er club de judo français en 1935 ?",
         "r": "Maître Kawaishi",
         "o": [
           "Maître Kawaishi",
           "Maître Kano",
           "Maître Ueshiba"
         ],
-        "e": "Mikinosuke Kawaishi arrive en France en 1935. Ueshiba est le fondateur de l'aïkido."
+        "e": "1935 : Kawaishi Mikinosuke fonde le 1er club de judo français. Ueshiba est le fondateur de l'aïkido."
       },
       {
         "q": "Quelles sont les valeurs de la ceinture bleue-marron ?",
