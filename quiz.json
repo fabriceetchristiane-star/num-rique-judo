@@ -288,23 +288,23 @@
     "orange-verte": [
       {
         "q": "Que veut dire « Tsukuri » ?",
-        "r": "La préparation, le placement",
+        "r": "La construction de la technique de Tori",
         "o": [
           "Le déséquilibre",
-          "La préparation, le placement",
-          "L'exécution"
+          "La construction de la technique de Tori",
+          "Le point de non-retour"
         ],
-        "e": "Kuzushi (déséquilibre) → Tsukuri (placement) → Kake (exécution)."
+        "e": "Kuzushi = destruction de l'équilibre de Uke ; Tsukuri = construction de la technique de Tori ; Kake = point de non-retour… pour obtenir le Nage."
       },
       {
         "q": "Que veut dire « Kake » ?",
-        "r": "L'exécution de la technique",
+        "r": "Le point de non-retour",
         "o": [
           "Le salut",
-          "L'exécution de la technique",
+          "Le point de non-retour",
           "La chute"
         ],
-        "e": "Kake = exécution : c'est la phase finale, après Kuzushi et Tsukuri."
+        "e": "Kake = le point de non-retour : la technique part, on ne peut plus revenir en arrière. Vient après Kuzushi et Tsukuri."
       },
       {
         "q": "La main « Hikite », c'est…",
