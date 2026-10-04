@@ -51,6 +51,7 @@
     .res-info h4 { margin:0 0 0.2rem; color:#2c3e50; font-size:0.95rem; }
     .res-info p  { margin:0; color:#666; font-size:0.85rem; }
     .res-vide { text-align:center; color:#aaa; font-style:italic; padding:2rem; }
+    .felicitations { background:#fef9e7; border:1px solid #f0c040; border-radius:10px; padding:0.9rem 1.1rem; color:#5d4a06; font-size:0.95rem; line-height:1.5; margin-bottom:0.9rem; }
 
     /* Boutons nav */
     .btn-retour { display:inline-flex; align-items:center; gap:0.5rem; background:#3498db;
@@ -177,6 +178,7 @@ let grade = null;
 let config = null;
 let toutesCompetitions = [];
 let tousResultats = [];
+let tousFelicitations = {};
 
 function getGradeUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -270,6 +272,7 @@ function construireResultats(resultats) {
   let html = '';
   Object.keys(parComp).forEach(comp => {
     html += `<div class="mois-titre">🏆 ${comp}</div>`;
+    if (tousFelicitations[comp]) html += `<div class="felicitations">🎉 ${tousFelicitations[comp]}</div>`;
     parComp[comp].forEach(r => {
       html += `
         <div class="res-card">
@@ -311,6 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(data => {
       toutesCompetitions = data.competitions || [];
       tousResultats = data.resultats || [];
+      tousFelicitations = data.felicitations || {};
 
       document.getElementById('contenu-ce-mois').innerHTML = construireCeMois(toutesCompetitions);
       document.getElementById('contenu-a-venir').innerHTML = construireAvenir(toutesCompetitions);

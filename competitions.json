@@ -101,6 +101,9 @@
       "info": ""
     }
   ],
+  "felicitations": {
+    "Tournoi d'Attiches": "Bravo à Inès, Massyl, Gaya, Pierre et Léopold pour leur beau parcours à Attiches ! Tout le club est fier de vous. 🥋 « Jita kyoei : entraide et prospérité mutuelle » — Jigoro Kano. On progresse ensemble, sur le tatami comme en dehors."
+  },
   "resultats": [
     { "judoka": "Inès MINJARD", "categorie_age": "Minimes", "categorie": "minimes", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },
     { "judoka": "Massyl HADJOU", "categorie_age": "Benjamins", "categorie": "benjamins", "place": "3", "competition": "Tournoi d'Attiches", "lieu": "Attiches", "date": "2026-09-26" },

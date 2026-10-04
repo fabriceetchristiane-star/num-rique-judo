@@ -62,6 +62,7 @@
     .podium { font-size:2rem; }
     .resultat-info h4 { margin:0 0 0.2rem; color:#2c3e50; }
     .resultat-info p { margin:0; color:#666; font-size:0.85rem; }
+    .felicitations { background:#fef9e7; border:1px solid #f0c040; border-radius:10px; padding:0.9rem 1.1rem; color:#5d4a06; font-size:0.95rem; line-height:1.5; margin-bottom:0.9rem; }
 
     /* Boutons */
     .btn-ffjda { display:inline-flex; align-items:center; gap:0.5rem; background:linear-gradient(135deg,#1a1a2e,#2c3e50); color:white; padding:0.7rem 1.4rem; border-radius:25px; text-decoration:none; font-weight:bold; font-size:0.9rem; margin:0.3rem; transition:all .2s; }
@@ -193,7 +194,7 @@ function afficherCompetitionsDuMois(comps) {
   document.getElementById('contenu-competitions').innerHTML = html;
 }
 
-function afficherResultatsDuMois(resultats) {
+function afficherResultatsDuMois(resultats, felicitations) {
   var maintenant = new Date();
   var moisCourant = maintenant.getMonth();
   var anneeCourante = maintenant.getFullYear();
@@ -216,6 +217,7 @@ function afficherResultatsDuMois(resultats) {
     });
     Object.keys(parComp).forEach(function(comp) {
       html += '<div class="mois-titre">🏆 ' + comp + '</div>';
+      if (felicitations && felicitations[comp]) html += '<div class="felicitations">🎉 ' + felicitations[comp] + '</div>';
       parComp[comp].forEach(function(r) {
         html += '<div class="resultat-card">' +
           '<div class="podium">' + (PODIUMS[r.place] || '🎖️') + '</div>' +
@@ -244,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(function(r) { return r.json(); })
     .then(function(data) {
       afficherCompetitionsDuMois(data.competitions || []);
-      afficherResultatsDuMois(data.resultats || []);
+      afficherResultatsDuMois(data.resultats || [], data.felicitations || {});
     })
     .catch(function(e) {
       console.error('Erreur competitions.json:', e);
