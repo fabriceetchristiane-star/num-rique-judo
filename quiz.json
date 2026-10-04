@@ -1,0 +1,767 @@
+{
+  "_info": "Quiz par couleur. 'vuEnCours' = questions sur les techniques vues en cours (2 max par grade, mises a jour apres chaque seance). 'fiches' = questions tirees des fiches resume FFJDA par couleur. Chaque quiz = questions vues en cours + questions fiche tirees au hasard, total 10.",
+  "vuEnCours": [
+    {
+      "grades": [
+        "blanche-jaune",
+        "jaune-orange"
+      ],
+      "q": "O-uchi-gari : avec quoi fauches-tu la jambe de ton partenaire ?",
+      "r": "Avec mon mollet, contre son mollet",
+      "o": [
+        "Avec la pointe du pied",
+        "Avec mon mollet, contre son mollet",
+        "Avec mon genou"
+      ],
+      "e": "On fauche mollet contre mollet, en poussant le déséquilibre sur la jambe que l'on fauche."
+    },
+    {
+      "grades": [
+        "blanche-jaune",
+        "jaune-orange"
+      ],
+      "q": "Yoko-shiho-gatame : où places-tu ta tête ?",
+      "r": "Au plus près de la tête du partenaire",
+      "o": [
+        "Sur le ventre du partenaire",
+        "Au plus près de la tête du partenaire",
+        "Le plus loin possible de lui"
+      ],
+      "e": "Tête contre tête : on contrôle la ligne des épaules. Ventre contre ventre, genoux collés, pieds ancrés dans le sol."
+    }
+  ],
+  "fiches": {
+    "blanche-jaune": [
+      {
+        "q": "Que veut dire « Hajime » ?",
+        "r": "Commence",
+        "o": [
+          "Commence",
+          "Stop",
+          "On salue"
+        ],
+        "e": "Hajime = commence. Matte = stop."
+      },
+      {
+        "q": "Que veut dire « Matte » ?",
+        "r": "Stop",
+        "o": [
+          "Immobilisation",
+          "Stop",
+          "Commence"
+        ],
+        "e": "Matte = stop : on s'arrête tout de suite."
+      },
+      {
+        "q": "L'arbitre annonce « Osae komi ». Ça veut dire…",
+        "r": "L'immobilisation est comptée",
+        "o": [
+          "Le combat est fini",
+          "L'immobilisation est comptée",
+          "On change de partenaire"
+        ],
+        "e": "Osae komi = j'immobilise, le temps est compté. Toketa = l'immobilisation est finie."
+      },
+      {
+        "q": "Que veut dire « Toketa » ?",
+        "r": "L'immobilisation est finie",
+        "o": [
+          "L'immobilisation est finie",
+          "On commence",
+          "On ne bouge plus"
+        ],
+        "e": "Toketa = fin de l'immobilisation, le partenaire s'est libéré."
+      },
+      {
+        "q": "Que veut dire « Sonomama » ?",
+        "r": "On ne bouge plus",
+        "o": [
+          "On ne bouge plus",
+          "On repart",
+          "On salue"
+        ],
+        "e": "Sonomama = on ne bouge plus ; Yoshi = on repart."
+      },
+      {
+        "q": "Que veut dire « Obi » ?",
+        "r": "La ceinture",
+        "o": [
+          "La veste",
+          "La ceinture",
+          "Le tapis"
+        ],
+        "e": "Obi = ceinture. Le tapis, c'est le tatami."
+      },
+      {
+        "q": "Comment s'appelle la tenue du judoka ?",
+        "r": "Judogi",
+        "o": [
+          "Obi",
+          "Judogi",
+          "Tatami"
+        ],
+        "e": "Judogi = la tenue (le « kimono »)."
+      },
+      {
+        "q": "Comment s'appelle celui qui fait la technique ?",
+        "r": "Tori",
+        "o": [
+          "Tori",
+          "Uke",
+          "Sensei"
+        ],
+        "e": "Tori fait la technique, Uke la reçoit."
+      },
+      {
+        "q": "« Yoko ukemi », c'est une chute…",
+        "r": "De côté",
+        "o": [
+          "En arrière",
+          "De côté",
+          "En avant roulée"
+        ],
+        "e": "Yoko = côté. Ushiro ukemi = chute arrière, Mae mawari ukemi = roulade avant."
+      },
+      {
+        "q": "Quelle immobilisation se fait à cheval sur le partenaire ?",
+        "r": "Tate-shiho-gatame",
+        "o": [
+          "Kuzure-kesa-gatame",
+          "Yoko-shiho-gatame",
+          "Tate-shiho-gatame"
+        ],
+        "e": "Tate-shiho-gatame = contrôle 4 points à cheval."
+      },
+      {
+        "q": "O-goshi est une technique de…",
+        "r": "Hanche",
+        "o": [
+          "Jambe",
+          "Hanche",
+          "Bras"
+        ],
+        "e": "Goshi / Koshi = hanche. O-goshi = grande projection de hanche."
+      },
+      {
+        "q": "Quelles sont les valeurs de la ceinture blanche-jaune ?",
+        "r": "Amitié et Respect",
+        "o": [
+          "Amitié et Respect",
+          "Modestie et Honneur",
+          "Courage et Sincérité"
+        ],
+        "e": "Blanche → Jaune : Amitié et Respect. Tori et Uke forment un duo qui se fait confiance."
+      }
+    ],
+    "jaune-orange": [
+      {
+        "q": "Que veut dire « Koshi » ?",
+        "r": "Hanche",
+        "o": [
+          "Genou",
+          "Hanche",
+          "Épaule"
+        ],
+        "e": "Koshi = hanche (comme dans Uki-goshi, Harai-goshi)."
+      },
+      {
+        "q": "Que veut dire « Hiza » ?",
+        "r": "Genou",
+        "o": [
+          "Genou",
+          "Pied",
+          "Tête"
+        ],
+        "e": "Hiza = genou (comme dans Hiza-guruma)."
+      },
+      {
+        "q": "Que veut dire « Ude » ?",
+        "r": "Bras",
+        "o": [
+          "Jambe",
+          "Bras",
+          "Main"
+        ],
+        "e": "Ude = bras. Te = main, Ashi = jambe."
+      },
+      {
+        "q": "Que veut dire « Atama » ?",
+        "r": "Tête",
+        "o": [
+          "Tête",
+          "Corps",
+          "Cou"
+        ],
+        "e": "Atama = tête. Tai = corps."
+      },
+      {
+        "q": "Que veut dire « Ippon » ?",
+        "r": "Point entier : victoire",
+        "o": [
+          "Petit avantage",
+          "Point entier : victoire",
+          "Pénalité"
+        ],
+        "e": "Ippon = point entier, le combat est gagné."
+      },
+      {
+        "q": "Deux « Waza-ari », ça donne…",
+        "r": "Ippon",
+        "o": [
+          "Rien de plus",
+          "Ippon",
+          "Une pénalité"
+        ],
+        "e": "Waza-ari awasete ippon : deux waza-ari = ippon."
+      },
+      {
+        "q": "Quelles sont les valeurs de la ceinture jaune-orange ?",
+        "r": "Politesse et Courage",
+        "o": [
+          "Amitié et Respect",
+          "Politesse et Courage",
+          "Modestie et Honneur"
+        ],
+        "e": "Jaune → Orange : Politesse et Courage."
+      },
+      {
+        "q": "Ko-soto-gari est une technique de…",
+        "r": "Jambe",
+        "o": [
+          "Jambe",
+          "Hanche",
+          "Main"
+        ],
+        "e": "Ko-soto-gari, O-soto-gari, Ashi-guruma, Ko-uchi-gari : techniques de jambe."
+      },
+      {
+        "q": "Harai-goshi est une technique de…",
+        "r": "Hanche",
+        "o": [
+          "Jambe",
+          "Hanche",
+          "Main"
+        ],
+        "e": "Harai-goshi, Uki-goshi, Tsurikomi-goshi : techniques de hanche."
+      },
+      {
+        "q": "Kami-shiho-gatame, c'est un contrôle…",
+        "r": "4 points par-dessus (par la tête)",
+        "o": [
+          "4 points par le côté",
+          "4 points par-dessus (par la tête)",
+          "À cheval"
+        ],
+        "e": "Kami = dessus. Kami-shiho-gatame = contrôle 4 points par-dessus."
+      },
+      {
+        "q": "Que fait-on en « Uchi-komi » ?",
+        "r": "On répète les entrées de technique",
+        "o": [
+          "On combat librement",
+          "On répète les entrées de technique",
+          "On fait les chutes"
+        ],
+        "e": "Uchi-komi = répétition des entrées, par série de 10 par exemple."
+      },
+      {
+        "q": "Que veut dire « Randori » ?",
+        "r": "Exercice libre",
+        "o": [
+          "Exercice libre",
+          "Salut",
+          "Échauffement"
+        ],
+        "e": "Randori = exercice libre, on applique ses techniques avec un partenaire qui bouge."
+      }
+    ],
+    "orange-verte": [
+      {
+        "q": "Que veut dire « Tsukuri » ?",
+        "r": "La préparation, le placement",
+        "o": [
+          "Le déséquilibre",
+          "La préparation, le placement",
+          "L'exécution"
+        ],
+        "e": "Kuzushi (déséquilibre) → Tsukuri (placement) → Kake (exécution)."
+      },
+      {
+        "q": "Que veut dire « Kake » ?",
+        "r": "L'exécution de la technique",
+        "o": [
+          "Le salut",
+          "L'exécution de la technique",
+          "La chute"
+        ],
+        "e": "Kake = exécution : c'est la phase finale, après Kuzushi et Tsukuri."
+      },
+      {
+        "q": "La main « Hikite », c'est…",
+        "r": "La main qui tire",
+        "o": [
+          "La main qui tire",
+          "La main qui soulève",
+          "La main qui bloque"
+        ],
+        "e": "Hikite = main qui tire (la manche). Tsurite = main qui soulève (le revers)."
+      },
+      {
+        "q": "Que sont les « Sutemi-waza » ?",
+        "r": "Les techniques de sacrifice",
+        "o": [
+          "Les clés",
+          "Les techniques de sacrifice",
+          "Les immobilisations"
+        ],
+        "e": "Sutemi-waza = sacrifices : Tori se met volontairement au sol pour projeter."
+      },
+      {
+        "q": "Que sont les « Kansetsu-waza » ?",
+        "r": "Les clés",
+        "o": [
+          "Les clés",
+          "Les étranglements",
+          "Les chutes"
+        ],
+        "e": "Kansetsu-waza = clés (luxations). Shime-waza = étranglements."
+      },
+      {
+        "q": "Que sont les « Shime-waza » ?",
+        "r": "Les étranglements",
+        "o": [
+          "Les projections",
+          "Les étranglements",
+          "Les clés"
+        ],
+        "e": "Shime-waza = étranglements."
+      },
+      {
+        "q": "Que veut dire « Kata » (partie du corps) ?",
+        "r": "Épaule",
+        "o": [
+          "Épaule",
+          "Cuisse",
+          "Cou"
+        ],
+        "e": "Kata = épaule (Kata-gatame). Kubi = cou, Mono = cuisse."
+      },
+      {
+        "q": "Que veut dire « Mune » ?",
+        "r": "Poitrine",
+        "o": [
+          "Poitrine",
+          "Hanche",
+          "Genou"
+        ],
+        "e": "Mune = poitrine."
+      },
+      {
+        "q": "« Go no sen », c'est…",
+        "r": "Réagir après l'attaque de l'adversaire",
+        "o": [
+          "Attaquer le premier",
+          "Réagir après l'attaque de l'adversaire",
+          "Saluer avant le combat"
+        ],
+        "e": "Go no sen = je réagis (je contre) après son attaque."
+      },
+      {
+        "q": "Que veut dire « Kachi » ?",
+        "r": "Victoire",
+        "o": [
+          "Victoire",
+          "Pénalité",
+          "Égalité"
+        ],
+        "e": "Kachi = victoire."
+      },
+      {
+        "q": "Quelles sont les valeurs de la ceinture orange-verte ?",
+        "r": "Sincérité et Contrôle de soi",
+        "o": [
+          "Politesse et Courage",
+          "Sincérité et Contrôle de soi",
+          "Proactivité et Confiance en soi"
+        ],
+        "e": "Orange → Verte : Sincérité et Contrôle de soi."
+      },
+      {
+        "q": "Kesa-gatame (Hon-gesa-gatame), c'est…",
+        "r": "Le contrôle fondamental en travers",
+        "o": [
+          "Le contrôle à cheval",
+          "Le contrôle fondamental en travers",
+          "Une clé de bras"
+        ],
+        "e": "Kesa-gatame = contrôle en travers, l'immobilisation de base."
+      }
+    ],
+    "verte-bleue": [
+      {
+        "q": "« Ai yotsu », c'est une garde…",
+        "r": "Emboîtée (même côté)",
+        "o": [
+          "Emboîtée (même côté)",
+          "Opposée",
+          "Sans saisie"
+        ],
+        "e": "Ai yotsu = garde emboîtée, Kenka yotsu = garde opposée (droitier contre gaucher)."
+      },
+      {
+        "q": "« Kenka yotsu », c'est une garde…",
+        "r": "Opposée",
+        "o": [
+          "Emboîtée",
+          "Opposée",
+          "Basse"
+        ],
+        "e": "Kenka yotsu = garde opposée."
+      },
+      {
+        "q": "Que veut dire « Tokui waza » ?",
+        "r": "Technique favorite",
+        "o": [
+          "Technique interdite",
+          "Technique favorite",
+          "Technique au sol"
+        ],
+        "e": "Tokui waza = ta technique favorite, autour de laquelle tu construis ton système d'attaque."
+      },
+      {
+        "q": "Que veut dire « Kibisu » ?",
+        "r": "Talon",
+        "o": [
+          "Talon",
+          "Genou",
+          "Épaule"
+        ],
+        "e": "Kibisu = talon (comme dans Kibisu-gaeshi)."
+      },
+      {
+        "q": "Que veut dire « Mata » ?",
+        "r": "Entrejambe",
+        "o": [
+          "Cuisse",
+          "Entrejambe",
+          "Poitrine"
+        ],
+        "e": "Mata = entrejambe (comme dans Uchi-mata)."
+      },
+      {
+        "q": "Ude-hishigi-juji-gatame, c'est…",
+        "r": "Une clé du coude par contrôle en croix",
+        "o": [
+          "Un étranglement",
+          "Une clé du coude par contrôle en croix",
+          "Une immobilisation"
+        ],
+        "e": "Juji = croix. Luxation du coude par contrôle en croix."
+      },
+      {
+        "q": "Hadaka-jime, c'est…",
+        "r": "Un étranglement à mains nues",
+        "o": [
+          "Un étranglement à mains nues",
+          "Une clé de bras",
+          "Un sacrifice"
+        ],
+        "e": "Hadaka-jime = étranglement à mains nues (sans le revers)."
+      },
+      {
+        "q": "Katate-jime, c'est un étranglement…",
+        "r": "Avec une seule main",
+        "o": [
+          "Avec les jambes",
+          "Avec une seule main",
+          "Par le revers croisé"
+        ],
+        "e": "Katate = une main. Katate-jime = étranglement d'une seule main."
+      },
+      {
+        "q": "Tomoe-nage fait partie des…",
+        "r": "Sacrifices (Sutemi-waza)",
+        "o": [
+          "Techniques de hanche",
+          "Sacrifices (Sutemi-waza)",
+          "Immobilisations"
+        ],
+        "e": "Tomoe-nage, Sumi-gaeshi, Tani-otoshi, Ko-uchi-makikomi : sacrifices."
+      },
+      {
+        "q": "Faire une « confusion », c'est…",
+        "r": "Faire croire à une attaque pour en placer une autre",
+        "o": [
+          "Faire croire à une attaque pour en placer une autre",
+          "Se tromper de technique",
+          "Changer de partenaire"
+        ],
+        "e": "Confusion / feinte : tu fais réagir Uke d'un côté pour attaquer de l'autre."
+      },
+      {
+        "q": "« Hikidashi », c'est…",
+        "r": "Attirer le partenaire vers soi",
+        "o": [
+          "Pousser le partenaire",
+          "Attirer le partenaire vers soi",
+          "Sauter en avant"
+        ],
+        "e": "Hikidashi = attirer (tirer) ; Oikomi = poursuivre en avançant ; Tobikomi = entrer en sautant."
+      },
+      {
+        "q": "Quelles sont les valeurs de la ceinture verte-bleue ?",
+        "r": "Modestie et Honneur",
+        "o": [
+          "Modestie et Honneur",
+          "Amitié et Respect",
+          "Réalisation de soi et Responsabilité"
+        ],
+        "e": "Verte → Bleue : Modestie et Honneur."
+      }
+    ],
+    "bleue-marron": [
+      {
+        "q": "En quelle année est né le judo (création du Kodokan) ?",
+        "r": "1882",
+        "o": [
+          "1882",
+          "1920",
+          "1964"
+        ],
+        "e": "1882 : Jigoro Kano crée le Kodokan à Tokyo."
+      },
+      {
+        "q": "Qui a fondé le judo ?",
+        "r": "Jigoro Kano (1860-1938)",
+        "o": [
+          "Jigoro Kano (1860-1938)",
+          "Mikinosuke Kawaishi",
+          "Gichin Funakoshi"
+        ],
+        "e": "Jigoro Kano (1860-1938). Funakoshi est le père du karaté moderne."
+      },
+      {
+        "q": "Quel maître japonais a développé le judo en France à partir de 1935 ?",
+        "r": "Maître Kawaishi",
+        "o": [
+          "Maître Kawaishi",
+          "Maître Kano",
+          "Maître Ueshiba"
+        ],
+        "e": "Mikinosuke Kawaishi arrive en France en 1935. Ueshiba est le fondateur de l'aïkido."
+      },
+      {
+        "q": "Quelles sont les valeurs de la ceinture bleue-marron ?",
+        "r": "Proactivité et Confiance en soi",
+        "o": [
+          "Modestie et Honneur",
+          "Proactivité et Confiance en soi",
+          "Politesse et Courage"
+        ],
+        "e": "Bleue → Marron : Proactivité et Confiance en soi."
+      },
+      {
+        "q": "Ude-garami, c'est…",
+        "r": "Une clé par enroulement du coude",
+        "o": [
+          "Un étranglement",
+          "Une clé par enroulement du coude",
+          "Un sacrifice"
+        ],
+        "e": "Ude-garami = enroulement du coude (clé)."
+      },
+      {
+        "q": "Ude-hishigi-hiza-gatame : avec quoi contrôle-t-on le coude ?",
+        "r": "Le genou",
+        "o": [
+          "Le genou",
+          "L'épaule",
+          "La main"
+        ],
+        "e": "Hiza = genou : luxation du coude par contrôle du genou."
+      },
+      {
+        "q": "Nami-juji-jime, c'est…",
+        "r": "Un étranglement croisé normal",
+        "o": [
+          "Un étranglement croisé normal",
+          "Une clé de jambe",
+          "Une immobilisation"
+        ],
+        "e": "Juji = croix. Nami = normal, Gyaku = inverse, Kata = à moitié croisé."
+      },
+      {
+        "q": "Gyaku-juji-jime, c'est un étranglement croisé…",
+        "r": "Inverse",
+        "o": [
+          "Normal",
+          "Inverse",
+          "D'une seule main"
+        ],
+        "e": "Gyaku = inverse : étranglement croisé inverse."
+      },
+      {
+        "q": "Combien y a-t-il de secteurs de chute ?",
+        "r": "4",
+        "o": [
+          "2",
+          "4",
+          "8"
+        ],
+        "e": "4 secteurs : avant-droit, arrière-droit, avant-gauche, arrière-gauche."
+      },
+      {
+        "q": "Hane-goshi est une technique de…",
+        "r": "Hanche",
+        "o": [
+          "Hanche",
+          "Jambe",
+          "Sacrifice"
+        ],
+        "e": "Hane-goshi = hanche fauchée en ressort."
+      },
+      {
+        "q": "Liaison debout-sol : sur mon attaque, je garde la manche pour…",
+        "r": "Enchaîner au sol",
+        "o": [
+          "Saluer",
+          "Enchaîner au sol",
+          "Arrêter le combat"
+        ],
+        "e": "Garder la manche ou le revers après la projection permet d'enchaîner directement au sol."
+      },
+      {
+        "q": "« Makikomi », c'est une forme de technique…",
+        "r": "En s'enroulant",
+        "o": [
+          "En s'enroulant",
+          "En sautant",
+          "En fauchant"
+        ],
+        "e": "Makikomi = enroulement (Soto-makikomi, Ko-uchi-makikomi)."
+      }
+    ],
+    "marron-noir": [
+      {
+        "q": "Dans Shin-Gi-Tai, que veut dire « Shin » ?",
+        "r": "L'esprit",
+        "o": [
+          "Le corps",
+          "L'esprit",
+          "La technique"
+        ],
+        "e": "Shin = esprit, Gi = technique, Tai = corps. Le judo est l'union des trois."
+      },
+      {
+        "q": "Dans Shin-Gi-Tai, que veut dire « Gi » ?",
+        "r": "La technique",
+        "o": [
+          "La technique",
+          "Le corps",
+          "La tenue"
+        ],
+        "e": "Gi = la technique."
+      },
+      {
+        "q": "Pour le Shodan, quel kata peux-tu présenter ?",
+        "r": "Nage-no-kata ou Kodokan-goshin-jitsu",
+        "o": [
+          "Nage-no-kata ou Kodokan-goshin-jitsu",
+          "Katame-no-kata seulement",
+          "Aucun kata"
+        ],
+        "e": "Examen 1er dan : Nage-no-kata ou Kodokan-goshin-jitsu."
+      },
+      {
+        "q": "Que veut dire « Shodan » ?",
+        "r": "1er dan",
+        "o": [
+          "1er dan",
+          "Ceinture marron",
+          "Arbitre"
+        ],
+        "e": "Shodan = 1er dan, la ceinture noire."
+      },
+      {
+        "q": "À l'examen du 1er dan, l'UV1 c'est…",
+        "r": "Le kata",
+        "o": [
+          "Le kata",
+          "L'efficacité en combat",
+          "L'arbitrage"
+        ],
+        "e": "UV1 : kata ; UV2 : technique ; UV3 : efficacité ; UV4 : engagement personnel."
+      },
+      {
+        "q": "L'UV3, c'est…",
+        "r": "L'efficacité",
+        "o": [
+          "Le kata",
+          "L'efficacité",
+          "La culture judo"
+        ],
+        "e": "UV3 = efficacité (combat / compétition)."
+      },
+      {
+        "q": "« AVD » dans les secteurs de chute veut dire…",
+        "r": "Avant droit",
+        "o": [
+          "Avant droit",
+          "Arrière droit",
+          "Attaque directe"
+        ],
+        "e": "AVD, ARD, AVG, ARG : avant-droit, arrière-droit, avant-gauche, arrière-gauche."
+      },
+      {
+        "q": "Quelles sont les valeurs de la ceinture marron-noire ?",
+        "r": "Réalisation de soi et Responsabilité",
+        "o": [
+          "Réalisation de soi et Responsabilité",
+          "Amitié et Respect",
+          "Sincérité et Contrôle de soi"
+        ],
+        "e": "Marron → Noire : Réalisation de soi et Responsabilité."
+      },
+      {
+        "q": "« Seiryoku zenyo » signifie…",
+        "r": "La meilleure utilisation de l'énergie",
+        "o": [
+          "Entraide et prospérité mutuelle",
+          "La meilleure utilisation de l'énergie",
+          "Le respect du maître"
+        ],
+        "e": "Seiryoku zenyo = meilleure utilisation de l'énergie. Jita kyoei = entraide et prospérité mutuelle."
+      },
+      {
+        "q": "« Jita kyoei » signifie…",
+        "r": "Entraide et prospérité mutuelle",
+        "o": [
+          "Entraide et prospérité mutuelle",
+          "Force et vitesse",
+          "La voie de la souplesse"
+        ],
+        "e": "Jita kyoei = entraide et prospérité mutuelle : on progresse ensemble."
+      },
+      {
+        "q": "Pour défendre, je peux esquiver, bloquer, couper ou…",
+        "r": "Contrer",
+        "o": [
+          "Contrer",
+          "Abandonner",
+          "Sortir du tapis"
+        ],
+        "e": "Esquiver, bloquer, couper ou contrer, puis garder la continuité jusqu'au ne-waza."
+      },
+      {
+        "q": "Ton système d'attaque se construit autour de…",
+        "r": "Ton Tokui waza",
+        "o": [
+          "Ton Tokui waza",
+          "Ton kata",
+          "Ta catégorie de poids"
+        ],
+        "e": "Le Tokui waza (technique favorite) est le centre de ton système d'attaque."
+      }
+    ]
+  }
+}

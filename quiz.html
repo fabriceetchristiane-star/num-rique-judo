@@ -93,22 +93,31 @@
       transition: width 0.3s ease;
     }
     .btn-recommencer { background: #B22222; color: white; margin-top: 15px; }
+    .choix-grade { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:15px 0; }
+    .choix-grade a { text-decoration:none; padding:8px 14px; border-radius:20px; background:white; color:#333; box-shadow:0 1px 4px rgba(0,0,0,0.12); font-size:0.95em; }
+    .choix-grade a.actif { background:#B22222; color:white; }
+    .intro { text-align:center; color:#555; margin:10px 0 20px; }
+    #zone-quiz { display:none; }
     .btn-recommencer:hover { background: #8b1a1a; }
   </style>
 </head>
 <body>
   <header>
     <h1>🎯 Quiz Judo – Teste tes connaissances</h1>
-    <p>Ceintures jaune et orange : les techniques vues en cours et le vocabulaire du judo</p>
+    <p>Choisis ta ceinture : les techniques vues en cours et ta fiche de grade</p>
   </header>
 
-  <div class="score" id="score"></div>
-  <div class="progress-bar">
-    <div class="progress" id="progress" style="width: 0%"></div>
-  </div>
+  <div class="choix-grade" id="choix-grade"></div>
+  <p class="intro" id="intro">👆 Choisis ton grade pour commencer. Tu es en avance ? Essaie aussi le quiz de la ceinture suivante !</p>
 
-  <div id="quiz"></div>
-  <div class="resultat" id="resultat"></div>
+  <div id="zone-quiz">
+    <div class="score" id="score"></div>
+    <div class="progress-bar">
+      <div class="progress" id="progress" style="width: 0%"></div>
+    </div>
+    <div id="quiz"></div>
+    <div class="resultat" id="resultat"></div>
+  </div>
 
   <nav style="margin-top: 30px;">
     <a class="lien-bleu" href="index.html">⬅️ Retour à l'accueil</a>
@@ -117,97 +126,56 @@
   </nav>
 
   <script>
-    // t = thème affiché, q = question, r = bonne réponse, o = choix, e = explication
-    const questions = [
-      {
-        t: "📌 Vu en cours", cours: true,
-        q: "O-uchi-gari : avec quoi fauches-tu la jambe de ton partenaire ?",
-        r: "Avec mon mollet, contre son mollet",
-        o: ["Avec la pointe du pied", "Avec mon mollet, contre son mollet", "Avec mon genou"],
-        e: "On fauche mollet contre mollet, en poussant le déséquilibre sur la jambe que l'on fauche."
-      },
-      {
-        t: "📌 Vu en cours", cours: true,
-        q: "Yoko-shiho-gatame : où places-tu ta tête ?",
-        r: "Au plus près de la tête du partenaire",
-        o: ["Sur le ventre du partenaire", "Au plus près de la tête du partenaire", "Le plus loin possible de lui"],
-        e: "Tête contre tête : on contrôle la ligne des épaules. Ventre contre ventre, genoux collés, pieds ancrés dans le sol."
-      },
-      {
-        t: "📖 Lexique",
-        q: "Que veut dire « Uchi » (comme dans O-uchi-gari) ?",
-        r: "Intérieur",
-        o: ["Extérieur", "Derrière", "Intérieur"],
-        e: "Uchi = intérieur, Soto = extérieur. O-uchi-gari = grand fauchage intérieur."
-      },
-      {
-        t: "📖 Lexique",
-        q: "Que veut dire « Yoko » (comme dans Yoko-shiho-gatame) ?",
-        r: "Côté",
-        o: ["Côté", "Devant", "Couché"],
-        e: "Yoko = côté. Yoko-shiho-gatame = contrôle par le côté sur quatre points."
-      },
-      {
-        t: "📖 Lexique",
-        q: "Que veut dire « Kuzushi » ?",
-        r: "Le déséquilibre",
-        o: ["La chute", "Le déséquilibre", "Le salut"],
-        e: "Kuzushi = déséquilibre. Pas de belle projection sans déséquilibrer son partenaire d'abord !"
-      },
-      {
-        t: "📖 Lexique",
-        q: "Comment s'appelle le partenaire qui subit la technique ?",
-        r: "Uke",
-        o: ["Tori", "Uke", "Sensei"],
-        e: "Uke subit la technique, Tori la réalise. Le Sensei, c'est le professeur."
-      },
-      {
-        t: "📖 Lexique",
-        q: "Que veut dire « Kumi-kata » ?",
-        r: "La façon de saisir le judogi",
-        o: ["La façon de saisir le judogi", "Une technique au sol", "La façon de tomber"],
-        e: "Kumi-kata = la prise, la garde. La garde classique : manche et revers."
-      },
-      {
-        t: "🥋 Familles de techniques",
-        q: "Que sont les « Osaekomi-waza » ?",
-        r: "Les immobilisations",
-        o: ["Les projections", "Les immobilisations", "Les chutes"],
-        e: "Osaekomi-waza = immobilisations au sol, comme Yoko-shiho-gatame, Kesa-gatame ou Tate-shiho-gatame."
-      },
-      {
-        t: "🥋 Familles de techniques",
-        q: "O-uchi-gari, De-ashi-barai et Ko-soto-gari sont des « Ashi-waza ». Ce sont des techniques…",
-        r: "De jambe",
-        o: ["De hanche", "De bras", "De jambe"],
-        e: "Ashi = jambe, pied. Les Ashi-waza font partie des Nage-waza (projections)."
-      },
-      {
-        t: "📖 Lexique",
-        q: "Que veut dire « Judo » ?",
-        r: "Voie de la souplesse",
-        o: ["Art du combat", "Voie de la souplesse", "Main vide"],
-        e: "Ju = souplesse, Do = voie. « Main vide », c'est Karaté !"
-      }
-    ];
+    const GRADES = {
+      'blanche-jaune': '⬜🟨 Blanche / Jaune',
+      'jaune-orange':  '🟨🟧 Jaune / Orange',
+      'orange-verte':  '🟧🟩 Orange / Verte',
+      'verte-bleue':   '🟩🔵 Verte / Bleue',
+      'bleue-marron':  '🔵🟤 Bleue / Marron',
+      'marron-noir':   '🟤⚫ Marron / Noir'
+    };
+    const NB_QUESTIONS = 10;
 
-    const total = questions.length;
+    let DATA = null;
+    let questions = [];
     let score = 0;
     let questionsRepondues = 0;
-    const quizDiv = document.getElementById("quiz");
-    const scoreDiv = document.getElementById("score");
-    const progressBar = document.getElementById("progress");
+    const grade = new URLSearchParams(location.search).get('grade');
+
+    function melanger(liste) {
+      const l = liste.slice();
+      for (let i = l.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [l[i], l[j]] = [l[j], l[i]];
+      }
+      return l;
+    }
+
+    function preparerQuestions() {
+      const cours = (DATA.vuEnCours || [])
+        .filter(q => (q.grades || []).includes(grade))
+        .slice(0, 2)
+        .map(q => Object.assign({ t: "📌 Vu en cours", cours: true }, q));
+      const fiche = melanger(DATA.fiches[grade] || [])
+        .slice(0, NB_QUESTIONS - cours.length)
+        .map(q => Object.assign({ t: "📄 Fiche de grade" }, q));
+      return cours.concat(fiche).map(q => Object.assign({}, q, { o: melanger(q.o) }));
+    }
 
     function mettreAJourProgression() {
-      progressBar.style.width = (questionsRepondues / total) * 100 + '%';
-      scoreDiv.textContent = `Score : ${score}/${questionsRepondues} - Progression : ${questionsRepondues}/${total}`;
+      const total = questions.length;
+      document.getElementById("progress").style.width = (questionsRepondues / total) * 100 + '%';
+      document.getElementById("score").textContent = `Score : ${score}/${questionsRepondues} - Progression : ${questionsRepondues}/${total}`;
     }
 
     function afficherQuiz() {
+      questions = preparerQuestions();
       score = 0;
       questionsRepondues = 0;
+      const quizDiv = document.getElementById("quiz");
       quizDiv.innerHTML = "";
       document.getElementById("resultat").innerHTML = "";
+      const total = questions.length;
 
       questions.forEach((q, i) => {
         const div = document.createElement("div");
@@ -229,22 +197,19 @@
             } else {
               btn.style.backgroundColor = "#ffcdd2";
               btn.style.color = "#721c24";
-              // Montrer la bonne réponse
               Array.from(div.querySelectorAll("button")).forEach(b => {
                 if (b.textContent === q.r) { b.style.backgroundColor = "#c8e6c9"; b.style.color = "#155724"; }
               });
             }
-
             Array.from(div.querySelectorAll("button")).forEach(b => b.disabled = true);
             explication.style.display = "block";
-
             questionsRepondues++;
             mettreAJourProgression();
 
             if (questionsRepondues === total) {
               let message = "";
               if (score >= 8) {
-                message = "🥋 Excellent ! Tu maîtrises les bases du Judo !";
+                message = "🥋 Excellent ! Tu maîtrises ton grade !";
               } else if (score >= 5) {
                 message = "👍 Bien ! Continue à apprendre !";
               } else {
@@ -254,7 +219,7 @@
                 ${message}<br>
                 <strong>Score final : ${score}/${total}</strong><br>
                 <em>« Seiryoku zenyo : la meilleure utilisation de l'énergie » — Jigoro Kano</em><br>
-                <button class="btn-recommencer" onclick="afficherQuiz(); window.scrollTo(0,0);">🔄 Recommencer</button>
+                <button class="btn-recommencer" onclick="afficherQuiz(); window.scrollTo(0,0);">🔄 Nouvelles questions</button>
               `;
             }
           };
@@ -263,11 +228,30 @@
         div.appendChild(explication);
         quizDiv.appendChild(div);
       });
-
       mettreAJourProgression();
     }
 
-    afficherQuiz();
+    // Boutons de choix du grade
+    let liens = '';
+    Object.keys(GRADES).forEach(g => {
+      liens += `<a href="quiz.html?grade=${g}"${g === grade ? ' class="actif"' : ''}>${GRADES[g]}</a>`;
+    });
+    document.getElementById("choix-grade").innerHTML = liens;
+
+    if (grade && GRADES[grade]) {
+      document.getElementById("intro").textContent = "Quiz " + GRADES[grade].replace(/^\S+\s/, '') + " — 10 questions, tirées au hasard à chaque partie.";
+      fetch('quiz.json')
+        .then(r => r.json())
+        .then(d => {
+          DATA = d;
+          document.getElementById("zone-quiz").style.display = "block";
+          afficherQuiz();
+        })
+        .catch(e => {
+          console.error('Erreur quiz.json:', e);
+          document.getElementById("intro").textContent = "⚠️ Erreur de chargement du quiz.";
+        });
+    }
   </script>
 </body>
 </html>
