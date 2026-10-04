@@ -5,6 +5,7 @@
       "nom": "O-uchi-gari",
       "traduction": "Grand fauchage intérieur",
       "famille": "Ashi-waza (techniques de jambe)",
+   "images": ["images/techniques/o-uchi-gari.png"],
       "points": [
         "Kumikata : garde classique, manche et revers.",
         "Avancer le pied le plus fort (pied droit pour un droitier) entre les deux pieds du partenaire.",
@@ -19,6 +20,7 @@
       "nom": "Yoko-shiho-gatame",
       "traduction": "Contrôle par le côté sur quatre points",
       "famille": "Osaekomi-waza (immobilisations)",
+   "images": ["images/techniques/yoko-shiho-gatame.png"],
       "points": [
         "Poser le ventre contre le ventre du partenaire.",
         "Coller les genoux contre le partenaire.",
