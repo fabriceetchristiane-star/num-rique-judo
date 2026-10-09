@@ -1,0 +1,99 @@
+{
+  "titre": "L'arbitrage selon l'âge",
+  "intro": "Au judo, les règles d'arbitrage changent selon la catégorie d'âge pour protéger les enfants : plus on est jeune, plus certaines techniques sont interdites. Voici l'essentiel, expliqué simplement.",
+  "avertissement": "Résumé pédagogique à usage du club, sans valeur réglementaire. En compétition, l'arbitre et le règlement de la rencontre font toujours foi. En cas de doute, demande à ton professeur.",
+  "categories": [
+    {
+      "id": "poussins",
+      "nom": "Mini-Poussins et Poussins",
+      "age": "6 à 9 ans",
+      "couleur": "#e74c3c",
+      "essentiel": "Ce ne sont pas de vrais combats de compétition mais des randoris arbitrés. L'arbitre intervient comme un éducateur : il arrête, explique et protège l'enfant.",
+      "autorise": [
+        "Garde de base à deux mains (saisie du kimono)",
+        "Saisie avec le pouce à l'intérieur du col",
+        "Projections du côté de la manche tenue (par exemple o-uchi-gari dans sa forme de base)",
+        "Immobilisations au sol, sans contrainte sur le cou (pouce dans le col ou main sur la cuisse)"
+      ],
+      "interdit": [
+        "Clés de bras et étranglements",
+        "Attaques à genoux et techniques de sacrifice (se laisser tomber pour projeter)",
+        "Projections avec enroulement (makikomi)",
+        "Encercler la tête ou toute contrainte sur le cou"
+      ],
+      "fautes": "La première faute mineure est expliquée à l'enfant, sans pénalité. Si elle se répète, c'est un shido (pénalité). Les fautes dangereuses restent sanctionnées.",
+      "duree": "Courte, fixée par l'organisateur de la rencontre."
+    },
+    {
+      "id": "benjamins",
+      "nom": "Benjamins",
+      "age": "10 à 11 ans",
+      "couleur": "#f39c12",
+      "essentiel": "On applique les règles des minimes, avec la garde à deux mains obligatoire. Les makikomi deviennent autorisés.",
+      "autorise": [
+        "Garde à deux mains, saisie dans le dos (sauf en croisé ou avec une contrainte sur le cou)",
+        "Projections debout, y compris les makikomi",
+        "Immobilisations au sol"
+      ],
+      "interdit": [
+        "Clés de bras et étranglements",
+        "Contraintes sur le cou : l'arbitre arrête (matte) et explique",
+        "Techniques de sacrifice, sauf makikomi",
+        "Attaques directes à deux genoux"
+      ],
+      "fautes": "Comme chez les poussins, la première faute mineure est d'abord expliquée. La récidive est sanctionnée d'un shido.",
+      "duree": "2 minutes."
+    },
+    {
+      "id": "minimes",
+      "nom": "Minimes",
+      "age": "12 à 13 ans",
+      "couleur": "#2ecc71",
+      "essentiel": "La sécurité du cou et des bras reste la priorité. Les fautes sont sanctionnées plus directement qu'avant.",
+      "autorise": [
+        "Projections debout, makikomi compris",
+        "Immobilisations (osaekomi)",
+        "Retournement « sankaku » dans sa forme de base ; sankaku-gatame validé en décroisant les jambes"
+      ],
+      "interdit": [
+        "Clés de bras (kansetsu-waza) et étranglements (shime-waza)",
+        "Contraintes sur le cou, debout comme au sol",
+        "Techniques de sacrifice (sutemi) hors makikomi",
+        "Attaques directes à deux genoux, encercler la tête"
+      ],
+      "fautes": "Le combat démarre à distance puis passe par une garde à deux mains. Les fautes sont sanctionnées par shido.",
+      "duree": "3 minutes."
+    },
+    {
+      "id": "cadets",
+      "nom": "Cadets",
+      "age": "14 à 16 ans",
+      "couleur": "#9b59b6",
+      "essentiel": "Le règlement se rapproche de celui des adultes, mais les cadets restent protégés sur certains points.",
+      "autorise": [
+        "Les règles évoluent vers le règlement international : demande le détail à ton professeur"
+      ],
+      "interdit": [
+        "L'utilisation de la tête et le seoi-nage inversé restent sanctionnés d'un shido chez les cadets (nouveautés arbitrage 2026, France Judo)"
+      ],
+      "fautes": "Les fautes sont sanctionnées par shido.",
+      "duree": "Variable selon la compétition : voir la convocation."
+    }
+  ],
+  "mots": [
+    { "terme": "Randori arbitré", "sens": "Combat d'entraînement surveillé par un arbitre qui explique et protège" },
+    { "terme": "Shime-waza", "sens": "Étranglements" },
+    { "terme": "Kansetsu-waza", "sens": "Clés de bras" },
+    { "terme": "Sutemi", "sens": "Techniques de sacrifice : on se laisse tomber pour projeter" },
+    { "terme": "Makikomi", "sens": "Projection avec enroulement autour de la jambe ou du bras" },
+    { "terme": "Kumi-kata", "sens": "La façon de saisir le kimono de l'adversaire" },
+    { "terme": "Matte", "sens": "« Stop » : l'arbitre arrête le combat" },
+    { "terme": "Shido", "sens": "Pénalité donnée par l'arbitre" },
+    { "terme": "Hansoku-make", "sens": "Disqualification, pour une faute dangereuse ou contraire à l'esprit du judo" }
+  ],
+  "contact_erreur": {
+    "texte": "Une erreur, un doute, une information à corriger ? Écris-nous, on corrige rapidement.",
+    "mail": "contact@dojonumerique.fr"
+  },
+  "source": "France Judo, « Arbitrage national judo à vocation pédagogique » (septembre 2024, mise à jour du 3 mars 2025) ; règlement « Adaptations pédagogiques françaises » applicable depuis le 1er septembre 2025 (mis à jour en janvier 2026), lu à travers les résumés publiés par des comités et clubs FFJDA ; « Nouveautés arbitrage 2026 » sur francejudo.com."
+}

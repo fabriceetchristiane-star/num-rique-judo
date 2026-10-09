@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'arbitrage selon l'âge — Dojo Numérique</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+    body { font-family:'Segoe UI',sans-serif; line-height:1.6; background:#f8f9fa; color:#333; padding:0; margin:0; }
+    header { background:linear-gradient(135deg,#2c3e50,#3498db); color:white; padding:2rem 1rem; text-align:center; border-radius:0 0 15px 15px; margin-bottom:2rem; }
+    header h1 { margin:0; font-size:1.6rem; }
+    header p { margin:0.3rem 0 0; opacity:0.85; }
+    .container { max-width:960px; margin:0 auto; padding:0 1rem; }
+    .intro { background:white; padding:1.2rem 1.5rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.08); margin-bottom:1rem; }
+    .avert { background:#fef9e7; border:1px solid #f0c040; border-radius:8px; padding:0.8rem 1rem; font-size:0.85rem; color:#7d6608; margin-bottom:1.5rem; }
+    .cat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1rem; margin-bottom:1.5rem; }
+    .cat-card { background:white; border-radius:10px; padding:1.2rem; box-shadow:0 2px 8px rgba(0,0,0,0.09); border-top:5px solid #3498db; }
+    .cat-card h3 { margin:0; color:#2c3e50; font-size:1.1rem; }
+    .cat-age { display:inline-block; font-size:0.78rem; font-weight:bold; color:white; padding:0.2rem 0.7rem; border-radius:12px; margin:0.4rem 0 0.6rem; }
+    .cat-essentiel { font-size:0.9rem; color:#555; margin:0 0 0.8rem; }
+    .cat-card h4 { margin:0.8rem 0 0.3rem; font-size:0.9rem; }
+    .cat-card h4.ok { color:#27ae60; }
+    .cat-card h4.ko { color:#c0392b; }
+    .cat-card h4.info { color:#2c3e50; }
+    .cat-card ul { margin:0; padding-left:1.2rem; font-size:0.85rem; color:#555; }
+    .cat-card p.petit { margin:0; font-size:0.85rem; color:#555; }
+    .bloc { background:white; padding:1.2rem 1.5rem; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.08); margin-bottom:1.2rem; }
+    .bloc h2 { margin:0 0 0.7rem; font-size:1.05rem; color:#2c3e50; border-bottom:3px solid #3498db; padding-bottom:0.4rem; }
+    .mots-table { width:100%; border-collapse:collapse; font-size:0.88rem; }
+    .mots-table td { padding:0.4rem 0.5rem; border-bottom:1px solid #eee; vertical-align:top; }
+    .mots-table td.terme { font-weight:bold; color:#2c3e50; white-space:nowrap; width:30%; }
+    .bloc.contact-err { border-left:5px solid #3498db; }
+    .bloc.contact-err p { margin:0; font-size:0.9rem; color:#555; }
+    .bloc.contact-err a { color:#2980b9; font-weight:bold; }
+    .source { font-size:0.78rem; color:#888; margin-bottom:1.5rem; }
+    .btn-retour { display:inline-flex; align-items:center; gap:0.5rem; background:#3498db; color:white; padding:0.7rem 1.4rem; border-radius:25px; text-decoration:none; font-weight:bold; font-size:0.9rem; margin:0.3rem; }
+    .btn-retour:hover { background:#2980b9; color:white; }
+    footer { text-align:center; margin-top:3rem; padding:1.5rem; background:#2c3e50; color:white; }
+    @media(max-width:600px) { .cat-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<header>
+  <h1>⚖️ L'arbitrage selon l'âge</h1>
+  <p>Ce qui est autorisé, ce qui ne l'est pas, pour chaque catégorie</p>
+</header>
+<div class="container">
+  <div id="contenu"><p style="color:#666;">Chargement...</p></div>
+
+  <nav style="text-align:center; margin:2rem 0; padding-top:1rem; border-top:1px solid #eee;">
+    <a class="btn-retour" href="index.html">🏠 Accueil</a>
+    <a class="btn-retour" href="informations.html">📢 Informations</a>
+    <a class="btn-retour" href="videos-par-grade.html">📽️ Vidéos par grade</a>
+  </nav>
+</div>
+<footer>
+  <p>Dojo Numérique Lambersart — Club Judo Lambersart JAK</p>
+</footer>
+<script src="arbitrage.js"></script>
+</body>
+</html>
