@@ -29,6 +29,10 @@ fetch('arbitrage.json')
     html += '<div class="avert">' + esc(d.avertissement) + '</div>';
     html += '<div class="cat-grid">' + (d.categories || []).map(carte).join('') + '</div>';
 
+    if (d.regles_communes) {
+      html += '<div class="bloc"><h2>' + esc(d.regles_communes.titre) + '</h2><p class="petit">' + esc(d.regles_communes.intro) + '</p>' + liste(d.regles_communes.points) + '</div>';
+    }
+
     if (d.mots && d.mots.length) {
       html += '<div class="bloc"><h2>📖 Mots à connaître</h2><table class="mots-table">' +
         d.mots.map(function(m) {

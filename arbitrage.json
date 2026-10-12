@@ -81,19 +81,59 @@
     }
   ],
   "mots": [
-    { "terme": "Randori arbitré", "sens": "Combat d'entraînement surveillé par un arbitre qui explique et protège" },
-    { "terme": "Shime-waza", "sens": "Étranglements" },
-    { "terme": "Kansetsu-waza", "sens": "Clés de bras" },
-    { "terme": "Sutemi", "sens": "Techniques de sacrifice : on se laisse tomber pour projeter" },
-    { "terme": "Makikomi", "sens": "Projection avec enroulement autour de la jambe ou du bras" },
-    { "terme": "Kumi-kata", "sens": "La façon de saisir le kimono de l'adversaire" },
-    { "terme": "Matte", "sens": "« Stop » : l'arbitre arrête le combat" },
-    { "terme": "Shido", "sens": "Pénalité donnée par l'arbitre" },
-    { "terme": "Hansoku-make", "sens": "Disqualification, pour une faute dangereuse ou contraire à l'esprit du judo" }
+    {
+      "terme": "Randori arbitré",
+      "sens": "Combat d'entraînement surveillé par un arbitre qui explique et protège"
+    },
+    {
+      "terme": "Shime-waza",
+      "sens": "Étranglements"
+    },
+    {
+      "terme": "Kansetsu-waza",
+      "sens": "Clés de bras"
+    },
+    {
+      "terme": "Sutemi",
+      "sens": "Techniques de sacrifice : on se laisse tomber pour projeter"
+    },
+    {
+      "terme": "Makikomi",
+      "sens": "Projection avec enroulement autour de la jambe ou du bras"
+    },
+    {
+      "terme": "Kumi-kata",
+      "sens": "La façon de saisir le kimono de l'adversaire"
+    },
+    {
+      "terme": "Matte",
+      "sens": "« Stop » : l'arbitre arrête le combat"
+    },
+    {
+      "terme": "Shido",
+      "sens": "Pénalité donnée par l'arbitre"
+    },
+    {
+      "terme": "Hansoku-make",
+      "sens": "Disqualification, pour une faute dangereuse ou contraire à l'esprit du judo"
+    }
   ],
   "contact_erreur": {
     "texte": "Une erreur, un doute, une information à corriger ? Écris-nous, on corrige rapidement.",
     "mail": "contact@dojonumerique.fr"
   },
-  "source": "France Judo, « Arbitrage national judo à vocation pédagogique » (septembre 2024, mise à jour du 3 mars 2025) ; règlement « Adaptations pédagogiques françaises » applicable depuis le 1er septembre 2025 (mis à jour en janvier 2026), lu à travers les résumés publiés par des comités et clubs FFJDA ; « Nouveautés arbitrage 2026 » sur francejudo.com."
+  "source": "France Judo, « Arbitrage national judo à vocation pédagogique » (septembre 2024, mise à jour du 3 mars 2025) ; règlement « Adaptations pédagogiques françaises » applicable depuis le 1er septembre 2025 (mis à jour en janvier 2026), lu à travers les résumés publiés par des comités et clubs FFJDA ; « Nouveautés arbitrage 2026 » sur francejudo.com. Support de formation « Referee Training Session GS FRA : Mise à jour des règles IJF 2026 » (CNA France Judo, 6 février 2026), lu en entier ; il ne donne pas les listes de mouvements autorisés par catégorie d'âge, ni la règle sur la tête ou le seoi-nage inversé des cadets (ces deux points viennent des sources citées plus haut).",
+  "regles_communes": {
+    "titre": "Règles de combat 2026 à connaître (document des arbitres, France Judo)",
+    "intro": "Ces points viennent du support de formation des arbitres « Mise à jour des règles IJF 2026 » (France Judo, applicable en France depuis le 7 mars 2026). Le document ne dit pas à quelles catégories d'âge chaque règle s'applique, sauf pour la perte de connaissance. Pour les plus jeunes, les adaptations pédagogiques ci-dessus restent la référence.",
+    "points": [
+      "Sécurité : en France, pour toutes les catégories d'âge, un combattant qui a perdu connaissance ne peut plus combattre (protocole commotion).",
+      "Saignement : le soin est autorisé deux fois seulement. Au troisième, l'adversaire gagne par kiken-gachi. En France, seul le responsable d'arbitrage ou le responsable technique peut décider de faire reprendre le combat, avec le staff médical.",
+      "Saisies : lâcher les deux mains sans garder aucune saisie est un shido. Frapper le bras de l'adversaire pour éviter ou rompre la saisie est un shido. Lâcher une seule main est permis.",
+      "Perte de temps : après « Mate », reviens vite à ta place. Ne pas se relever, ne pas revenir en position de départ ou arranger trop longtemps son judogi ou sa ceinture donne un avertissement la première fois, puis un shido.",
+      "Sankaku : le contrôle en kata-sankaku debout suivi d'une attaque est un shido (risque faible) ou hansoku-make (risque élevé pour le cou ou la colonne). Ushiro-sankaku au sol avec risque pour le cou est hansoku-make.",
+      "Combativité : après « Hajime » et une saisie en place, il faut attaquer dans un délai de 45 secondes si l'attitude est positive. Un combattant qui refuse de saisir ou de s'engager est pénalisé.",
+      "Notes : yuko pour une chute sur une omoplate, la nuque, le côté, ou les deux fesses. Pas de yuko si le premier impact est sur le ventre, les deux hanches ou les deux genoux. Si uke roule d'une omoplate à l'autre, c'est waza-ari."
+    ]
+  }
 }
