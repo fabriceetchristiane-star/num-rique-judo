@@ -673,14 +673,14 @@
         "e": "Gi = la technique."
       },
       {
-        "q": "Pour le Shodan, quel kata peux-tu présenter ?",
-        "r": "Nage-no-kata ou Kodokan-goshin-jitsu",
+        "q": "À l'UV1 du Shodan (1er dan), quel kata présentes-tu ?",
+        "r": "Les 3 premières séries du nage-no-kata, et 1 série choisie par le jury",
         "o": [
-          "Nage-no-kata ou Kodokan-goshin-jitsu",
-          "Katame-no-kata seulement",
-          "Aucun kata"
+          "Le kodokan-goshin-jitsu",
+          "Les 3 premières séries du nage-no-kata, et 1 série choisie par le jury",
+          "Le katame-no-kata en entier"
         ],
-        "e": "Examen 1er dan : Nage-no-kata ou Kodokan-goshin-jitsu."
+        "e": "Pour le 1er dan : les 3 premières séries du nage-no-kata dans le rôle de tori, et 1 série choisie par le jury dans le rôle de uke (textes officiels 2026-2027)."
       },
       {
         "q": "Que veut dire « Shodan » ?",
