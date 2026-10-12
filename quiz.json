@@ -143,14 +143,14 @@
         "e": "Goshi / Koshi = hanche. O-goshi = grande projection de hanche."
       },
       {
-        "q": "Quelles sont les valeurs de la ceinture blanche-jaune ?",
-        "r": "Amitié et Respect",
+        "q": "Le code moral du judo s'applique à…",
+        "r": "Tous les judokas, de tous les âges et de toutes les ceintures",
         "o": [
-          "Amitié et Respect",
-          "Modestie et Honneur",
-          "Courage et Sincérité"
+          "Seulement aux ceintures noires",
+          "Seulement aux enfants",
+          "Tous les judokas, de tous les âges et de toutes les ceintures"
         ],
-        "e": "Blanche → Jaune : Amitié et Respect. Tori et Uke forment un duo qui se fait confiance."
+        "e": "Le code moral est le même pour tout le monde, dès le premier cours : ses valeurs s'appliquent à tous, quel que soit l'âge ou la ceinture."
       }
     ],
     "jaune-orange": [
@@ -215,14 +215,14 @@
         "e": "Waza-ari awasete ippon : deux waza-ari = ippon."
       },
       {
-        "q": "Quelles sont les valeurs de la ceinture jaune-orange ?",
-        "r": "Politesse et Courage",
+        "q": "Combien de valeurs compte le code moral du judo ?",
+        "r": "8",
         "o": [
-          "Amitié et Respect",
-          "Politesse et Courage",
-          "Modestie et Honneur"
+          "4",
+          "6",
+          "8"
         ],
-        "e": "Jaune → Orange : Politesse et Courage."
+        "e": "Le code moral compte 8 valeurs : politesse, courage, sincérité, honneur, modestie, respect, contrôle de soi et amitié."
       },
       {
         "q": "Ko-soto-gari est une technique de…",
@@ -357,14 +357,14 @@
         "e": "Kachi = victoire."
       },
       {
-        "q": "Quelles sont les valeurs de la ceinture orange-verte ?",
-        "r": "Sincérité et Contrôle de soi",
+        "q": "Laquelle de ces valeurs n'est PAS dans le code moral du judo ?",
+        "r": "La rapidité",
         "o": [
-          "Politesse et Courage",
-          "Sincérité et Contrôle de soi",
-          "Proactivité et Confiance en soi"
+          "Le courage",
+          "La rapidité",
+          "La politesse"
         ],
-        "e": "Orange → Verte : Sincérité et Contrôle de soi."
+        "e": "Les 8 valeurs sont : politesse, courage, sincérité, honneur, modestie, respect, contrôle de soi et amitié. La rapidité n'en fait pas partie."
       },
       {
         "q": "Kesa-gatame (Hon-gesa-gatame), c'est…",
@@ -519,14 +519,14 @@
         "e": "Hikidashi = en se retirant ; Oikomi = en suivant ; Tobikomi = en plongeant."
       },
       {
-        "q": "Quelles sont les valeurs de la ceinture verte-bleue ?",
-        "r": "Modestie et Honneur",
+        "q": "Se retenir pour ne pas faire mal à son partenaire, c'est quelle valeur ?",
+        "r": "Le contrôle de soi",
         "o": [
-          "Modestie et Honneur",
-          "Amitié et Respect",
-          "Réalisation de soi et Responsabilité"
+          "La modestie",
+          "Le contrôle de soi",
+          "L'honneur"
         ],
-        "e": "Verte → Bleue : Modestie et Honneur."
+        "e": "Le contrôle de soi, c'est rester maître de ses gestes et de ses émotions, pour protéger son partenaire."
       }
     ],
     "bleue-marron": [
@@ -561,14 +561,14 @@
         "e": "1935 : Kawaishi Mikinosuke fonde le 1er club de judo français. Ueshiba est le fondateur de l'aïkido."
       },
       {
-        "q": "Quelles sont les valeurs de la ceinture bleue-marron ?",
-        "r": "Proactivité et Confiance en soi",
+        "q": "Peut-on appliquer seulement quelques valeurs du code moral ?",
+        "r": "Non, le code moral s'applique en entier",
         "o": [
-          "Modestie et Honneur",
-          "Proactivité et Confiance en soi",
-          "Politesse et Courage"
+          "Oui, une ou deux par ceinture",
+          "Oui, seulement dans le dojo",
+          "Non, le code moral s'applique en entier"
         ],
-        "e": "Bleue → Marron : Proactivité et Confiance en soi."
+        "e": "Les 8 valeurs vont ensemble : on les applique toutes, au dojo comme dans la vie."
       },
       {
         "q": "Ude-garami, c'est…",
@@ -723,14 +723,14 @@
         "e": "AVD, ARD, AVG, ARG : avant-droit, arrière-droit, avant-gauche, arrière-gauche."
       },
       {
-        "q": "Quelles sont les valeurs de la ceinture marron-noire ?",
-        "r": "Réalisation de soi et Responsabilité",
+        "q": "Dire bonjour, saluer et respecter les règles du dojo, c'est quelle valeur ?",
+        "r": "La politesse",
         "o": [
-          "Réalisation de soi et Responsabilité",
-          "Amitié et Respect",
-          "Sincérité et Contrôle de soi"
+          "La sincérité",
+          "La politesse",
+          "Le courage"
         ],
-        "e": "Marron → Noire : Réalisation de soi et Responsabilité."
+        "e": "La politesse : le salut et le respect des règles du dojo en sont l'expression."
       },
       {
         "q": "« Seiryoku zenyo » signifie…",
@@ -771,6 +771,444 @@
           "Ta catégorie de poids"
         ],
         "e": "Le Tokui waza (technique favorite) est le centre de ton système d'attaque."
+      }
+    ],
+    "arbitrage-poussins": [
+      {
+        "q": "Chez les mini-poussins et poussins, un combat est…",
+        "r": "Un randori arbitré, où l'arbitre explique et protège",
+        "o": [
+          "Un combat sans aucune explication",
+          "Un randori arbitré, où l'arbitre explique et protège",
+          "Un combat avec clés de bras"
+        ],
+        "e": "L'arbitre agit comme un éducateur : il arrête, explique et protège l'enfant."
+      },
+      {
+        "q": "Qu'est-ce qui est interdit chez les poussins ?",
+        "r": "Les clés de bras et les étranglements",
+        "o": [
+          "La saisie du col à deux mains",
+          "Les clés de bras et les étranglements",
+          "Les immobilisations"
+        ],
+        "e": "Clés de bras (kansetsu-waza) et étranglements (shime-waza) sont interdits pour protéger les enfants."
+      },
+      {
+        "q": "Les techniques de sacrifice et les attaques à genoux chez les poussins sont…",
+        "r": "Interdites",
+        "o": [
+          "Autorisées",
+          "Interdites",
+          "Obligatoires"
+        ],
+        "e": "On ne se laisse pas tomber pour projeter, et on n'attaque pas à genoux."
+      },
+      {
+        "q": "Les projections avec enroulement (makikomi) chez les poussins sont…",
+        "r": "Interdites",
+        "o": [
+          "Interdites",
+          "Autorisées",
+          "Autorisées seulement au sol"
+        ],
+        "e": "Les makikomi ne sont autorisés qu'à partir des benjamins."
+      },
+      {
+        "q": "Tu fais une première faute mineure chez les poussins. Que fait l'arbitre ?",
+        "r": "Il t'explique, sans pénalité",
+        "o": [
+          "Il te disqualifie",
+          "Il t'explique, sans pénalité",
+          "Il donne la victoire à l'adversaire"
+        ],
+        "e": "La première faute mineure est expliquée. Si elle se répète, c'est un shido."
+      },
+      {
+        "q": "Tu répètes une faute après l'explication de l'arbitre. Que se passe-t-il ?",
+        "r": "Tu reçois un shido",
+        "o": [
+          "Tu reçois un shido",
+          "Tu gagnes un point",
+          "Rien"
+        ],
+        "e": "La récidive est sanctionnée d'un shido, une pénalité."
+      },
+      {
+        "q": "Où places-tu ton pouce pour saisir le col ?",
+        "r": "À l'intérieur du col",
+        "o": [
+          "À l'extérieur du col",
+          "À l'intérieur du col",
+          "Sur la ceinture"
+        ],
+        "e": "Le pouce reste à l'intérieur du col, c'est plus sûr pour les doigts."
+      },
+      {
+        "q": "Quelle garde est utilisée au départ chez les poussins ?",
+        "r": "À deux mains",
+        "o": [
+          "À une seule main",
+          "À deux mains",
+          "Sans saisie"
+        ],
+        "e": "Garde de base à deux mains sur le kimono."
+      },
+      {
+        "q": "En France, un combattant perd connaissance pendant un combat. Que se passe-t-il ?",
+        "r": "Il ne peut plus combattre",
+        "o": [
+          "Il peut reprendre après quelques minutes",
+          "Il ne peut plus combattre",
+          "Il reprend s'il dit que ça va"
+        ],
+        "e": "En France, pour toutes les catégories d'âge, un combattant qui a perdu connaissance ne peut plus combattre (protocole commotion)."
+      },
+      {
+        "q": "Au sol, combien de secondes d'immobilisation font un ippon ?",
+        "r": "20 secondes",
+        "o": [
+          "10 secondes",
+          "20 secondes",
+          "30 secondes"
+        ],
+        "e": "Si ton adversaire ne peut pas sortir, 20 secondes d'immobilisation font ippon."
+      }
+    ],
+    "arbitrage-benjamins": [
+      {
+        "q": "Chez les benjamins, on applique les règles de quelle catégorie ?",
+        "r": "Celles des minimes",
+        "o": [
+          "Celles des poussins",
+          "Celles des minimes",
+          "Celles des adultes"
+        ],
+        "e": "Les benjamins appliquent les règles des minimes, avec la garde à deux mains obligatoire."
+      },
+      {
+        "q": "Les projections avec enroulement (makikomi) chez les benjamins sont…",
+        "r": "Autorisées",
+        "o": [
+          "Interdites",
+          "Autorisées",
+          "Autorisées seulement chez les ceintures noires"
+        ],
+        "e": "Chez les benjamins, les makikomi deviennent autorisés."
+      },
+      {
+        "q": "Les autres techniques de sacrifice (hors makikomi) chez les benjamins sont…",
+        "r": "Interdites",
+        "o": [
+          "Autorisées",
+          "Interdites",
+          "Obligatoires"
+        ],
+        "e": "Seuls les makikomi sont autorisés parmi les techniques où l'on se laisse tomber."
+      },
+      {
+        "q": "Les attaques directes à deux genoux chez les benjamins sont…",
+        "r": "Interdites",
+        "o": [
+          "Interdites",
+          "Autorisées",
+          "Autorisées en fin de combat"
+        ],
+        "e": "On ne se met pas à genoux pour attaquer directement."
+      },
+      {
+        "q": "Les clés de bras et étranglements chez les benjamins sont…",
+        "r": "Interdits",
+        "o": [
+          "Autorisés",
+          "Interdits",
+          "Autorisés au sol seulement"
+        ],
+        "e": "Ils restent interdits pour protéger les articulations et le cou."
+      },
+      {
+        "q": "Quelle est la durée du combat chez les benjamins ?",
+        "r": "2 minutes",
+        "o": [
+          "1 minute",
+          "2 minutes",
+          "5 minutes"
+        ],
+        "e": "Le combat des benjamins dure 2 minutes."
+      },
+      {
+        "q": "L'arbitre voit une contrainte sur le cou. Que fait-il ?",
+        "r": "Il arrête (matte) et explique",
+        "o": [
+          "Il laisse continuer",
+          "Il arrête (matte) et explique",
+          "Il donne ippon"
+        ],
+        "e": "Pour la sécurité, l'arbitre arrête le combat et explique."
+      },
+      {
+        "q": "Tu saisis dans le dos de ton adversaire. C'est autorisé sauf…",
+        "r": "En croisé ou avec une contrainte sur le cou",
+        "o": [
+          "En croisé ou avec une contrainte sur le cou",
+          "Jamais",
+          "Toujours"
+        ],
+        "e": "La saisie dans le dos est permise, mais pas en croisé ni avec une contrainte sur le cou."
+      },
+      {
+        "q": "En France, un combattant perd connaissance pendant un combat. Que se passe-t-il ?",
+        "r": "Il ne peut plus combattre",
+        "o": [
+          "Il peut reprendre après quelques minutes",
+          "Il ne peut plus combattre",
+          "Il reprend s'il dit que ça va"
+        ],
+        "e": "En France, pour toutes les catégories d'âge, un combattant qui a perdu connaissance ne peut plus combattre (protocole commotion)."
+      },
+      {
+        "q": "Au sol, combien de secondes d'immobilisation font un ippon ?",
+        "r": "20 secondes",
+        "o": [
+          "10 secondes",
+          "20 secondes",
+          "30 secondes"
+        ],
+        "e": "Si ton adversaire ne peut pas sortir, 20 secondes d'immobilisation font ippon."
+      }
+    ],
+    "arbitrage-minimes": [
+      {
+        "q": "Quelle est la durée du combat chez les minimes ?",
+        "r": "3 minutes",
+        "o": [
+          "2 minutes",
+          "3 minutes",
+          "6 minutes"
+        ],
+        "e": "Les minimes combattent 3 minutes."
+      },
+      {
+        "q": "Chez les minimes, comment valider un sankaku-gatame ?",
+        "r": "En décroisant les jambes",
+        "o": [
+          "En croisant les jambes",
+          "En décroisant les jambes",
+          "En lâchant les mains"
+        ],
+        "e": "Le sankaku se valide en décroisant les jambes, dans sa forme de base."
+      },
+      {
+        "q": "Les techniques de sacrifice (sutemi) chez les minimes, hors makikomi, sont…",
+        "r": "Interdites",
+        "o": [
+          "Autorisées",
+          "Interdites",
+          "Obligatoires"
+        ],
+        "e": "Seuls les makikomi sont autorisés."
+      },
+      {
+        "q": "Les makikomi chez les minimes sont…",
+        "r": "Autorisés",
+        "o": [
+          "Autorisés",
+          "Interdits",
+          "Autorisés seulement au sol"
+        ],
+        "e": "Les projections debout, makikomi compris, sont autorisées."
+      },
+      {
+        "q": "Clés de bras et étranglements chez les minimes : …",
+        "r": "Toujours interdits",
+        "o": [
+          "Autorisés",
+          "Toujours interdits",
+          "Autorisés chez les ceintures marron"
+        ],
+        "e": "La sécurité du cou et des bras reste la priorité."
+      },
+      {
+        "q": "Les contraintes sur le cou chez les minimes sont interdites…",
+        "r": "Debout comme au sol",
+        "o": [
+          "Seulement debout",
+          "Seulement au sol",
+          "Debout comme au sol"
+        ],
+        "e": "Pas de contrainte sur le cou, ni debout ni au sol."
+      },
+      {
+        "q": "Que dois-tu éviter d'autre chez les minimes ?",
+        "r": "Les attaques directes à deux genoux et encercler la tête",
+        "o": [
+          "Les attaques directes à deux genoux et encercler la tête",
+          "Les projections debout",
+          "Les immobilisations"
+        ],
+        "e": "Ces gestes sont dangereux pour le cou et sont interdits."
+      },
+      {
+        "q": "Comment démarre un combat de minimes ?",
+        "r": "À distance, puis garde à deux mains",
+        "o": [
+          "Déjà saisis l'un à l'autre",
+          "À distance, puis garde à deux mains",
+          "Directement au sol"
+        ],
+        "e": "Le combat démarre à distance puis passe par une garde à deux mains."
+      },
+      {
+        "q": "En France, un combattant perd connaissance pendant un combat. Que se passe-t-il ?",
+        "r": "Il ne peut plus combattre",
+        "o": [
+          "Il peut reprendre après quelques minutes",
+          "Il ne peut plus combattre",
+          "Il reprend s'il dit que ça va"
+        ],
+        "e": "En France, pour toutes les catégories d'âge, un combattant qui a perdu connaissance ne peut plus combattre (protocole commotion)."
+      },
+      {
+        "q": "Au sol, combien de secondes d'immobilisation font un ippon ?",
+        "r": "20 secondes",
+        "o": [
+          "10 secondes",
+          "20 secondes",
+          "30 secondes"
+        ],
+        "e": "Si ton adversaire ne peut pas sortir, 20 secondes d'immobilisation font ippon."
+      }
+    ],
+    "arbitrage-cadets": [
+      {
+        "q": "Le règlement des cadets se rapproche de celui…",
+        "r": "Des adultes (règlement international)",
+        "o": [
+          "Des poussins",
+          "Des adultes (règlement international)",
+          "Des minimes uniquement"
+        ],
+        "e": "Les règles évoluent vers le règlement international, mais les cadets restent protégés sur certains points."
+      },
+      {
+        "q": "Tu lâches tes deux mains sans garder aucune saisie. Que risque-t-il ?",
+        "r": "Un shido",
+        "o": [
+          "Rien",
+          "Un shido",
+          "Un hansoku-make"
+        ],
+        "e": "Lâcher les deux mains sans garder de saisie est un shido. Lâcher une seule main est permis."
+      },
+      {
+        "q": "Tu frappes le bras de l'adversaire pour éviter sa saisie. Que risque-t-il ?",
+        "r": "Un shido",
+        "o": [
+          "Un shido",
+          "Rien",
+          "Un ippon contre toi"
+        ],
+        "e": "Frapper le bras pour rompre ou éviter la saisie est sanctionné d'un shido."
+      },
+      {
+        "q": "Après « Mate », tu ne reviens pas vite à ta place. Que donne l'arbitre la première fois ?",
+        "r": "Un avertissement",
+        "o": [
+          "Un shido direct",
+          "Un avertissement",
+          "Rien"
+        ],
+        "e": "Première fois : avertissement. Deuxième fois : shido."
+      },
+      {
+        "q": "Ushiro-sankaku au sol avec risque pour le cou ou la colonne : sanction ?",
+        "r": "Hansoku-make",
+        "o": [
+          "Shido",
+          "Hansoku-make",
+          "Aucune"
+        ],
+        "e": "Le danger pour le cou ou la colonne est très grave : hansoku-make (disqualification)."
+      },
+      {
+        "q": "Contrôle en kata-sankaku debout, suivi d'une attaque, avec un risque faible de blessure : sanction ?",
+        "r": "Shido",
+        "o": [
+          "Shido",
+          "Hansoku-make",
+          "Aucune"
+        ],
+        "e": "Si le risque pour le cou ou la colonne est élevé, c'est hansoku-make."
+      },
+      {
+        "q": "Après « Hajime » et une saisie en place, il faut attaquer dans un délai de…",
+        "r": "45 secondes",
+        "o": [
+          "10 secondes",
+          "45 secondes",
+          "2 minutes"
+        ],
+        "e": "Le délai est de 45 secondes si l'attitude est positive. Refuser de saisir ou de s'engager est pénalisé."
+      },
+      {
+        "q": "Combien de soins pour un saignement sont autorisés ?",
+        "r": "Deux, au troisième l'adversaire gagne",
+        "o": [
+          "Un seul",
+          "Deux, au troisième l'adversaire gagne",
+          "Autant qu'il faut"
+        ],
+        "e": "Au troisième traitement, l'adversaire gagne par kiken-gachi."
+      },
+      {
+        "q": "La durée du combat des cadets est…",
+        "r": "Variable : voir la convocation",
+        "o": [
+          "Toujours 4 minutes",
+          "Variable : voir la convocation",
+          "Toujours 2 minutes"
+        ],
+        "e": "Elle dépend de la compétition."
+      },
+      {
+        "q": "En France, un combattant perd connaissance pendant un combat. Que se passe-t-il ?",
+        "r": "Il ne peut plus combattre",
+        "o": [
+          "Il peut reprendre après quelques minutes",
+          "Il ne peut plus combattre",
+          "Il reprend s'il dit que ça va"
+        ],
+        "e": "En France, pour toutes les catégories d'âge, un combattant qui a perdu connaissance ne peut plus combattre (protocole commotion)."
+      },
+      {
+        "q": "Au sol, combien de secondes d'immobilisation font un ippon ?",
+        "r": "20 secondes",
+        "o": [
+          "10 secondes",
+          "20 secondes",
+          "30 secondes"
+        ],
+        "e": "Si ton adversaire ne peut pas sortir, 20 secondes d'immobilisation font ippon."
+      },
+      {
+        "q": "Au sol, une immobilisation de 10 à 19 secondes donne…",
+        "r": "Un waza-ari",
+        "o": [
+          "Un ippon",
+          "Un waza-ari",
+          "Rien du tout"
+        ],
+        "e": "10 à 19 secondes d'immobilisation : waza-ari. À 20 secondes, c'est ippon."
+      },
+      {
+        "q": "Deux waza-ari dans le même combat valent…",
+        "r": "Un ippon",
+        "o": [
+          "Un ippon",
+          "Un shido",
+          "Un yuko"
+        ],
+        "e": "Deux waza-ari = awasete ippon : le combat s'arrête, comme pour un ippon."
       }
     ]
   }
