@@ -82,6 +82,22 @@
   ],
   "mots": [
     {
+      "terme": "Yuko",
+      "sens": "Petit avantage pour une chute moins franche (par exemple sur une omoplate, le côté ou les deux fesses)."
+    },
+    {
+      "terme": "Awasete ippon",
+      "sens": "Deux waza-ari obtenus dans le même combat : ils comptent comme un ippon."
+    },
+    {
+      "terme": "Waza-ari",
+      "sens": "Presque ippon : les critères de l'ippon ne sont pas tous réunis. Deux waza-ari font un ippon."
+    },
+    {
+      "terme": "Ippon",
+      "sens": "Point maximum : projection sur le dos avec vitesse, force et contrôle. Le combat s'arrête."
+    },
+    {
       "terme": "Randori arbitré",
       "sens": "Combat d'entraînement surveillé par un arbitre qui explique et protège"
     },
@@ -122,7 +138,7 @@
     "texte": "Une erreur, un doute, une information à corriger ? Écris-nous, on corrige rapidement.",
     "mail": "contact@dojonumerique.fr"
   },
-  "source": "France Judo, « Arbitrage national judo à vocation pédagogique » (septembre 2024, mise à jour du 3 mars 2025) ; règlement « Adaptations pédagogiques françaises » applicable depuis le 1er septembre 2025 (mis à jour en janvier 2026), lu à travers les résumés publiés par des comités et clubs FFJDA ; « Nouveautés arbitrage 2026 » sur francejudo.com. Support de formation « Referee Training Session GS FRA : Mise à jour des règles IJF 2026 » (CNA France Judo, 6 février 2026), lu en entier ; il ne donne pas les listes de mouvements autorisés par catégorie d'âge, ni la règle sur la tête ou le seoi-nage inversé des cadets (ces deux points viennent des sources citées plus haut).",
+  "source": "France Judo, « Arbitrage national judo à vocation pédagogique » (septembre 2024, mise à jour du 3 mars 2025) ; règlement « Adaptations pédagogiques françaises » applicable depuis le 1er septembre 2025 (mis à jour en janvier 2026), lu à travers les résumés publiés par des comités et clubs FFJDA ; « Nouveautés arbitrage 2026 » sur francejudo.com. Support de formation « Referee Training Session GS FRA : Mise à jour des règles IJF 2026 » (CNA France Judo, 6 février 2026), lu en entier ; il ne donne pas les listes de mouvements autorisés par catégorie d'âge, ni la règle sur la tête ou le seoi-nage inversé des cadets (ces deux points viennent des sources citées plus haut). Définitions d'ippon, waza-ari et awasete ippon : règles sportives IJF (extrait articles 14 à 16) ; les durées d'immobilisation 2026 ne sont pas indiquées dans le support des arbitres, donc non reprises ici.",
   "regles_communes": {
     "titre": "Règles de combat 2026 à connaître (document des arbitres, France Judo)",
     "intro": "Ces points viennent du support de formation des arbitres « Mise à jour des règles IJF 2026 » (France Judo, applicable en France depuis le 7 mars 2026). Le document ne dit pas à quelles catégories d'âge chaque règle s'applique, sauf pour la perte de connaissance. Pour les plus jeunes, les adaptations pédagogiques ci-dessus restent la référence.",
@@ -133,7 +149,7 @@
       "Perte de temps : après « Mate », reviens vite à ta place. Ne pas se relever, ne pas revenir en position de départ ou arranger trop longtemps son judogi ou sa ceinture donne un avertissement la première fois, puis un shido.",
       "Sankaku : le contrôle en kata-sankaku debout suivi d'une attaque est un shido (risque faible) ou hansoku-make (risque élevé pour le cou ou la colonne). Ushiro-sankaku au sol avec risque pour le cou est hansoku-make.",
       "Combativité : après « Hajime » et une saisie en place, il faut attaquer dans un délai de 45 secondes si l'attitude est positive. Un combattant qui refuse de saisir ou de s'engager est pénalisé.",
-      "Notes : yuko pour une chute sur une omoplate, la nuque, le côté, ou les deux fesses. Pas de yuko si le premier impact est sur le ventre, les deux hanches ou les deux genoux. Si uke roule d'une omoplate à l'autre, c'est waza-ari."
+      "Les points en debout : un ippon est une projection sur le dos avec vitesse, force, chute sur le dos et contrôle jusqu'à la fin, et il termine le combat. Un waza-ari est donné quand ces quatre critères ne sont pas tous réunis. Deux waza-ari valent un ippon (awasete ippon). Le yuko est donné pour une chute sur une omoplate, la nuque, le côté, ou les deux fesses. Pas de yuko si le premier impact est sur le ventre, les deux hanches ou les deux genoux. Si uke roule d'une omoplate à l'autre, c'est waza-ari."
     ]
   }
 }
