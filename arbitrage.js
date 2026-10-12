@@ -45,8 +45,8 @@ fetch('arbitrage.json')
         ' <a href="mailto:' + esc(d.contact_erreur.mail) + '">' + esc(d.contact_erreur.mail) + '</a></p></div>';
     }
 
-    if (d.source) {
-      html += '<p class="source"><strong>Sources :</strong> ' + esc(d.source) + '</p>';
+    if (d.lien_officiel && d.lien_officiel.url) {
+      html += '<p class="source"><a href="' + esc(d.lien_officiel.url) + '" target="_blank" rel="noopener">' + esc(d.lien_officiel.texte) + '</a></p>';
     }
 
     document.getElementById('contenu').innerHTML = html;
